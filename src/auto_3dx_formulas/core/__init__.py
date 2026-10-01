@@ -1,7 +1,0 @@
-"""Core types: variables, formulas, and the registry."""
-
-from auto_3dx_formulas.core.registry import FormulaRegistry
-from auto_3dx_formulas.core.spec import FormulaSpec
-from auto_3dx_formulas.core.variable import VariableSpec
-
-__all__ = ["FormulaRegistry", "FormulaSpec", "VariableSpec"]
