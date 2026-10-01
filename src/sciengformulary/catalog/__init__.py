@@ -1,8 +1,9 @@
-"""Formula catalog, grouped by domain.
+"""Formula catalog, grouped by knowledge domain.
 
 Each domain package lists its formulas in a ``FORMULAS`` tuple; this module joins them.
-Every formula is validated when it is constructed, including its references, so a
-formula without a verified reference cannot be imported into the catalog.
+Every formula is validated when it is constructed, including its references and its
+numerical verification cases, so a formula without a reference, or whose evaluator does
+not reproduce its verification cases, cannot be imported into the catalog.
 """
 
 from types import ModuleType
@@ -12,6 +13,7 @@ from sciengformulary.catalog import (
     fluids,
     materials,
     orbital,
+    propulsion,
     structures,
     thermodynamics,
 )
@@ -22,6 +24,7 @@ DOMAINS: tuple[ModuleType, ...] = (
     fluids,
     materials,
     orbital,
+    propulsion,
     structures,
     thermodynamics,
 )
