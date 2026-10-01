@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "auto-3dx-formulas"
+dynamic = ["version"]
+description = "Engineering formulas with units and applicability, for use by AI agents."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["engineering", "formulas", "aerodynamics", "ai-agents", "auto-3dx"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+]
+
+[tool.hatch.version]
+path = "src/auto_3dx_formulas/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/auto_3dx_formulas"]
