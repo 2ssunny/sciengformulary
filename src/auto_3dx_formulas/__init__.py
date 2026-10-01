@@ -7,10 +7,17 @@ Example:
 """
 
 from auto_3dx_formulas.catalog import ALL_FORMULAS
-from auto_3dx_formulas.core import FormulaRegistry, FormulaSpec, VariableSpec
+from auto_3dx_formulas.core import FormulaRegistry, FormulaSpec, ReferenceSpec, VariableSpec
 
 __version__ = "0.1.0"
 
 formulas = FormulaRegistry(ALL_FORMULAS)
 
-__all__ = ["FormulaRegistry", "FormulaSpec", "VariableSpec", "formulas", "__version__"]
+__all__ = [
+    "FormulaRegistry",
+    "FormulaSpec",
+    "ReferenceSpec",
+    "VariableSpec",
+    "formulas",
+    "__version__",
+]

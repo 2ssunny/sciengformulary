@@ -8,6 +8,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
 
+from auto_3dx_formulas.core.reference import ReferenceSpec
 from auto_3dx_formulas.core.variable import VariableSpec
 
 FORMULA_ID_PATTERN = re.compile(r"^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$")
@@ -28,9 +29,10 @@ class FormulaSpec:
         inputs: Input variables. Each ``name`` must be a parameter of ``evaluator``.
         output: The variable the formula computes.
         evaluator: Function taking the inputs as keyword arguments and returning the output.
+        references: At least one verified source for the equation and its applicability.
+            A formula without one cannot be constructed, so it cannot enter the catalog.
         description: What the formula represents.
         assumptions: Conditions under which the formula is valid.
-        references: Sources, as plain citation strings. Empty means none recorded yet.
         tags: Extra search keywords and aliases.
     """
 
@@ -40,13 +42,22 @@ class FormulaSpec:
     inputs: tuple[VariableSpec, ...]
     output: VariableSpec
     evaluator: Callable[..., float] = field(repr=False)
+    references: tuple[ReferenceSpec, ...]
     description: str = ""
     assumptions: tuple[str, ...] = ()
-    references: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         # Fail at import time so a malformed formula never reaches an agent.
+        self.validate()
+
+    def validate(self) -> None:
+        """Check the id, inputs, evaluator signature, and references.
+
+        Raises:
+            ValueError: If the formula breaks a catalog rule.
+            TypeError: If a reference is not a ``ReferenceSpec``.
+        """
         if not FORMULA_ID_PATTERN.match(self.id):
             raise ValueError(
                 f"Formula id {self.id!r} must look like '<domain>.<snake_case_name>'."
@@ -60,6 +71,18 @@ class FormulaSpec:
                 f"Formula {self.id!r}: evaluator parameters {sorted(parameters)} "
                 f"do not match input names {sorted(names)}."
             )
+        if not isinstance(self.references, tuple) or not self.references:
+            raise ValueError(
+                f"Formula {self.id!r} needs a tuple of at least one ReferenceSpec. "
+                "Formulas without a verified reference stay out of the catalog."
+            )
+        for reference in self.references:
+            if not isinstance(reference, ReferenceSpec):
+                raise TypeError(
+                    f"Formula {self.id!r}: references must be ReferenceSpec objects, "
+                    f"got {type(reference).__name__}."
+                )
+            reference.validate()
 
     @property
     def input_names(self) -> tuple[str, ...]:
@@ -98,6 +121,7 @@ class FormulaSpec:
             "inputs": [variable.to_dict() for variable in self.inputs],
             "output": self.output.to_dict(),
             "assumptions": list(self.assumptions),
-            "references": list(self.references),
+            "references": [reference.to_dict() for reference in self.references],
+            "references_ieee": [reference.format_ieee() for reference in self.references],
             "tags": list(self.tags),
         }

@@ -44,6 +44,7 @@ f = formulas.get("aerodynamics.dynamic_pressure")
 f.equation      # 'q = 0.5 * rho * V^2'
 f.input_names   # ('rho', 'V')
 f.assumptions   # when the formula is valid
+f.references[0].format_ieee()  # verified source, as an IEEE citation
 f.to_dict()     # all metadata as JSON-serializable data
 
 f.evaluate(rho=1.225, V=120.0)      # 8820.0
@@ -62,12 +63,29 @@ system and the result comes out in the matching unit of that system. Each variab
 lists its dimension and SI unit for reference. In the example above, inputs in
 kg/m^3 and m/s give q = 8820.0 Pa.
 
+## References and verification
+
+- Every formula in the catalog has at least one verified engineering reference.
+  A `FormulaSpec` without one cannot be constructed, so formulas that have not
+  been verified are left out of the catalog on purpose.
+- References are stored as structured `ReferenceSpec` fields (authors,
+  organization, year, publisher, URL, ...), not as pre-formatted strings.
+- Citations are rendered in IEEE style with `format_ieee()`. IEEE is the only
+  style used in this project.
+- Adding formulas from course formula sheets means extracting each formula,
+  checking it against an authoritative source, reviewing it, and only then
+  adding it. Formulas are not copied over unchecked.
+- The `validate-catalog` GitHub Actions check validates the catalog on every
+  pull request. Human review confirms that each source really supports its
+  formula.
+
 ## Repository structure
 
 ```text
 src/auto_3dx_formulas/
 ├─ __init__.py          # `formulas` registry instance
 ├─ core/
+│  ├─ reference.py      # ReferenceSpec (structured source, IEEE rendering)
 │  ├─ variable.py       # VariableSpec
 │  ├─ spec.py           # FormulaSpec
 │  └─ registry.py       # FormulaRegistry: get / list / search
@@ -83,9 +101,7 @@ src/auto_3dx_formulas/
 
 ## Adding formulas
 
-Create one file per formula in the matching domain, define a `FormulaSpec`, and
-add it to that domain's `FORMULAS` tuple. See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## License
-
-[MIT](LICENSE)
+Create one file per formula in the matching domain, define a `FormulaSpec` with at
+least one verified `ReferenceSpec`, and add it to that domain's `FORMULAS` tuple.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the source-quality and anti-fabrication
+rules.

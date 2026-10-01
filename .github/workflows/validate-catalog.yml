@@ -1,0 +1,89 @@
+name: validate-catalog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # The job name is the status check to mark as required in branch protection.
+  validate-catalog:
+    name: validate-catalog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          # Oldest version allowed by requires-python in pyproject.toml.
+          python-version: "3.10"
+
+      - name: Install package
+        run: python -m pip install .
+
+      - name: Validate catalog
+        # Run outside the checkout so the installed package is imported, not src/.
+        working-directory: ${{ runner.temp }}
+        shell: python
+        run: |
+          import importlib
+          import inspect
+          import json
+          import pkgutil
+          import sys
+
+          import auto_3dx_formulas
+          from auto_3dx_formulas import FormulaSpec, ReferenceSpec, formulas
+          from auto_3dx_formulas import catalog
+          from auto_3dx_formulas.catalog import ALL_FORMULAS
+
+          errors = []
+
+          ids = [formula.id for formula in ALL_FORMULAS]
+          duplicates = sorted({formula_id for formula_id in ids if ids.count(formula_id) > 1})
+          if duplicates:
+              errors.append(f"duplicate formula ids: {duplicates}")
+          if len(formulas) != len(ALL_FORMULAS):
+              errors.append(
+                  f"registry has {len(formulas)} formulas, catalog has {len(ALL_FORMULAS)}"
+              )
+
+          for formula in ALL_FORMULAS:
+              try:
+                  # validate() re-runs the id, evaluator-signature and reference rules.
+                  formula.validate()
+                  parameters = set(inspect.signature(formula.evaluator).parameters)
+                  assert parameters == set(formula.input_names), "evaluator/input mismatch"
+                  assert formula.references, "no references"
+                  for reference in formula.references:
+                      if not isinstance(reference, ReferenceSpec):
+                          raise TypeError(f"not a ReferenceSpec: {reference}")
+                      reference.validate()
+                      assert reference.format_ieee().strip(), "empty IEEE citation"
+                  json.dumps(formula.to_dict())
+                  assert formulas.get(formula.id) is formula, "registry returns a different object"
+              except Exception as error:
+                  errors.append(f"{formula.id}: {type(error).__name__}: {error}")
+
+          # Every FormulaSpec defined anywhere in the catalog must be registered.
+          registered = {id(formula) for formula in ALL_FORMULAS}
+          for module_info in pkgutil.walk_packages(catalog.__path__, f"{catalog.__name__}."):
+              module = importlib.import_module(module_info.name)
+              for name, value in vars(module).items():
+                  if isinstance(value, FormulaSpec) and id(value) not in registered:
+                      errors.append(f"{module_info.name}.{name} ({value.id}) is not registered")
+
+          if errors:
+              print("Catalog validation failed:")
+              print("\n".join(f"  - {error}" for error in errors))
+              sys.exit(1)
+
+          version = auto_3dx_formulas.__version__
+          print(f"auto-3dx-formulas {version}: {len(ALL_FORMULAS)} formula(s) valid.")
+          for formula in ALL_FORMULAS:
+              print(f"  {formula.id}")
+              for reference in formula.references:
+                  print(f"    {reference.format_ieee()}")

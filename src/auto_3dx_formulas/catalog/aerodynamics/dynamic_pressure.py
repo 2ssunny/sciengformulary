@@ -1,6 +1,6 @@
 """Dynamic pressure: q = 0.5 * rho * V^2."""
 
-from auto_3dx_formulas.core import FormulaSpec, VariableSpec
+from auto_3dx_formulas.core import FormulaSpec, ReferenceSpec, VariableSpec
 
 
 def _evaluate(rho: float, V: float) -> float:  # noqa: N803 - V is the textbook symbol
@@ -12,8 +12,9 @@ dynamic_pressure = FormulaSpec(
     name="Dynamic Pressure",
     equation="q = 0.5 * rho * V^2",
     description=(
-        "Kinetic energy per unit volume of a fluid moving at speed V relative to a body "
-        "or reference frame. Used to non-dimensionalize aerodynamic forces, e.g. L = q S C_L."
+        "Pressure-like quantity carried by a moving fluid: half its density times the square "
+        "of its speed. Aerodynamic forces on a body scale with it, which is why it appears in "
+        "the definitions of the lift and drag coefficients."
     ),
     inputs=(
         VariableSpec(
@@ -39,17 +40,26 @@ dynamic_pressure = FormulaSpec(
         si_unit="Pa",
     ),
     evaluator=_evaluate,
+    references=(
+        # The source writes the flow velocity as u: q = rho * u^2 / 2, the same relation.
+        ReferenceSpec(
+            source_type="official_web",
+            title="Dynamic Pressure",
+            organization="NASA Glenn Research Center",
+            year=2024,
+            locator="Derivation and Flow of Gas sections",
+            url="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/dynamic-pressure/",
+            accessed="2026-10-01",
+        ),
+    ),
     assumptions=(
-        "rho and V are local values at the same point; use freestream values for "
+        "rho and V are taken at the same point in the flow; use freestream values for the "
         "freestream dynamic pressure.",
-        "V is true speed relative to the fluid. With equivalent airspeed, use sea-level "
-        "density instead of local density.",
-        "Valid as a definition at any Mach number, but q equals stagnation minus static "
-        "pressure only for incompressible flow (roughly M < 0.3).",
+        "q is a defined property of any moving flow and can be used in compressible or viscous "
+        "flow, but total pressure = static pressure + q (Bernoulli) holds only when density "
+        "is constant (incompressible flow).",
         "No unit conversion is applied: inputs must be in consistent units (SI inputs "
         "give q in Pa).",
     ),
-    # Add sources as plain strings, e.g. "Author, Title, edition, section/eq. no.".
-    references=(),
     tags=("q", "freestream", "kinetic energy per unit volume", "bernoulli", "airspeed"),
 )
