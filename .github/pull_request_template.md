@@ -32,10 +32,11 @@ Mark items that do not apply as N/A (e.g. `- [x] N/A: ...`) for general maintena
 - [ ] Each formula has at least one `VerificationCase`.
 - [ ] `VerificationCase.expected` was determined independently of the evaluator (never by running it), and each case's `note` says how.
 - [ ] Verification cases pass within the stated tolerances.
-- [ ] The formula is registered in the correct domain `FORMULAS` tuple.
+- [ ] The formula is registered in the correct knowledge-domain `FORMULAS` tuple (not a course-based grouping).
 - [ ] I did not bypass `ReferenceSpec` / `VerificationCase` / `FormulaSpec` validation.
 
 ## General checklist
 
-- [ ] The `validate-catalog` check passes.
+- [ ] The `validate-catalog` check passes (locally: `python -m sciengformulary.validation`).
+- [ ] The `package-check` check passes.
 - [ ] Docs (README / CONTRIBUTING) are updated if behavior or conventions changed.

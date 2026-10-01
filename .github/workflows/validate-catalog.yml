@@ -14,9 +14,9 @@ jobs:
     name: validate-catalog
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           # Oldest version allowed by requires-python in pyproject.toml.
           python-version: "3.10"
@@ -26,75 +26,7 @@ jobs:
 
       - name: Validate catalog
         # Run outside the checkout so the installed package is imported, not src/.
-        # Checks references and registration, then runs every numerical verification case.
-        # No network access: source websites being down must not fail a valid PR.
+        # Checks references, registration, serialization and every numerical verification
+        # case. No network access: source websites being down must not fail a valid PR.
         working-directory: ${{ runner.temp }}
-        shell: python
-        run: |
-          import importlib
-          import inspect
-          import json
-          import pkgutil
-          import sys
-
-          import sciengformulary
-          from sciengformulary import FormulaSpec, ReferenceSpec, VerificationCase, formulas
-          from sciengformulary import catalog
-          from sciengformulary.catalog import ALL_FORMULAS
-
-          errors = []
-
-          ids = [formula.id for formula in ALL_FORMULAS]
-          duplicates = sorted({formula_id for formula_id in ids if ids.count(formula_id) > 1})
-          if duplicates:
-              errors.append(f"duplicate formula ids: {duplicates}")
-          if len(formulas) != len(ALL_FORMULAS):
-              errors.append(
-                  f"registry has {len(formulas)} formulas, catalog has {len(ALL_FORMULAS)}"
-              )
-
-          for formula in ALL_FORMULAS:
-              try:
-                  # validate() re-runs the id, evaluator-signature, reference and
-                  # verification-case structure rules; verify() runs the cases.
-                  formula.validate()
-                  inputs = set(formula.input_names)
-                  parameters = set(inspect.signature(formula.evaluator).parameters)
-                  assert parameters == inputs, "evaluator/input mismatch"
-                  assert formula.references, "no references"
-                  for reference in formula.references:
-                      if not isinstance(reference, ReferenceSpec):
-                          raise TypeError(f"not a ReferenceSpec: {reference}")
-                      reference.validate()
-                      assert reference.format_ieee().strip(), "empty IEEE citation"
-                  assert formula.verification_cases, "no verification cases"
-                  for case in formula.verification_cases:
-                      if not isinstance(case, VerificationCase):
-                          raise TypeError(f"not a VerificationCase: {case}")
-                      assert set(case.inputs) == inputs, f"case inputs {sorted(case.inputs)}"
-                  formula.verify()
-                  json.dumps(formula.to_dict())
-                  assert formulas.get(formula.id) is formula, "registry returns a different object"
-              except Exception as error:
-                  errors.append(f"{formula.id}: {type(error).__name__}: {error}")
-
-          # Every FormulaSpec defined anywhere in the catalog must be registered.
-          registered = {id(formula) for formula in ALL_FORMULAS}
-          for module_info in pkgutil.walk_packages(catalog.__path__, f"{catalog.__name__}."):
-              module = importlib.import_module(module_info.name)
-              for name, value in vars(module).items():
-                  if isinstance(value, FormulaSpec) and id(value) not in registered:
-                      errors.append(f"{module_info.name}.{name} ({value.id}) is not registered")
-
-          if errors:
-              print("Catalog validation failed:")
-              print("\n".join(f"  - {error}" for error in errors))
-              sys.exit(1)
-
-          version = sciengformulary.__version__
-          print(f"sciengformulary {version}: {len(ALL_FORMULAS)} formula(s) valid.")
-          for formula in ALL_FORMULAS:
-              cases = len(formula.verification_cases)
-              print(f"  {formula.id}: {cases} verification case(s) passed")
-              for reference in formula.references:
-                  print(f"    {reference.format_ieee()}")
+        run: python -m sciengformulary.validation

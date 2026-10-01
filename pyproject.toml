@@ -38,3 +38,14 @@ path = "src/sciengformulary/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sciengformulary"]
+
+[tool.hatch.build.targets.sdist]
+# Explicit list so local working files (for example an untracked ingestion folder) can
+# never be packaged.
+include = [
+    "/src",
+    "/README.md",
+    "/LICENSE",
+    "/CONTRIBUTING.md",
+    "/RELEASING.md",
+]

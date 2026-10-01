@@ -1,0 +1,133 @@
+name: release
+
+# Publishing happens only when a GitHub Release is published. Pushing a tag alone, pushing
+# to main, or opening a pull request never publishes anything.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build-and-verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Build exactly the commit the release tag points at.
+          ref: refs/tags/${{ github.event.release.tag_name }}
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Check the tag matches the package version
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        shell: python
+        run: |
+          import os, re, sys
+
+          tag = os.environ["TAG"]
+          match = re.fullmatch(r"v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", tag)
+          if not match:
+              sys.exit(f"Release tag {tag!r} is not of the form vX.Y.Z (for example v0.1.0).")
+          source = open("src/sciengformulary/__init__.py", encoding="utf-8").read()
+          found = re.search(r'^__version__ = "([^"]+)"$', source, re.MULTILINE)
+          if not found:
+              sys.exit("Could not read __version__ from src/sciengformulary/__init__.py.")
+          if found.group(1) != tag[1:]:
+              sys.exit(
+                  f"Release tag {tag} does not match the package version {found.group(1)}. "
+                  "Set the version in the source tree, merge it, then tag that commit."
+              )
+          print(f"Tag {tag} matches package version {found.group(1)}.")
+
+      - name: Install build tools
+        run: python -m pip install --upgrade build twine
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - name: Check distribution metadata
+        run: python -m twine check --strict dist/*
+
+      - name: Check built files
+        shell: python
+        run: |
+          import pathlib, sys, tarfile, zipfile
+
+          wheels = sorted(pathlib.Path("dist").glob("sciengformulary-*.whl"))
+          sdists = sorted(pathlib.Path("dist").glob("sciengformulary-*.tar.gz"))
+          if len(wheels) != 1 or len(sdists) != 1:
+              sys.exit(f"expected one wheel and one sdist, found {wheels} and {sdists}")
+          wheel_names = zipfile.ZipFile(wheels[0]).namelist()
+          sdist_names = tarfile.open(sdists[0]).getnames()
+          problems = []
+          if not any(name.startswith("sciengformulary/") for name in wheel_names):
+              problems.append("wheel has no sciengformulary/ package")
+          for label, names in (("wheel", wheel_names), ("sdist", sdist_names)):
+              stale = [name for name in names if "auto_3dx" in name or "auto-3dx" in name]
+              if stale:
+                  problems.append(f"{label} contains old package files: {stale}")
+          if problems:
+              sys.exit("\n".join(problems))
+          print(f"{wheels[0].name}: {len(wheel_names)} files; {sdists[0].name}: {len(sdist_names)} files")
+
+      - name: Install the wheel into a clean environment
+        run: |
+          python -m venv "$RUNNER_TEMP/wheel-env"
+          "$RUNNER_TEMP/wheel-env/bin/python" -m pip install dist/sciengformulary-*.whl
+
+      - name: Smoke-test and validate the installed wheel
+        working-directory: ${{ runner.temp }}
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          "$RUNNER_TEMP/wheel-env/bin/python" - <<'EOF'
+          import importlib.metadata
+          import os
+          import sciengformulary
+          from sciengformulary import formulas
+
+          assert "site-packages" in sciengformulary.__file__, sciengformulary.__file__
+          version = importlib.metadata.version("sciengformulary")
+          assert version == os.environ["TAG"][1:], (version, os.environ["TAG"])
+          assert len(formulas) > 0
+          formulas.get("aerodynamics.dynamic_pressure").verify()
+          print(f"sciengformulary {version} installed from the wheel; {len(formulas)} formulas")
+          EOF
+          "$RUNNER_TEMP/wheel-env/bin/python" -m sciengformulary.validation
+
+      - name: Keep the verified distributions for publishing
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: publish-to-pypi
+    needs: build
+    runs-on: ubuntu-latest
+    # Trusted Publishing: the PyPI project must trust this repository, this workflow file
+    # (release.yml) and this environment (pypi). No API token is stored in the repository.
+    environment:
+      name: pypi
+      url: https://pypi.org/project/sciengformulary/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Download the verified distributions
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: Publish to PyPI
+        # Uploads exactly the files built and checked above. PyPI rejects re-uploads of an
+        # existing version, so a release can never overwrite one.
+        uses: pypa/gh-action-pypi-publish@release/v1
