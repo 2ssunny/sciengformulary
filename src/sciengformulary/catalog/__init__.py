@@ -10,8 +10,10 @@ from types import ModuleType
 
 from sciengformulary.catalog import (
     aerodynamics,
+    electrical,
     fluids,
     materials,
+    mechanics,
     orbital,
     propulsion,
     structures,
@@ -21,8 +23,10 @@ from sciengformulary.core import FormulaSpec
 
 DOMAINS: tuple[ModuleType, ...] = (
     aerodynamics,
+    electrical,
     fluids,
     materials,
+    mechanics,
     orbital,
     propulsion,
     structures,
