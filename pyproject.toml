@@ -3,24 +3,49 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "auto-3dx-formulas"
+name = "sciengformulary"
 dynamic = ["version"]
-description = "Engineering formulas with units and applicability, for use by AI agents."
+description = "Verified scientific and engineering formulas with units, assumptions, references, and executable evaluators."
 readme = "README.md"
-license = "MIT"
+license = "Apache-2.0"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
 dependencies = []
-keywords = ["engineering", "formulas", "aerodynamics", "ai-agents", "auto-3dx"]
+keywords = [
+    "science",
+    "engineering",
+    "formulas",
+    "equations",
+    "reference",
+    "scientific-computing",
+    "ai-agents",
+]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Education",
     "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering",
 ]
 
+[project.urls]
+Homepage = "https://github.com/2ssunny/sciengformulary"
+Repository = "https://github.com/2ssunny/sciengformulary"
+Issues = "https://github.com/2ssunny/sciengformulary/issues"
+
 [tool.hatch.version]
-path = "src/auto_3dx_formulas/__init__.py"
+path = "src/sciengformulary/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/auto_3dx_formulas"]
+packages = ["src/sciengformulary"]
+
+[tool.hatch.build.targets.sdist]
+# Explicit list so local working files (for example an untracked ingestion folder) can
+# never be packaged.
+include = [
+    "/src",
+    "/README.md",
+    "/LICENSE",
+    "/CONTRIBUTING.md",
+    "/RELEASING.md",
+]

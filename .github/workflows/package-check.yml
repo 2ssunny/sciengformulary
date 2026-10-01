@@ -1,0 +1,75 @@
+name: package-check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # The job name is the status check to mark as required in branch protection.
+  package-check:
+    name: package-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install build tools
+        run: python -m pip install --upgrade build twine
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - name: Check distribution metadata
+        run: python -m twine check --strict dist/*
+
+      - name: Check built files
+        shell: python
+        run: |
+          import pathlib, sys, tarfile, zipfile
+
+          wheels = sorted(pathlib.Path("dist").glob("sciengformulary-*.whl"))
+          sdists = sorted(pathlib.Path("dist").glob("sciengformulary-*.tar.gz"))
+          if len(wheels) != 1 or len(sdists) != 1:
+              sys.exit(f"expected one wheel and one sdist, found {wheels} and {sdists}")
+          wheel_names = zipfile.ZipFile(wheels[0]).namelist()
+          sdist_names = tarfile.open(sdists[0]).getnames()
+          problems = []
+          if not any(name.startswith("sciengformulary/") for name in wheel_names):
+              problems.append("wheel has no sciengformulary/ package")
+          for label, names in (("wheel", wheel_names), ("sdist", sdist_names)):
+              stale = [name for name in names if "auto_3dx" in name or "auto-3dx" in name]
+              if stale:
+                  problems.append(f"{label} contains old package files: {stale}")
+          if problems:
+              sys.exit("\n".join(problems))
+          print(f"{wheels[0].name}: {len(wheel_names)} files; {sdists[0].name}: {len(sdist_names)} files")
+
+      - name: Install the wheel into a clean environment
+        run: |
+          python -m venv "$RUNNER_TEMP/wheel-env"
+          "$RUNNER_TEMP/wheel-env/bin/python" -m pip install dist/sciengformulary-*.whl
+
+      - name: Smoke-test the installed wheel
+        # Run outside the checkout so src/ cannot shadow the installed package.
+        working-directory: ${{ runner.temp }}
+        run: |
+          "$RUNNER_TEMP/wheel-env/bin/python" - <<'EOF'
+          import importlib.metadata
+          import sciengformulary
+          from sciengformulary import formulas
+
+          assert "site-packages" in sciengformulary.__file__, sciengformulary.__file__
+          version = importlib.metadata.version("sciengformulary")
+          assert version == sciengformulary.__version__, (version, sciengformulary.__version__)
+          assert len(formulas) > 0
+          formulas.get("aerodynamics.dynamic_pressure").verify()
+          print(f"sciengformulary {version} installed from the wheel; {len(formulas)} formulas")
+          EOF
+          "$RUNNER_TEMP/wheel-env/bin/python" -m sciengformulary.validation
