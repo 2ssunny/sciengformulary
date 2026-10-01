@@ -69,23 +69,27 @@ dates, citation numbering in titles, and identifiers used on the wrong type
 
 ## Adding a formula
 
-1. **Pick the domain** under `src/sciengformulary/catalog/` (`aerodynamics`,
-   `structures`, `fluids`, `thermodynamics`, `materials`, `orbital`).
-2. **Create one file** named after the formula, e.g. `lift_force.py`.
+1. **Pick the domain** under `src/sciengformulary/catalog/`: `aerodynamics`,
+   `electrical`, `fluids`, `heat_transfer`, `materials`, `mathematics`, `mechanics`,
+   `nuclear`, `orbital`, `propulsion`, `structures` or `thermodynamics`.
+   Domains are knowledge areas, never courses, modules or institutions. Add a new
+   domain only when a verified formula clearly fits none of these, and never create
+   an empty one.
+2. **Create one file** named after the formula, e.g. `pitching_moment.py`.
 3. **Define one `FormulaSpec`** in it, in a variable with the same name as the file:
 
    ```python
    from sciengformulary.core import FormulaSpec, ReferenceSpec, VariableSpec, VerificationCase
 
 
-   def _evaluate(q: float, S: float, C_L: float) -> float:  # noqa: N803
-       return q * S * C_L
+   def _evaluate(q: float, S: float, c: float, C_M: float) -> float:  # noqa: N803
+       return q * S * c * C_M
 
 
-   lift_force = FormulaSpec(
-       id="aerodynamics.lift_force",  # <domain>.<file name>
-       name="Lift Force",
-       equation="L = q * S * C_L",
+   pitching_moment = FormulaSpec(
+       id="aerodynamics.pitching_moment",  # <domain>.<file name>
+       name="Pitching Moment",
+       equation="M = q * S * c * C_M",
        inputs=(VariableSpec(...), ...),
        output=VariableSpec(...),
        evaluator=_evaluate,
@@ -101,10 +105,10 @@ dates, citation numbering in titles, and identifiers used on the wrong type
        ),
        verification_cases=(
            VerificationCase(
-               inputs={"q": 1000.0, "S": 2.0, "C_L": 0.5},
-               expected=1000.0,  # worked out by hand, never by calling _evaluate
+               inputs={"q": 1000.0, "S": 2.0, "c": 0.5, "C_M": 0.1},
+               expected=100.0,  # worked out by hand, never by calling _evaluate
                rel_tol=1e-12,
-               note="Hand calculation: 1000 * 2 * 0.5 = 1000.",
+               note="Hand calculation: 1000 * 2 * 0.5 * 0.1 = 100.",
            ),
        ),
        description="...",
@@ -117,15 +121,16 @@ dates, citation numbering in titles, and identifiers used on the wrong type
    that domain's `FORMULAS` tuple:
 
    ```python
-   from sciengformulary.catalog.aerodynamics.lift_force import lift_force
+   from sciengformulary.catalog.aerodynamics.pitching_moment import pitching_moment
 
    FORMULAS: tuple[FormulaSpec, ...] = (
        dynamic_pressure,
-       lift_force,
+       ...,
+       pitching_moment,
    )
    ```
 
-   It is then available as `formulas.get("aerodynamics.lift_force")`.
+   It is then available as `formulas.get("aerodynamics.pitching_moment")`.
 
 5. **Fill in every field that applies:**
    - `equation`: symbolic form, using the same symbols as the inputs.
@@ -140,8 +145,26 @@ dates, citation numbering in titles, and identifiers used on the wrong type
    - `verification_cases`: at least one `VerificationCase` (see below).
    - Keep metadata strings ASCII so they print safely in a Windows console.
 
-6. **Follow the example** in
+6. **Reuse shared records.** Sources cited by several formulas have builders in
+   [`catalog/_sources.py`](src/sciengformulary/catalog/_sources.py) (OpenStax, NASA
+   Glenn, NACA Report 1135, Lienhard, MIT course notes, NIST): pass only the locator
+   you checked. Add a new builder only with fields read from the source itself.
+   Physical constants live in
+   [`catalog/_constants.py`](src/sciengformulary/catalog/_constants.py) with their NIST
+   references; cite that reference too when an evaluator uses one.
+7. **Follow the example** in
    [`catalog/aerodynamics/dynamic_pressure.py`](src/sciengformulary/catalog/aerodynamics/dynamic_pressure.py).
+8. **Run** `python -m sciengformulary.validation` before opening a pull request.
+
+## Units
+
+- Evaluators do no unit conversion. Callers are responsible for passing inputs in one
+  consistent unit system; write evaluators so that any consistent system works.
+- `si_unit` is the canonical reference SI representation of each variable, and
+  `dimension` its base dimensions. They document the quantity; they do not convert it.
+- If a formula has empirical coefficients that only hold in particular units (or a
+  constant in SI units inside the evaluator), say so explicitly in `assumptions`.
+- Do not add a units library; that is a separate design decision.
 
 ## Verification cases
 
@@ -212,10 +235,19 @@ The formula sheet may itself be cited as `course_material` where appropriate.
 Being used as input does not automatically make it the sole authority.
 Prefer to verify against an independent source as well.
 
+Keep the working notes of an ingestion (which sheet, course or file each candidate came
+from, and why each was accepted or rejected) out of the public catalog: formulas are
+organised by knowledge domain, and course codes or file names do not belong in the
+repository. A candidate whose sources disagree, or that only an unverifiable source
+supports, stays out of the catalog until it can be verified.
+
 ## Review: what machines check and what humans check
 
-**Machine validation** runs when the package is imported and in the
-`validate-catalog` GitHub Actions check on every pull request. It checks:
+**Machine validation** runs when the package is imported, in
+`python -m sciengformulary.validation`, and in the `validate-catalog` and
+`package-check` GitHub Actions checks on every pull request. It never fetches
+reference URLs, so a source website being down cannot fail a valid pull request. It
+checks:
 
 - structure and required fields of every `FormulaSpec` and `ReferenceSpec`;
 - that every formula has at least one reference;
