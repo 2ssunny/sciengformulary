@@ -8,15 +8,16 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
 
-from auto_3dx_formulas.core.reference import ReferenceSpec
-from auto_3dx_formulas.core.variable import VariableSpec
+from sciengformulary.core.reference import ReferenceSpec
+from sciengformulary.core.variable import VariableSpec
+from sciengformulary.core.verification import VerificationCase
 
 FORMULA_ID_PATTERN = re.compile(r"^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$")
 
 
 @dataclass(frozen=True)
 class FormulaSpec:
-    """One engineering formula: what it computes, when it applies, and how to evaluate it.
+    """One scientific or engineering formula: what it computes, when it applies, and how.
 
     The evaluator is plain arithmetic and does no unit conversion. Inputs must be given
     in one consistent unit system, and the result is in the matching unit of that same
@@ -31,6 +32,9 @@ class FormulaSpec:
         evaluator: Function taking the inputs as keyword arguments and returning the output.
         references: At least one verified source for the equation and its applicability.
             A formula without one cannot be constructed, so it cannot enter the catalog.
+        verification_cases: At least one known input/output case the evaluator must
+            reproduce. These check the implementation, not the science: see
+            :class:`VerificationCase`.
         description: What the formula represents.
         assumptions: Conditions under which the formula is valid.
         tags: Extra search keywords and aliases.
@@ -43,20 +47,24 @@ class FormulaSpec:
     output: VariableSpec
     evaluator: Callable[..., float] = field(repr=False)
     references: tuple[ReferenceSpec, ...]
+    verification_cases: tuple[VerificationCase, ...]
     description: str = ""
     assumptions: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
-        # Fail at import time so a malformed formula never reaches an agent.
+        # Fail at import time so a malformed or miscomputing formula never reaches a caller.
         self.validate()
+        self.verify()
 
     def validate(self) -> None:
-        """Check the id, inputs, evaluator signature, and references.
+        """Check the id, inputs, evaluator signature, references, and verification cases.
+
+        This is structural: it does not run the evaluator. :meth:`verify` does.
 
         Raises:
             ValueError: If the formula breaks a catalog rule.
-            TypeError: If a reference is not a ``ReferenceSpec``.
+            TypeError: If a reference or case has the wrong type.
         """
         if not FORMULA_ID_PATTERN.match(self.id):
             raise ValueError(
@@ -83,6 +91,52 @@ class FormulaSpec:
                     f"got {type(reference).__name__}."
                 )
             reference.validate()
+        if not isinstance(self.verification_cases, tuple) or not self.verification_cases:
+            raise ValueError(
+                f"Formula {self.id!r} needs a tuple of at least one VerificationCase. "
+                "Formulas whose evaluator is not checked numerically stay out of the catalog."
+            )
+        for number, case in enumerate(self.verification_cases, start=1):
+            if not isinstance(case, VerificationCase):
+                raise TypeError(
+                    f"Formula {self.id!r}: verification_cases must be VerificationCase "
+                    f"objects, got {type(case).__name__}."
+                )
+            case.validate()
+            missing = sorted(set(names) - set(case.inputs))
+            unknown = sorted(set(case.inputs) - set(names))
+            if missing or unknown:
+                raise ValueError(
+                    f"Formula {self.id!r} verification case {number}: inputs must be exactly "
+                    f"{sorted(names)}; missing {missing}, unknown {unknown}."
+                )
+
+    def verify(self) -> None:
+        """Run every verification case through the evaluator and compare the results.
+
+        A pass shows the evaluator implements the declared equation for these cases.
+        It does not show the equation is scientifically correct or applicable.
+
+        Raises:
+            ValueError: If the evaluator raises, returns a non-number, or returns a
+                value outside a case's tolerances. The message names the formula, the
+                case, the expected and actual values, and the tolerances.
+        """
+        total = len(self.verification_cases)
+        for number, case in enumerate(self.verification_cases, start=1):
+            label = f"Formula {self.id!r} verification case {number}/{total} ({case.note})"
+            try:
+                actual = self.evaluate(**case.inputs)
+            except Exception as error:
+                raise ValueError(
+                    f"{label}: evaluator raised {type(error).__name__}: {error} "
+                    f"for inputs {dict(case.inputs)}."
+                ) from error
+            if not case.matches(actual):
+                raise ValueError(
+                    f"{label}: inputs {dict(case.inputs)} expected {case.expected!r}, "
+                    f"got {actual!r} (rel_tol={case.rel_tol!r}, abs_tol={case.abs_tol!r})."
+                )
 
     @property
     def input_names(self) -> tuple[str, ...]:
@@ -123,5 +177,6 @@ class FormulaSpec:
             "assumptions": list(self.assumptions),
             "references": [reference.to_dict() for reference in self.references],
             "references_ieee": [reference.format_ieee() for reference in self.references],
+            "verification_cases": [case.to_dict() for case in self.verification_cases],
             "tags": list(self.tags),
         }

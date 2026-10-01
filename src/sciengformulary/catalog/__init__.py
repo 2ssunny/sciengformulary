@@ -1,4 +1,4 @@
-"""Formula catalog, grouped by engineering domain.
+"""Formula catalog, grouped by domain.
 
 Each domain package lists its formulas in a ``FORMULAS`` tuple; this module joins them.
 Every formula is validated when it is constructed, including its references, so a
@@ -7,7 +7,7 @@ formula without a verified reference cannot be imported into the catalog.
 
 from types import ModuleType
 
-from auto_3dx_formulas.catalog import (
+from sciengformulary.catalog import (
     aerodynamics,
     fluids,
     materials,
@@ -15,7 +15,7 @@ from auto_3dx_formulas.catalog import (
     structures,
     thermodynamics,
 )
-from auto_3dx_formulas.core import FormulaSpec
+from sciengformulary.core import FormulaSpec
 
 DOMAINS: tuple[ModuleType, ...] = (
     aerodynamics,

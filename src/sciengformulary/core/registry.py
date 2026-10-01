@@ -5,7 +5,7 @@ from __future__ import annotations
 import difflib
 from collections.abc import Iterable
 
-from auto_3dx_formulas.core.spec import FormulaSpec
+from sciengformulary.core.spec import FormulaSpec
 
 SUGGESTION_COUNT = 3
 

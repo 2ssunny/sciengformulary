@@ -1,27 +1,37 @@
-# auto-3dx-formulas
+# SciEng Formulary
 
-A small, open-source library of engineering formulas, written so that AI agents can
-find a formula, check whether it applies, and evaluate it.
+Verified scientific and engineering formulas with variables, units, assumptions,
+references, and executable evaluators.
 
-Each formula carries its equation, input and output variables with dimensions and
-reference units, applicability conditions, and references, along with a plain Python
-function that evaluates it.
+SciEng Formulary is a curated, machine-readable formula library. Each formula
+carries:
 
-It is meant to be used alongside auto-3dx 1.0.0:
+- its equation;
+- input variables and the output variable, each with a dimension and a reference
+  SI unit;
+- assumptions and applicability limits;
+- one or more authoritative references, rendered in IEEE style;
+- an executable Python evaluator;
+- numerical verification cases that the evaluator must reproduce.
+
+It is written for engineers, scientists, and students, and for the Python
+programs, AI agents, and CAD/CAE/analysis workflows that need a formula they can
+look up, check, and evaluate:
 
 ```text
-engineering request
-  -> agent searches for and selects a formula
-  -> agent checks assumptions and units
-  -> agent evaluates the formula
-  -> agent uses the result with auto-3dx
+scientific or engineering question
+  -> search for a formula
+  -> inspect its variables and assumptions
+  -> inspect its authoritative references
+  -> evaluate it
+  -> use the result in any downstream workflow
 ```
 
-The library has no dependency on auto-3dx or CATIA, and no third-party dependencies at all.
+The package uses only the Python standard library.
 
 ## Status
 
-Early, version 0.1.0. The catalog currently contains one reference formula
+Early, version 0.1.0. The catalog currently contains one formula
 (`aerodynamics.dynamic_pressure`). More formulas will be added over time.
 
 ## Installation
@@ -35,7 +45,7 @@ pip install -e .
 ## Usage
 
 ```python
-from auto_3dx_formulas import formulas
+from sciengformulary import formulas
 
 formulas.list()                     # all formulas, sorted by id
 formulas.search("dynamic pressure") # keyword search over id, name, description, tags
@@ -45,6 +55,8 @@ f.equation      # 'q = 0.5 * rho * V^2'
 f.input_names   # ('rho', 'V')
 f.assumptions   # when the formula is valid
 f.references[0].format_ieee()  # verified source, as an IEEE citation
+f.verification_cases           # known input/output cases
+f.verify()      # re-run the cases; raises ValueError on a mismatch
 f.to_dict()     # all metadata as JSON-serializable data
 
 f.evaluate(rho=1.225, V=120.0)      # 8820.0
@@ -53,7 +65,7 @@ f.evaluate(rho=1.225, V=120.0)      # 8820.0
 A formula can also be imported directly:
 
 ```python
-from auto_3dx_formulas.catalog.aerodynamics import dynamic_pressure
+from sciengformulary.catalog.aerodynamics import dynamic_pressure
 
 dynamic_pressure.evaluate(rho=1.225, V=120.0)  # 8820.0
 ```
@@ -65,27 +77,33 @@ kg/m^3 and m/s give q = 8820.0 Pa.
 
 ## References and verification
 
-- Every formula in the catalog has at least one verified engineering reference.
-  A `FormulaSpec` without one cannot be constructed, so formulas that have not
-  been verified are left out of the catalog on purpose.
-- References are stored as structured `ReferenceSpec` fields (authors,
-  organization, year, publisher, URL, ...), not as pre-formatted strings.
-- Citations are rendered in IEEE style with `format_ieee()`. IEEE is the only
-  style used in this project.
-- Adding formulas from course formula sheets means extracting each formula,
-  checking it against an authoritative source, reviewing it, and only then
-  adding it. Formulas are not copied over unchecked.
-- The `validate-catalog` GitHub Actions check validates the catalog on every
-  pull request. Human review confirms that each source really supports its
-  formula.
+A formula is checked in two different ways:
+
+- **References and human review establish that the formula is right.** Every
+  formula has at least one authoritative `ReferenceSpec`, stored as structured
+  fields and rendered in IEEE style with `format_ieee()`. Reviewers open the
+  source and confirm that it supports the equation, its notation, and its
+  assumptions. A `FormulaSpec` without a reference cannot be constructed.
+- **Verification cases establish that the code is right.** Every formula has at
+  least one `VerificationCase`: inputs and an expected result determined
+  independently of the evaluator, with a tolerance. `verify()` checks that the
+  evaluator reproduces them. This shows the Python code implements the declared
+  equation. It does not show that the equation is scientifically correct or
+  applicable to your problem.
+
+Formulas from course formula sheets are extracted, checked against an
+authoritative source, and reviewed before they are added. They are never copied
+over unchecked. The `validate-catalog` GitHub Actions check validates references,
+registration, serialization, and every verification case on each pull request.
 
 ## Repository structure
 
 ```text
-src/auto_3dx_formulas/
+src/sciengformulary/
 ├─ __init__.py          # `formulas` registry instance
 ├─ core/
 │  ├─ reference.py      # ReferenceSpec (structured source, IEEE rendering)
+│  ├─ verification.py   # VerificationCase (known input/output case)
 │  ├─ variable.py       # VariableSpec
 │  ├─ spec.py           # FormulaSpec
 │  └─ registry.py       # FormulaRegistry: get / list / search
@@ -102,6 +120,11 @@ src/auto_3dx_formulas/
 ## Adding formulas
 
 Create one file per formula in the matching domain, define a `FormulaSpec` with at
-least one verified `ReferenceSpec`, and add it to that domain's `FORMULAS` tuple.
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the source-quality and anti-fabrication
-rules.
+least one verified `ReferenceSpec` and at least one `VerificationCase`, and add it
+to that domain's `FORMULAS` tuple. See [CONTRIBUTING.md](CONTRIBUTING.md) for the
+source-quality, anti-fabrication, and verification-case rules.
+
+## License
+
+Licensed under the Apache License 2.0.
+See [LICENSE](LICENSE).

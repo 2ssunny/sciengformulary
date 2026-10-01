@@ -26,6 +26,8 @@ jobs:
 
       - name: Validate catalog
         # Run outside the checkout so the installed package is imported, not src/.
+        # Checks references and registration, then runs every numerical verification case.
+        # No network access: source websites being down must not fail a valid PR.
         working-directory: ${{ runner.temp }}
         shell: python
         run: |
@@ -35,10 +37,10 @@ jobs:
           import pkgutil
           import sys
 
-          import auto_3dx_formulas
-          from auto_3dx_formulas import FormulaSpec, ReferenceSpec, formulas
-          from auto_3dx_formulas import catalog
-          from auto_3dx_formulas.catalog import ALL_FORMULAS
+          import sciengformulary
+          from sciengformulary import FormulaSpec, ReferenceSpec, VerificationCase, formulas
+          from sciengformulary import catalog
+          from sciengformulary.catalog import ALL_FORMULAS
 
           errors = []
 
@@ -53,16 +55,24 @@ jobs:
 
           for formula in ALL_FORMULAS:
               try:
-                  # validate() re-runs the id, evaluator-signature and reference rules.
+                  # validate() re-runs the id, evaluator-signature, reference and
+                  # verification-case structure rules; verify() runs the cases.
                   formula.validate()
+                  inputs = set(formula.input_names)
                   parameters = set(inspect.signature(formula.evaluator).parameters)
-                  assert parameters == set(formula.input_names), "evaluator/input mismatch"
+                  assert parameters == inputs, "evaluator/input mismatch"
                   assert formula.references, "no references"
                   for reference in formula.references:
                       if not isinstance(reference, ReferenceSpec):
                           raise TypeError(f"not a ReferenceSpec: {reference}")
                       reference.validate()
                       assert reference.format_ieee().strip(), "empty IEEE citation"
+                  assert formula.verification_cases, "no verification cases"
+                  for case in formula.verification_cases:
+                      if not isinstance(case, VerificationCase):
+                          raise TypeError(f"not a VerificationCase: {case}")
+                      assert set(case.inputs) == inputs, f"case inputs {sorted(case.inputs)}"
+                  formula.verify()
                   json.dumps(formula.to_dict())
                   assert formulas.get(formula.id) is formula, "registry returns a different object"
               except Exception as error:
@@ -81,9 +91,10 @@ jobs:
               print("\n".join(f"  - {error}" for error in errors))
               sys.exit(1)
 
-          version = auto_3dx_formulas.__version__
-          print(f"auto-3dx-formulas {version}: {len(ALL_FORMULAS)} formula(s) valid.")
+          version = sciengformulary.__version__
+          print(f"sciengformulary {version}: {len(ALL_FORMULAS)} formula(s) valid.")
           for formula in ALL_FORMULAS:
-              print(f"  {formula.id}")
+              cases = len(formula.verification_cases)
+              print(f"  {formula.id}: {cases} verification case(s) passed")
               for reference in formula.references:
                   print(f"    {reference.format_ieee()}")

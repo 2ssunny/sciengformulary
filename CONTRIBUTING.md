@@ -1,10 +1,11 @@
 # Contributing
 
-AI agents use the formulas in this library to make engineering decisions, so
-correctness and applicability matter more than coverage. **Every formula in the
-catalog must have at least one real, independently verified engineering
-reference.** A formula that has not been verified stays out of the catalog. There
-is no "reference pending" mode.
+People, Python programs, and AI agents use the formulas in SciEng Formulary to
+make scientific and engineering decisions, so correctness and applicability
+matter more than coverage. **Every formula in the catalog must have at least one
+real, independently verified scientific or engineering reference, and at least
+one numerical verification case.** A formula that has not been verified stays
+out of the catalog. There is no "reference pending" mode.
 
 > ## Never invent bibliographic metadata
 >
@@ -41,7 +42,7 @@ Use the highest-priority source you can verify:
 
 1. Standards, government, and technical organizations (NASA, NIST, FAA, ESA,
    ISO, ASTM, ...).
-2. Established engineering textbooks from reputable publishers.
+2. Established scientific and engineering textbooks from reputable publishers.
 3. Peer-reviewed journal or conference papers.
 4. Official university teaching material.
 
@@ -68,13 +69,13 @@ dates, citation numbering in titles, and identifiers used on the wrong type
 
 ## Adding a formula
 
-1. **Pick the domain** under `src/auto_3dx_formulas/catalog/` (`aerodynamics`,
+1. **Pick the domain** under `src/sciengformulary/catalog/` (`aerodynamics`,
    `structures`, `fluids`, `thermodynamics`, `materials`, `orbital`).
 2. **Create one file** named after the formula, e.g. `lift_force.py`.
 3. **Define one `FormulaSpec`** in it, in a variable with the same name as the file:
 
    ```python
-   from auto_3dx_formulas.core import FormulaSpec, ReferenceSpec, VariableSpec
+   from sciengformulary.core import FormulaSpec, ReferenceSpec, VariableSpec, VerificationCase
 
 
    def _evaluate(q: float, S: float, C_L: float) -> float:  # noqa: N803
@@ -98,6 +99,14 @@ dates, citation numbering in titles, and identifiers used on the wrong type
                locator=...,    # only if verified, e.g. "sec. 3.4, eq. (3.12)"
            ),
        ),
+       verification_cases=(
+           VerificationCase(
+               inputs={"q": 1000.0, "S": 2.0, "C_L": 0.5},
+               expected=1000.0,  # worked out by hand, never by calling _evaluate
+               rel_tol=1e-12,
+               note="Hand calculation: 1000 * 2 * 0.5 = 1000.",
+           ),
+       ),
        description="...",
        assumptions=("...",),
        tags=("...",),
@@ -108,7 +117,7 @@ dates, citation numbering in titles, and identifiers used on the wrong type
    that domain's `FORMULAS` tuple:
 
    ```python
-   from auto_3dx_formulas.catalog.aerodynamics.lift_force import lift_force
+   from sciengformulary.catalog.aerodynamics.lift_force import lift_force
 
    FORMULAS: tuple[FormulaSpec, ...] = (
        dynamic_pressure,
@@ -128,11 +137,54 @@ dates, citation numbering in titles, and identifiers used on the wrong type
      linear-elastic range, small angles, ideal gas, ...). Only state limits the
      reference supports. Leave out thresholds you cannot verify.
    - `references`: at least one `ReferenceSpec` (see above).
+   - `verification_cases`: at least one `VerificationCase` (see below).
    - Keep metadata strings ASCII so they print safely in a Windows console.
 
-6. **Check the evaluator** against at least one known numerical case.
-7. **Follow the example** in
-   [`catalog/aerodynamics/dynamic_pressure.py`](src/auto_3dx_formulas/catalog/aerodynamics/dynamic_pressure.py).
+6. **Follow the example** in
+   [`catalog/aerodynamics/dynamic_pressure.py`](src/sciengformulary/catalog/aerodynamics/dynamic_pressure.py).
+
+## Verification cases
+
+Every `FormulaSpec` needs at least one `VerificationCase`: a set of inputs, the
+expected output, a tolerance, and a note. When the formula is constructed, and
+again in CI, `FormulaSpec.verify()` runs each case through the evaluator and
+fails if the result is outside the tolerance.
+
+**What a passing case shows, and what it does not.** A case answers one
+question: *does the Python evaluator correctly implement the declared equation
+for known inputs?* It does not show that the equation is a correct scientific or
+engineering law, or that it applies to a given problem. That is established by
+the references, by human review of the source, and by review of the assumptions.
+CI never proves a formula scientifically.
+
+**Where `expected` comes from.** Determine it independently of the evaluator
+under test. **Never produce `expected` by calling the evaluator**, or by copying
+what it printed: a case built that way passes even when the code is wrong.
+In order of preference:
+
+1. A worked example in an authoritative source. Say so in `note`, and make sure
+   that source is one of the formula's `references`. Do not invent worked
+   examples or their locations; the anti-fabrication rules above apply.
+2. A value calculated independently from the published equation (by hand, or
+   with exact arithmetic such as `fractions.Fraction`).
+3. A simple hand-checked case. For simple formulas, transparent arithmetic in the
+   `note` is enough, e.g. `"Hand calculation: 0.5 * 1.225 * 14400 = 8820."`
+4. An independent, trusted implementation, where appropriate. Name it in `note`.
+
+Using the numbers from a published worked example is fine. Do not copy its
+explanation into `note` or code comments.
+
+**Rules for a case:**
+
+- `inputs` has exactly the formula's input names: nothing missing, nothing extra.
+- `inputs` values and `expected` are finite `int` or `float` values.
+- `rel_tol` and `abs_tol` are non-negative and passed to `math.isclose`. Use a
+  tight tolerance (e.g. `rel_tol=1e-12`) for plain arithmetic. Loosen it only
+  when `expected` itself is rounded (e.g. a worked example printed to four
+  significant figures), and explain why in `note`.
+- Set `abs_tol` when `expected` is zero or close to it; a relative tolerance alone
+  cannot match zero.
+- `note` says where `expected` came from.
 
 ## Original wording and copyright
 
@@ -153,7 +205,8 @@ verification workflow, not transcription:
 3. **Verify** that the source states the same relationship (allowing for notation
    differences) and the conditions under which it applies.
 4. **Review**: a human or agent reviewer checks the source and metadata.
-5. **Implement** only the formulas that passed verification.
+5. **Implement** only the formulas that passed verification, each with its
+   references and at least one independently determined verification case.
 
 The formula sheet may itself be cited as `course_material` where appropriate.
 Being used as input does not automatically make it the sole authority.
@@ -170,14 +223,19 @@ Prefer to verify against an independent source as well.
   right domain, and no `FormulaSpec` in the catalog is left unregistered;
 - unique formula ids, and evaluator parameters that match the input names;
 - that each reference can be rendered with `format_ieee()`, and each formula
-  can be serialized with `to_dict()`.
+  can be serialized with `to_dict()`;
+- that every formula has at least one verification case, each case's inputs
+  match the formula's inputs exactly, and the evaluator reproduces every
+  case's `expected` value within its tolerance.
 
 **Human review** is still required. Machine validation cannot tell whether:
 
 - the source really exists;
 - it actually supports the equation as implemented;
 - the assumptions and applicability limits are correct;
-- the locator and the other metadata are accurate.
+- the locator and the other metadata are accurate;
+- a verification case's `expected` value really was determined independently
+  of the evaluator.
 
 Reviewers should open the cited source, or ask the author for the exact
 location, and confirm these points before approving. "Verified" means a reviewer
@@ -190,4 +248,4 @@ did this. No flag in the code can say a formula is verified, so do not add one.
   holds in specific units (e.g. empirical correlations).
 - Formula ids must be unique and follow `<domain>.<snake_case_name>`.
 - Do not bypass validation (e.g. with `object.__setattr__` on a frozen spec).
-- Keep the library free of CATIA / auto-3dx dependencies.
+- Keep the library free of third-party runtime dependencies: standard library only.

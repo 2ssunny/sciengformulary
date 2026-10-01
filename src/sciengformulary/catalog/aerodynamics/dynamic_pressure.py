@@ -1,6 +1,9 @@
 """Dynamic pressure: q = 0.5 * rho * V^2."""
 
-from auto_3dx_formulas.core import FormulaSpec, ReferenceSpec, VariableSpec
+from sciengformulary.core import FormulaSpec, ReferenceSpec, VariableSpec, VerificationCase
+
+# One multiply-and-square: the evaluator should agree with the hand result to rounding error.
+EXACT_ARITHMETIC_REL_TOL = 1e-12
 
 
 def _evaluate(rho: float, V: float) -> float:  # noqa: N803 - V is the textbook symbol
@@ -50,6 +53,21 @@ dynamic_pressure = FormulaSpec(
             locator="Derivation and Flow of Gas sections",
             url="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/dynamic-pressure/",
             accessed="2026-10-01",
+        ),
+    ),
+    verification_cases=(
+        VerificationCase(
+            inputs={"rho": 1.225, "V": 120.0},
+            expected=8820.0,
+            rel_tol=EXACT_ARITHMETIC_REL_TOL,
+            note="Hand calculation in SI units: 0.5 * 1.225 * 120^2 = 0.5 * 1.225 * 14400 "
+            "= 8820 Pa.",
+        ),
+        VerificationCase(
+            inputs={"rho": 2.0, "V": 10.0},
+            expected=100.0,
+            rel_tol=EXACT_ARITHMETIC_REL_TOL,
+            note="Hand calculation with binary-exact values: 0.5 * 2 * 10^2 = 100.",
         ),
     ),
     assumptions=(
