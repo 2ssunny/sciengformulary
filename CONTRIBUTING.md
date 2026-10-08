@@ -147,14 +147,24 @@ dates, citation numbering in titles, and identifiers used on the wrong type
 
 6. **Reuse shared records.** Sources cited by several formulas have builders in
    [`catalog/_sources.py`](src/sciengformulary/catalog/_sources.py) (OpenStax, NASA
-   Glenn, NACA Report 1135, Lienhard, MIT course notes, NIST): pass only the locator
-   you checked. Add a new builder only with fields read from the source itself.
+   Glenn, NACA Report 1135, Lienhard, MIT course notes, NIST, mathlib at a pinned commit,
+   Selinger's linear algebra text): pass only the locator you checked. Add a new builder
+   only with fields read from the source itself. A software library's implementation of a
+   formula is not a reference by itself: cite the authoritative statement it implements.
    Physical constants live in
    [`catalog/_constants.py`](src/sciengformulary/catalog/_constants.py) with their NIST
    references; cite that reference too when an evaluator uses one.
 7. **Follow the example** in
    [`catalog/aerodynamics/dynamic_pressure.py`](src/sciengformulary/catalog/aerodynamics/dynamic_pressure.py).
 8. **Run** `python -m sciengformulary.validation` before opening a pull request.
+
+## Input domains
+
+Evaluators in `mathematics` check their inputs with the helpers in
+[`catalog/mathematics/_domain.py`](src/sciengformulary/catalog/mathematics/_domain.py) and
+raise `ValueError` outside the formula's domain (for example `k > n` in a binomial
+coefficient, a zero determinant in Cramer's rule, or a probability outside [0, 1]), instead
+of returning a number that looks plausible. State the same domain in `assumptions`.
 
 ## Units
 
