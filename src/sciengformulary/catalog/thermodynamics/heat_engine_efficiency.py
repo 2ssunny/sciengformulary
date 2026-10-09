@@ -1,6 +1,9 @@
 """Heat Engine Thermal Efficiency: eta = 1 - Q_C / Q_H."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +42,12 @@ heat_engine_efficiency = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(2, "4-2-heat-engines", "sec. 4.2, eq. (4.2)"),
+        # The handbook prints (Q_H - Q_C) / Q_H in the Carnot-cycle context; the ratio of net work
+        # to heat input is the general definition.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1012/1-92",
+            "Module 1, 'Carnot Cycle', eq. (1-23), p. 73",
+        ),
     ),
     verification_cases=(
         VerificationCase(

@@ -1,6 +1,9 @@
 """Engineering (Nominal) Stress: sigma_n = F / A0."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -43,6 +46,12 @@ engineering_stress = FormulaSpec(
             1,
             "12-3-stress-strain-and-elastic-modulus",
             "sec. 12.3, eq. (12.34)",
+        ),
+        # The handbook defines stress as force per cross-sectional area; the 'original area'
+        # qualifier in the assumptions rests on the OpenStax reference, not this one.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1017/1-93",
+            "Module 2 Properties of Metals, 'Stress' summary p. 6; eq. (2-4), p. 12",
         ),
     ),
     verification_cases=(

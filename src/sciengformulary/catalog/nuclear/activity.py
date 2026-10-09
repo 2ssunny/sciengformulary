@@ -1,6 +1,9 @@
 """Radioactive Activity: A = lambda * N."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -42,6 +45,10 @@ activity = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(3, "10-3-radioactive-decay", "sec. 10.3, eq. (10.17)"),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1019/1-93",
+            "Module 1 Radioactivity, eq. (1-3), p. 31",
+        ),
     ),
     verification_cases=(
         VerificationCase(

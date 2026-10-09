@@ -10,6 +10,9 @@ from sciengformulary.core import ReferenceSpec
 # Date on which the URLs below were opened to verify the cited relationships.
 ACCESSED = "2026-10-01"
 
+# Date on which the sources added in the OpenStax provenance audit were opened.
+ACCESSED_AUDIT = "2026-10-09"
+
 _OPENSTAX_UNIVERSITY_PHYSICS = {
     # volume: (authors in the order of the book's attribution block, year)
     1: (("W. Moebs", "S. J. Ling", "J. Sanny"), 2016),
@@ -54,7 +57,13 @@ def naca_report_1135(locator: str) -> ReferenceSpec:
     )
 
 
-def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> ReferenceSpec:
+def nasa_glenn(
+    title: str,
+    page: str,
+    year: int,
+    locator: str | None = None,
+    accessed: str = ACCESSED,
+) -> ReferenceSpec:
     """One page of NASA Glenn's Beginner's Guide to Aeronautics.
 
     Args:
@@ -62,6 +71,7 @@ def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> 
         page: URL slug under ``/beginners-guide-to-aeronautics/``.
         year: Year of the page's "Last Updated" date.
         locator: Optional section of the page.
+        accessed: Date the page was opened, ``"YYYY-MM-DD"``.
     """
     return ReferenceSpec(
         source_type="official_web",
@@ -70,7 +80,125 @@ def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> 
         year=year,
         locator=locator,
         url=f"https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/{page}/",
-        accessed=ACCESSED,
+        accessed=accessed,
+    )
+
+
+def nasa_technical_report(
+    title: str,
+    authors: tuple[str, ...],
+    report_number: str,
+    year: int,
+    url: str,
+    locator: str,
+    organization: str = "National Aeronautics and Space Administration",
+) -> ReferenceSpec:
+    """A NASA technical report on the NASA Technical Reports Server (NTRS).
+
+    Use it only for documents whose NTRS record gives the rights determination
+    ``GOV_PUBLIC_USE_PERMITTED``. Every field comes from the report's title page or its
+    NTRS record; pass ``authors=()`` when the report names no personal author.
+
+    Args:
+        title: Title as printed on the report.
+        authors: Personal authors in IEEE name form.
+        report_number: Report number, e.g. ``"NASA TM-87572"``.
+        year: Year of publication.
+        url: NTRS citation URL.
+        locator: Section, equation and page checked.
+        organization: Issuing body when it is not NASA alone.
+    """
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        authors=authors,
+        organization=organization,
+        report_number=report_number,
+        year=year,
+        locator=locator,
+        url=url,
+        accessed=ACCESSED_AUDIT,
+    )
+
+
+def us_standard_atmosphere_1976(locator: str) -> ReferenceSpec:
+    """*U.S. Standard Atmosphere, 1976* (NOAA, NASA and U.S. Air Force), as held on NTRS."""
+    return nasa_technical_report(
+        title="U.S. Standard Atmosphere, 1976",
+        authors=(),
+        report_number="NASA-TM-X-74335; NOAA-S/T-76-1562",
+        year=1976,
+        url="https://ntrs.nasa.gov/citations/19770009539",
+        locator=locator,
+        organization="NOAA, NASA and U.S. Air Force",
+    )
+
+
+def nasa_cr_2005_213034(locator: str) -> ReferenceSpec:
+    """Brunner's lunar-sample-return relay satellite study (NASA/CR-2005-213034)."""
+    return nasa_technical_report(
+        title="Conceptual Design of a Communications Relay Satellite for a Lunar Sample "
+        "Return Mission",
+        authors=("C. W. Brunner",),
+        report_number="NASA/CR-2005-213034",
+        year=2005,
+        url="https://ntrs.nasa.gov/citations/20050232849",
+        locator=locator,
+    )
+
+
+_DOE_HANDBOOK_URL = "https://www.energy.gov/sites/default/files/2026-04"
+
+_DOE_FUNDAMENTALS_HANDBOOKS = {
+    # report number: (subject title, volume line or None, year, file name)
+    "DOE-HDBK-1010-92": ("Classical Physics", None, 1992, "DOE-HDBK-1010-92.pdf"),
+    "DOE-HDBK-1012/1-92": (
+        "Thermodynamics, Heat Transfer, and Fluid Flow",
+        "Volume 1 of 3",
+        1992,
+        "DOE-HDBK-1012-92_VOL1.pdf",
+    ),
+    "DOE-HDBK-1017/1-93": (
+        "Material Science",
+        "Volume 1 of 2",
+        1993,
+        "DOE-HDBK-1017-93_VOL1.pdf",
+    ),
+    "DOE-HDBK-1019/1-93": (
+        "Nuclear Physics and Reactor Theory",
+        "Volume 1 of 2",
+        1993,
+        "DOE-HDBK-1019-93_VOL1.pdf",
+    ),
+}
+
+
+def doe_fundamentals_handbook(report_number: str, locator: str) -> ReferenceSpec:
+    """One DOE Fundamentals Handbook (U.S. Department of Energy, training handbook series).
+
+    The handbooks carry a public-release distribution statement and no copyright notice,
+    but they were prepared for DOE with contractor help, so the maintainers should review
+    their reuse status (see ``docs/provenance/openstax-audit.md``).
+
+    Args:
+        report_number: Report number as printed on the title page, a key of the table above,
+            e.g. ``"DOE-HDBK-1010-92"``.
+        locator: Module, equation and page, e.g. ``"module 5, eq. (5-2), p. 2 (CP-05)"``.
+    """
+    subject, volume, year, file_name = _DOE_FUNDAMENTALS_HANDBOOKS[report_number]
+    title = f"DOE Fundamentals Handbook: {subject}"
+    if volume:
+        title = f"{title}, {volume}"
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        organization="U.S. Department of Energy",
+        place="Washington, DC, USA",
+        report_number=report_number,
+        year=year,
+        locator=locator,
+        url=f"{_DOE_HANDBOOK_URL}/{file_name}",
+        accessed=ACCESSED_AUDIT,
     )
 
 

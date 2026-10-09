@@ -2,7 +2,10 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -65,6 +68,9 @@ poiseuille_volume_flow_rate = FormulaSpec(
         # The source writes Q = (p2 - p1) pi r^4 / (8 eta l). The sheet's mean speed D^2 (-dp/dx) /
         # (32 mu) equals Q / (pi R^2).
         openstax_university_physics(1, "14-7-viscosity-and-turbulence", "sec. 14.7, eq. (14.19)"),
+        # The book prints the parabolic profile of fully developed laminar pipe flow; the mean speed
+        # is half the centreline speed, and Q = pi R^2 times the mean speed.
+        lienhard_heat_transfer("sec. 7.2, eqs. (7.14)-(7.15), p. 358"),
     ),
     verification_cases=(
         VerificationCase(
@@ -79,6 +85,8 @@ poiseuille_volume_flow_rate = FormulaSpec(
         "straight rigid circular pipe; not valid in the entrance region.",
         "Laminar only: the cited section gives laminar flow for Reynolds number (diameter "
         "based) below about 2000 and turbulence above about 3000.",
+        "Derived result: obtained by integrating the cited parabolic velocity profile over the "
+        "pipe cross-section; the source prints the profile, not the flow-rate formula.",
     ),
     tags=("Poiseuille", "Hagen-Poiseuille", "pipe flow", "laminar", "viscous flow"),
 )

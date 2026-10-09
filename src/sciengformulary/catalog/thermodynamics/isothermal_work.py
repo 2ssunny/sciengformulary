@@ -2,7 +2,12 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    ACCESSED_AUDIT,
+    doe_fundamentals_handbook,
+    nasa_glenn,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -73,6 +78,19 @@ isothermal_work = FormulaSpec(
         # The source writes W = n R T ln(V2 / V1) with n moles and the universal gas constant; n
         # R_universal = m R_specific.
         openstax_university_physics(2, "3-2-work-heat-and-internal-energy", "sec. 3.2"),
+        # The sources print P v = R T and work as the area under the P-V curve; integrating p = m R
+        # T / V gives the logarithm, which they do not print.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1012/1-92",
+            "Module 1, eq. (1-43), p. 98; work as the area under the P-V curve, p. 98",
+        ),
+        nasa_glenn(
+            "Work Done by a Gas",
+            "work-done-by-a-gas-3",
+            2024,
+            "page body, 'Equations'",
+            accessed=ACCESSED_AUDIT,
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -86,6 +104,8 @@ isothermal_work = FormulaSpec(
         "Ideal (thermally perfect) gas: p = rho R T holds; not near condensation or at very "
         "high pressure.",
         "Quasi-static (reversible) process at constant temperature.",
+        "Derived result: obtained by integrating p dV with p = m R T / V; the cited sources print "
+        "the ideal-gas law and work as the area under the p-V curve, not the logarithmic form.",
     ),
     tags=("isothermal process", "boundary work", "expansion work", "ideal gas"),
 )

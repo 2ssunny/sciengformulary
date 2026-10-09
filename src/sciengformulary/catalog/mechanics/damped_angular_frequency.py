@@ -15,8 +15,9 @@ damped_angular_frequency = FormulaSpec(
     name="Damped Angular Frequency",
     equation="omega_d = sqrt(k / m - (b / (2 * m))^2)",
     description=(
-        "Angular frequency of free oscillation of an underdamped mass-spring-damper; slightly "
-        "below the undamped natural frequency."
+        "Angular frequency of free oscillation of an underdamped mass-spring-damper; below the "
+        "undamped natural frequency, and falling to zero as the damping approaches its critical "
+        "value."
     ),
     inputs=(
         VariableSpec(

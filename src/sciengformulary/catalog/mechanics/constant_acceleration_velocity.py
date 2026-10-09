@@ -1,6 +1,10 @@
 """Velocity Under Constant Acceleration: v = v0 + a * t."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    ACCESSED_AUDIT,
+    nasa_glenn,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -50,6 +54,22 @@ constant_acceleration_velocity = FormulaSpec(
             "3-4-motion-with-constant-acceleration",
             "sec. 3.4, eq. (3.12)",
         ),
+        # The NASA pages print V = V0 - g t and the definition a = (V1 - V0) / (t1 - t0); with t0 =
+        # 0 this rearranges to v = v0 + a t.
+        nasa_glenn(
+            "Ballistic Flight Equations",
+            "ballistic-flight-equations",
+            2024,
+            "Motion section",
+            accessed=ACCESSED_AUDIT,
+        ),
+        nasa_glenn(
+            "Newton's Laws of Motion",
+            "newtons-laws-of-motion",
+            2024,
+            "Newton's Second Law section",
+            accessed=ACCESSED_AUDIT,
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -64,6 +84,8 @@ constant_acceleration_velocity = FormulaSpec(
     assumptions=(
         "Straight-line motion with constant acceleration over the whole interval; for varying "
         "acceleration integrate a(t) instead.",
+        "Derived result: the definition of constant acceleration, a = (V1 - V0) / (t1 - t0), "
+        "rearranged with t0 = 0; the cited NASA pages print it for a = -g.",
     ),
     tags=("kinematics", "constant acceleration", "SUVAT", "velocity"),
 )

@@ -2,7 +2,10 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    nasa_cr_2005_213034,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -49,6 +52,9 @@ orbital_period = FormulaSpec(
             "13-5-keplers-laws-of-planetary-motion",
             "sec. 13.5, eq. (13.11)",
         ),
+        # The report prints the half-period pi sqrt(a^3 / mu) of the transfer ellipse and the
+        # general time of flight; a full period is twice the half-period.
+        nasa_cr_2005_213034("eq. (10), p. 16; eq. (25), p. 20"),
     ),
     verification_cases=(
         VerificationCase(
@@ -66,6 +72,8 @@ orbital_period = FormulaSpec(
         "central body that is treated as fixed; no drag, thrust or third-body perturbations.",
         "Satellite mass negligible next to the central mass; otherwise mu should include both "
         "masses.",
+        "Derived result: a full period is twice the half-period pi sqrt(a^3 / mu) printed in the "
+        "cited report (one revolution is delta E = 2 pi in its general time-of-flight relation).",
     ),
     tags=("Kepler's third law", "orbital period", "geostationary", "semi-major axis"),
 )

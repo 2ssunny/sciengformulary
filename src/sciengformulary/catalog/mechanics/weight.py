@@ -1,6 +1,11 @@
 """Weight: W = m * g."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    ACCESSED_AUDIT,
+    doe_fundamentals_handbook,
+    nasa_glenn,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +44,18 @@ weight = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(1, "5-4-mass-and-weight", "sec. 5.4, eq. (5.9)"),
+        # The handbook writes W = m g / g_c with g_c = 1 in SI.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1010-92",
+            "Module 4 'Application of Newton's Laws', Force and Weight, eq. (4-2), p. 2 (CP-04)",
+        ),
+        nasa_glenn(
+            "Free Falling Objects",
+            "free-falling-objects",
+            2023,
+            "Falling through Vacuum, weight equation",
+            accessed=ACCESSED_AUDIT,
+        ),
     ),
     verification_cases=(
         VerificationCase(

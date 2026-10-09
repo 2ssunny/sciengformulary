@@ -1,6 +1,12 @@
 """Entropy Change for Reversible Isothermal Heat: delta_S = Q / T."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    ACCESSED_AUDIT,
+    doe_fundamentals_handbook,
+    lienhard_heat_transfer,
+    nasa_glenn,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -42,6 +48,20 @@ isothermal_entropy_change = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(2, "4-6-entropy", "sec. 4.6, eq. (4.8)"),
+        # The handbook and NASA page print delta S = delta Q / T; the reversible, constant-T
+        # condition comes from the Lienhard reference.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1012/1-92",
+            "Module 1, 'Entropy', eqs. (1-18)-(1-19), p. 22",
+        ),
+        lienhard_heat_transfer("sec. 1.2, eq. (1.6), p. 9; eq. (1.4), p. 8"),
+        nasa_glenn(
+            "Second Law - Entropy",
+            "second-law-entropy",
+            2023,
+            "page body, first displayed equation",
+            accessed=ACCESSED_AUDIT,
+        ),
     ),
     verification_cases=(
         VerificationCase(

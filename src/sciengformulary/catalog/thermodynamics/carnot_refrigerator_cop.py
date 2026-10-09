@@ -1,6 +1,10 @@
 """Carnot Refrigerator Coefficient of Performance: COP_R = T_C / (T_H - T_C)."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    nasa_technical_report,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -43,6 +47,21 @@ carnot_refrigerator_cop = FormulaSpec(
     references=(
         # The source writes K_R.
         openstax_university_physics(2, "4-5-the-carnot-cycle", "sec. 4.5, eq. (4.6)"),
+        # The report's design worksheet gives the ideal cooling COP as T_cold / (T_hot - T_cold) (an
+        # engineering report, not a textbook). The handbook prints Q_C / Q_H = T_C / T_H for a
+        # reversible engine; running it backwards gives the same COP.
+        nasa_technical_report(
+            title="Lunar Base Heat Pump, Phase I Final Report",
+            authors=("J. H. Goldman", "A. Harvey", "T. Lovell", "D. H. Walker"),
+            report_number="NASA-CR-188300",
+            year=1994,
+            url="https://ntrs.nasa.gov/citations/19950011696",
+            locator="p. 57",
+        ),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1012/1-92",
+            "Module 1, eq. (1-23), p. 73 plus reversal argument",
+        ),
     ),
     verification_cases=(
         VerificationCase(

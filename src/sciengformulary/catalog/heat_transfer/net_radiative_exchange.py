@@ -4,7 +4,10 @@ from sciengformulary.catalog._constants import (
     STEFAN_BOLTZMANN_CONSTANT,
     STEFAN_BOLTZMANN_CONSTANT_REFERENCE,
 )
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -68,6 +71,9 @@ net_radiative_exchange = FormulaSpec(
         # surroundings.
         openstax_university_physics(2, "1-6-mechanisms-of-heat-transfer", "sec. 1.6, eq. (1.10)"),
         STEFAN_BOLTZMANN_CONSTANT_REFERENCE,
+        # For a small body enclosed by a much larger isothermal environment the view factor equals
+        # the body emissivity.
+        lienhard_heat_transfer("sec. 1.3, eqs. (1.34)-(1.35), p. 33"),
     ),
     verification_cases=(
         VerificationCase(

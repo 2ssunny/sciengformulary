@@ -1,6 +1,9 @@
 """Ohm's Law: V = I * R."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +42,8 @@ ohms_law_voltage = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(2, "9-4-ohms-law", "sec. 9.4, eq. (9.11)"),
+        # The book prints I = V / R and R = L / (gamma A); V = I R is its rearrangement.
+        lienhard_heat_transfer("sec. 2.3, eq. (2.18), p. 63"),
     ),
     verification_cases=(
         VerificationCase(

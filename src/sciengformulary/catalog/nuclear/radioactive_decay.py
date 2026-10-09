@@ -2,7 +2,10 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -52,6 +55,10 @@ radioactive_decay = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(3, "10-3-radioactive-decay", "sec. 10.3, eq. (10.11)"),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1019/1-93",
+            "Module 1 Radioactivity, eq. (1-4), p. 31 (also (1-5), p. 32)",
+        ),
     ),
     verification_cases=(
         VerificationCase(

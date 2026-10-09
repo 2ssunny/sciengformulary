@@ -1,6 +1,9 @@
 """Hooke's Law (Uniaxial): sigma = E * epsilon."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -43,6 +46,11 @@ uniaxial_hookes_law = FormulaSpec(
             1,
             "12-3-stress-strain-and-elastic-modulus",
             "sec. 12.3, eq. (12.36)",
+        ),
+        # The handbook prints strain = stress / E; the catalog form is its rearrangement.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1017/1-93",
+            "Module 2 Properties of Metals, 'Young's Modulus', eqs. (2-6)-(2-7), p. 12",
         ),
     ),
     verification_cases=(

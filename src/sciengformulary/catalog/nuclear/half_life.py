@@ -2,7 +2,10 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -35,6 +38,10 @@ half_life = FormulaSpec(
     references=(
         # Eqs. (10.13)-(10.14) give ln 2 exactly; eq. (10.15) rounds it to 0.693.
         openstax_university_physics(3, "10-3-radioactive-decay", "sec. 10.3, eqs. (10.13)-(10.15)"),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1019/1-93",
+            "Module 1 Radioactivity, eq. (1-6), p. 32",
+        ),
     ),
     verification_cases=(
         VerificationCase(
