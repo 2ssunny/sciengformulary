@@ -15,7 +15,7 @@ remains. Generated from local working manifests; counts only, no source content.
 
 | Source | Revision | Units (in scope / examined) | Discovered | Verified | Ambiguous | Unverified | Duplicate | Deferred | Implemented | Estimate (all units) | Estimate remaining |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `MATHLIB` | `4a3cff2c` | 45 / 20 | 47 | 40 | 0 | 0 | 2 | 5 | 77 | 536-1670 | 204-619 |
+| `MATHLIB` | `4a3cff2c` | 45 / 20 | 47 | 40 | 0 | 0 | 2 | 5 | 78 | 536-1670 | 204-619 |
 | `SYMPY` | `16fa8553` | 54 / 16 | 47 | 34 | 0 | 5 | 1 | 6 | 11 | 982-2223 | 655-1490 |
 | `SELINGER_LA` | `d74bc3a9` | 23 / 7 | 31 | 23 | 0 | 0 | 0 | 8 | 26 | 100-222 | 63-148 |
 | `SCIPY` | `e4e854ea` | 53 / 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2055-4715 | 2020-4615 |
@@ -26,7 +26,7 @@ remains. Generated from local working manifests; counts only, no source content.
 | `YAU_BIOSTATS` | `4b97fd54` | 9 / 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 43-91 | 42-88 |
 | `DEVITO_PDE_BOOK` | `34acdb47` | 19 / 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 92-223 | 90-218 |
 | `OPENMDAO` | `e57af304` | 19 / 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 415-935 | 410-920 |
-| **Total** | | 328 / 43 | 125 | 97 | 0 | 5 | 3 | 19 | 82 | 6234-14684 | 5454-12579 |
+| **Total** | | 328 / 43 | 125 | 97 | 0 | 5 | 3 | 19 | 83 | 6234-14684 | 5454-12579 |
 
 ## Engineering and physics
 

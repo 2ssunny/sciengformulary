@@ -253,3 +253,40 @@ def usgs_report(
         url=url,
         accessed=ENGINEERING_ACCESSED,
     )
+
+
+def nasa_technical_report(
+    title: str,
+    authors: tuple[str, ...],
+    report_number: str,
+    year: int,
+    url: str,
+    locator: str,
+    organization: str = "National Aeronautics and Space Administration",
+) -> ReferenceSpec:
+    """A NASA technical report on the NASA Technical Reports Server (NTRS).
+
+    Use it only for documents whose NTRS record gives the rights determination
+    ``GOV_PUBLIC_USE_PERMITTED``. Every field comes from the report's title page or its
+    NTRS record; pass ``authors=()`` when the report names no personal author.
+
+    Args:
+        title: Title as printed on the report.
+        authors: Personal authors in IEEE name form.
+        report_number: Report number, e.g. ``"NASA TM-87572"``.
+        year: Year of publication.
+        url: NTRS citation URL.
+        locator: Section, equation and page checked.
+        organization: Issuing body when it is not NASA alone.
+    """
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        authors=authors,
+        organization=organization,
+        report_number=report_number,
+        year=year,
+        locator=locator,
+        url=url,
+        accessed=ENGINEERING_ACCESSED,
+    )
