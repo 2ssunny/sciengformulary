@@ -33,6 +33,7 @@ from sciengformulary.catalog.thermodynamics.specific_heat_at_constant_volume_fro
 )
 from sciengformulary.catalog.thermodynamics.stagnation_temperature import stagnation_temperature
 from sciengformulary.catalog.thermodynamics.van_der_waals_pressure import van_der_waals_pressure
+from sciengformulary.catalog.thermodynamics.antoine_vapor_pressure import antoine_vapor_pressure
 from sciengformulary.core import FormulaSpec
 
 FORMULAS: tuple[FormulaSpec, ...] = (
@@ -55,4 +56,5 @@ FORMULAS: tuple[FormulaSpec, ...] = (
     carnot_efficiency,
     carnot_refrigerator_cop,
     sensible_heat,
+    antoine_vapor_pressure,
 )

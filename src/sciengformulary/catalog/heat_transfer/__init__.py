@@ -52,6 +52,65 @@ from sciengformulary.catalog.heat_transfer.semi_infinite_solid_step_response imp
 from sciengformulary.catalog.heat_transfer.stanton_number import stanton_number
 from sciengformulary.catalog.heat_transfer.thermal_diffusivity import thermal_diffusivity
 from sciengformulary.catalog.heat_transfer.wien_peak_wavelength import wien_peak_wavelength
+from sciengformulary.catalog.heat_transfer.churchill_bernstein_cylinder_nusselt import (
+    churchill_bernstein_cylinder_nusselt,
+)
+from sciengformulary.catalog.heat_transfer.churchill_chu_horizontal_cylinder_nusselt import (
+    churchill_chu_horizontal_cylinder_nusselt,
+)
+from sciengformulary.catalog.heat_transfer.churchill_chu_vertical_plate_nusselt import (
+    churchill_chu_vertical_plate_nusselt,
+)
+from sciengformulary.catalog.heat_transfer.colburn_pipe_nusselt import colburn_pipe_nusselt
+from sciengformulary.catalog.heat_transfer.concentric_cylinder_radiation_exchange import (
+    concentric_cylinder_radiation_exchange,
+)
+from sciengformulary.catalog.heat_transfer.counterflow_effectiveness import (
+    counterflow_effectiveness,
+)
+from sciengformulary.catalog.heat_transfer.crossflow_cmax_mixed_effectiveness import (
+    crossflow_cmax_mixed_effectiveness,
+)
+from sciengformulary.catalog.heat_transfer.crossflow_cmin_mixed_effectiveness import (
+    crossflow_cmin_mixed_effectiveness,
+)
+from sciengformulary.catalog.heat_transfer.cylindrical_wall_thermal_resistance import (
+    cylindrical_wall_thermal_resistance,
+)
+from sciengformulary.catalog.heat_transfer.eckert_number import eckert_number
+from sciengformulary.catalog.heat_transfer.gnielinski_nusselt import gnielinski_nusselt
+from sciengformulary.catalog.heat_transfer.gnielinski_smooth_tube_nusselt import (
+    gnielinski_smooth_tube_nusselt,
+)
+from sciengformulary.catalog.heat_transfer.graetz_number import graetz_number
+from sciengformulary.catalog.heat_transfer.grashof_number import grashof_number
+from sciengformulary.catalog.heat_transfer.jakob_number import jakob_number
+from sciengformulary.catalog.heat_transfer.laminar_flat_plate_uniform_flux_local_nusselt import (
+    laminar_flat_plate_uniform_flux_local_nusselt,
+)
+from sciengformulary.catalog.heat_transfer.number_of_transfer_units import number_of_transfer_units
+from sciengformulary.catalog.heat_transfer.parallel_flow_effectiveness import (
+    parallel_flow_effectiveness,
+)
+from sciengformulary.catalog.heat_transfer.parallel_plate_radiation_exchange import (
+    parallel_plate_radiation_exchange,
+)
+from sciengformulary.catalog.heat_transfer.peclet_number import peclet_number
+from sciengformulary.catalog.heat_transfer.phase_change_exchanger_effectiveness import (
+    phase_change_exchanger_effectiveness,
+)
+from sciengformulary.catalog.heat_transfer.rayleigh_number import rayleigh_number
+from sciengformulary.catalog.heat_transfer.schmidt_number import schmidt_number
+from sciengformulary.catalog.heat_transfer.shape_factor_buried_sphere import (
+    shape_factor_buried_sphere,
+)
+from sciengformulary.catalog.heat_transfer.shell_and_tube_one_shell_effectiveness import (
+    shell_and_tube_one_shell_effectiveness,
+)
+from sciengformulary.catalog.heat_transfer.sherwood_number import sherwood_number
+from sciengformulary.catalog.heat_transfer.sieder_tate_turbulent_nusselt import (
+    sieder_tate_turbulent_nusselt,
+)
 from sciengformulary.core import FormulaSpec
 
 FORMULAS: tuple[FormulaSpec, ...] = (
@@ -79,4 +138,31 @@ FORMULAS: tuple[FormulaSpec, ...] = (
     blackbody_emissive_power,
     net_radiative_exchange,
     wien_peak_wavelength,
+    churchill_bernstein_cylinder_nusselt,
+    churchill_chu_horizontal_cylinder_nusselt,
+    churchill_chu_vertical_plate_nusselt,
+    colburn_pipe_nusselt,
+    concentric_cylinder_radiation_exchange,
+    counterflow_effectiveness,
+    crossflow_cmax_mixed_effectiveness,
+    crossflow_cmin_mixed_effectiveness,
+    cylindrical_wall_thermal_resistance,
+    eckert_number,
+    gnielinski_nusselt,
+    gnielinski_smooth_tube_nusselt,
+    graetz_number,
+    grashof_number,
+    jakob_number,
+    laminar_flat_plate_uniform_flux_local_nusselt,
+    number_of_transfer_units,
+    parallel_flow_effectiveness,
+    parallel_plate_radiation_exchange,
+    peclet_number,
+    phase_change_exchanger_effectiveness,
+    rayleigh_number,
+    schmidt_number,
+    shape_factor_buried_sphere,
+    shell_and_tube_one_shell_effectiveness,
+    sherwood_number,
+    sieder_tate_turbulent_nusselt,
 )

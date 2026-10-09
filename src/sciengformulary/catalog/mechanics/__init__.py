@@ -37,6 +37,10 @@ from sciengformulary.catalog.mechanics.translational_kinetic_energy import (
     translational_kinetic_energy,
 )
 from sciengformulary.catalog.mechanics.weight import weight
+from sciengformulary.catalog.mechanics.linear_spring_force import linear_spring_force
+from sciengformulary.catalog.mechanics.torque_from_tangential_force import (
+    torque_from_tangential_force,
+)
 from sciengformulary.core import FormulaSpec
 
 FORMULAS: tuple[FormulaSpec, ...] = (
@@ -61,4 +65,6 @@ FORMULAS: tuple[FormulaSpec, ...] = (
     critical_damping_coefficient,
     damped_angular_frequency,
     forced_vibration_amplitude,
+    linear_spring_force,
+    torque_from_tangential_force,
 )
