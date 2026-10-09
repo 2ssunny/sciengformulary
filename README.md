@@ -70,7 +70,7 @@ from sciengformulary.catalog.aerodynamics import dynamic_pressure
 
 ## What is in the catalog
 
-The catalog contains 158 formulas, organised by knowledge domain:
+The catalog contains 212 formulas, organised by knowledge domain:
 
 | Domain | Formulas | Examples |
 |---|---|---|
@@ -79,7 +79,7 @@ The catalog contains 158 formulas, organised by knowledge domain:
 | `fluids` | 8 | hydrostatics, mass flow, Reynolds number, Pitot airspeed, Poiseuille flow |
 | `heat_transfer` | 24 | conduction, convection correlations, radiation, lumped capacity, LMTD |
 | `materials` | 15 | true stress and strain, elastic constants, von Mises, fracture, Weibull |
-| `mathematics` | 37 | combinatorics, series, triangle and solid geometry, determinants and vector geometry, probability distributions, beta function |
+| `mathematics` | 91 | combinatorics, series, triangle and solid geometry, vectors and determinants, 2x2 eigenvalues, probability distributions, gamma, beta and incomplete gamma/beta functions |
 | `mechanics` | 21 | kinematics, friction, energy, momentum, vibration |
 | `nuclear` | 3 | radioactive decay, half-life, activity |
 | `orbital` | 5 | orbital energy, Kepler's third law, semi-major axis |

@@ -51,6 +51,22 @@ forums, AI-generated pages, search-result snippets, and unsourced summaries.
 These can help you find a source, but you must then open the real source and
 verify the formula there.
 
+**Formal libraries and software.** A formally established result in mathlib may be
+cited for mathematics when you identify the exact theorem or definition, cite it at a
+pinned commit (the `mathlib` builder does this), honour its hypotheses in the
+evaluator's domain checks, and state the relevant statement. A software library's
+implementation of a formula (SymPy, SciPy, an engineering package) is never a
+reference on its own: use it to discover formulas, then cite the authoritative
+statement it implements.
+
+**Stated and derived formulas.** A formula is *stated* when the cited source prints it,
+up to renaming symbols. It is *derived* when it needs a further step: a special case,
+an index shift, a substitution, or a closed form worked out from a procedure. Derived
+formulas are allowed only when the step is mathematically checked and independently
+tested. Describe the step in a comment next to the reference and in an assumption that
+begins with "Derived result:", and add a test that checks the derived form by an
+independent route.
+
 ### Supported `source_type` values and required fields
 
 | `source_type` | Required | Notes |
