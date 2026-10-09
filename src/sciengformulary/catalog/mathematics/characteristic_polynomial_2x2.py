@@ -1,7 +1,7 @@
 """Characteristic Polynomial of a 2x2 Matrix: p = (a11 - lam)*(a22 - lam) - a12*a21."""
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import finite_result, non_negative
+from sciengformulary.catalog._domain import finite_result, non_negative
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

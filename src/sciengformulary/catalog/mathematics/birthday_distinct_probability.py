@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # Largest n, and largest number of bits in m**n, for which the probability is computed exactly

@@ -3,7 +3,7 @@ S(n, k) = k * S(n - 1, k) + S(n - 1, k - 1) for n, k >= 1; S(0, 0) = 1; S(n, 0) 
 """
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

@@ -6,7 +6,7 @@ import math
 import sys
 
 from sciengformulary.catalog._sources import nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import finite, finite_result, positive
+from sciengformulary.catalog._domain import finite, finite_result, positive
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # exp(k ln u) overflows a float above about 709.78; past this point exp(-(x/lam)^k) is far

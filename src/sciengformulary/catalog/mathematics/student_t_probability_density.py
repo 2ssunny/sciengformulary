@@ -5,7 +5,7 @@ f = Gamma((nu + 1) / 2) / (sqrt(nu * pi) * Gamma(nu / 2)) * (1 + x^2 / nu)^(-(nu
 import math
 
 from sciengformulary.catalog._sources import nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import finite, integer
+from sciengformulary.catalog._domain import finite, integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # Below this the gamma functions are formed directly (no overflow: Gamma(25) ~ 6e23);

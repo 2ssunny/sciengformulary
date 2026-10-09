@@ -4,7 +4,7 @@ import math
 import sys
 
 from sciengformulary.catalog._sources import MATH_ACCESSED, mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import integer, probability
+from sciengformulary.catalog._domain import integer, probability
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 LOG_FLOAT_MAX = math.log(sys.float_info.max)

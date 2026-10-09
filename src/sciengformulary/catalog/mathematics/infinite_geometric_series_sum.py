@@ -1,7 +1,7 @@
 """Infinite Geometric Series Sum: S = 1 / (1 - r)."""
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import finite
+from sciengformulary.catalog._domain import finite
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

@@ -3,7 +3,7 @@ c(n, k) = (n - 1) * c(n - 1, k) + c(n - 1, k - 1) for n, k >= 1; c(0, 0) = 1; c(
 """
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

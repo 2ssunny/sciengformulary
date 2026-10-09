@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result, non_negative
+from sciengformulary.catalog._domain import finite, finite_result, non_negative
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

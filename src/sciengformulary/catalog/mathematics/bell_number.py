@@ -1,7 +1,7 @@
 """Bell Number: B(n) = sum_{i=0}^{n-1} binom(n - 1, i) * B(n - 1 - i), B(0) = 1."""
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

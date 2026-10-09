@@ -6,7 +6,7 @@ lambda = ((a11 + a22) + sqrt((a11 - a22)^2 + 4*a12*a21)) / 2
 from fractions import Fraction
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite
+from sciengformulary.catalog._domain import finite
 from sciengformulary.catalog.mathematics._exact_roots import (
     fraction_to_float,
     sqrt_as_fraction,

@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 _NAMES = ("x1", "y1", "z1", "x2", "y2", "z2", "x3", "y3", "z3")

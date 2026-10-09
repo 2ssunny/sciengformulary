@@ -1,7 +1,7 @@
 """Sum of the First n Positive Integers: S = n * (n + 1) / 2."""
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

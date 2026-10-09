@@ -1,7 +1,7 @@
 """Bayes Posterior Probability: P_A_given_B = P_B_given_A * P_A / P_B."""
 
 from sciengformulary.catalog._sources import MATH_ACCESSED, mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import positive, probability
+from sciengformulary.catalog._domain import positive, probability
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # Relative slack allowed when checking P(B|A) * P(A) <= P(B), to absorb float rounding.
