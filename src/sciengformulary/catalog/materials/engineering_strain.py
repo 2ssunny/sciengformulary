@@ -1,6 +1,9 @@
 """Engineering (Nominal) Strain: epsilon_n = delta_L / L0."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -42,6 +45,10 @@ engineering_strain = FormulaSpec(
             1,
             "12-3-stress-strain-and-elastic-modulus",
             "sec. 12.3, eq. (12.35)",
+        ),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1017/1-93",
+            "Module 2 Properties of Metals, eq. (2-2), p. 7; eq. (2-5), p. 12",
         ),
     ),
     verification_cases=(

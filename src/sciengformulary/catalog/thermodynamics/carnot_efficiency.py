@@ -1,6 +1,9 @@
 """Carnot Efficiency: eta_C = 1 - T_C / T_H."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +42,10 @@ carnot_efficiency = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(2, "4-5-the-carnot-cycle", "sec. 4.5, eq. (4.5)"),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1012/1-92",
+            "Module 1, 'Carnot Cycle', eq. (1-23), p. 73",
+        ),
     ),
     verification_cases=(
         VerificationCase(

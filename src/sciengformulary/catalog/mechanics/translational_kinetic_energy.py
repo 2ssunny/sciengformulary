@@ -1,6 +1,9 @@
 """Translational Kinetic Energy: K = m * v^2 / 2."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +42,11 @@ translational_kinetic_energy = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(1, "7-2-kinetic-energy", "sec. 7.2, eq. (7.6)"),
+        # The handbook writes KE = m v^2 / (2 g_c) with g_c = 1 in SI.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1010-92",
+            "Module 5 'Energy, Work, and Power', Kinetic Energy, eq. (5-2), p. 2 (CP-05)",
+        ),
     ),
     verification_cases=(
         VerificationCase(

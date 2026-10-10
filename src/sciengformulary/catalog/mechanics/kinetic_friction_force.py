@@ -1,6 +1,9 @@
 """Kinetic Friction Force: f_k = mu_k * N."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +42,11 @@ kinetic_friction_force = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(1, "6-2-friction", "sec. 6.2, eq. (6.2)"),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1010-92",
+            "Module 4 'Application of Newton's Laws', Types of Force: Friction, eq. (4-6), p. 19 "
+            "(CP-04)",
+        ),
     ),
     verification_cases=(
         VerificationCase(

@@ -67,7 +67,7 @@ plane_wall_conduction_rate = FormulaSpec(
     references=(
         # The source writes the slab thickness as d.
         openstax_university_physics(2, "1-6-mechanisms-of-heat-transfer", "sec. 1.6, eq. (1.9)"),
-        lienhard_heat_transfer("sec. 2.3, eq. (2.16)"),
+        lienhard_heat_transfer("sec. 1.3, eq. (1.9), p. 13; sec. 2.2, eq. (2.16), p. 62"),
     ),
     verification_cases=(
         VerificationCase(

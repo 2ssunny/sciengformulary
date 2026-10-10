@@ -2,7 +2,10 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -52,6 +55,10 @@ radioactive_decay = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(3, "10-3-radioactive-decay", "sec. 10.3, eq. (10.11)"),
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1019/1-93",
+            "Module 1 Radioactivity, eq. (1-4), p. 31 (also (1-5), p. 32)",
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -63,7 +70,8 @@ radioactive_decay = FormulaSpec(
     ),
     assumptions=(
         "Single radionuclide with no production (no parent feeding it).",
-        "Statistical law: accurate for large N; individual decays are random.",
+        "Describes the expected count for a large population; the moment at which any single "
+        "nucleus decays is random.",
         "decay_constant and t in reciprocal units (1/s with s, 1/yr with yr).",
     ),
     tags=("radioactive decay", "exponential decay", "half-life", "nuclear"),

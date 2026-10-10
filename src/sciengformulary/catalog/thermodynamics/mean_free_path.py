@@ -2,7 +2,11 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+    us_standard_atmosphere_1976,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -46,6 +50,10 @@ mean_free_path = FormulaSpec(
             "2-2-pressure-temperature-and-rms-speed",
             "sec. 2.2, eq. (2.10)",
         ),
+        # The sources print the pressure form (R* T / P or k_B T / p over sqrt(2) pi d^2); with n =
+        # p / (k_B T) it reduces to 1 / (sqrt(2) pi d^2 n).
+        us_standard_atmosphere_1976("sec. 1.3.8, eq. (47), p. 17"),
+        lienhard_heat_transfer("sec. 11.10, eq. (11.102), p. 686"),
     ),
     verification_cases=(
         VerificationCase(
@@ -56,7 +64,8 @@ mean_free_path = FormulaSpec(
         ),
     ),
     assumptions=(
-        "Dilute ideal gas in thermal equilibrium (kinetic theory); T must be absolute.",
+        "Dilute ideal gas in thermal equilibrium (kinetic theory); n is the molecule number "
+        "density, for example n = p / (k T) from pressure and absolute temperature.",
         "Hard-sphere molecules of a single species with the stated effective diameter.",
     ),
     tags=("mean free path", "kinetic theory", "Knudsen", "rarefied gas"),

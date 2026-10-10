@@ -1,6 +1,9 @@
 """Specific Orbital Energy: epsilon = v^2 / 2 - mu / r."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    nasa_cr_2005_213034,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -13,9 +16,9 @@ specific_orbital_energy = FormulaSpec(
     name="Specific Orbital Energy",
     equation="epsilon = v^2 / 2 - mu / r",
     description=(
-        "Total mechanical energy per unit satellite mass: kinetic plus gravitational potential "
-        "energy. It is constant along a two-body orbit; negative values mean a bound (elliptical) "
-        "orbit."
+        "Sum of kinetic and gravitational potential energy divided by the satellite's mass. The "
+        "value does not change as the satellite moves along a two-body orbit, and a negative "
+        "value indicates a bound, elliptical orbit."
     ),
     inputs=(
         VariableSpec(
@@ -56,6 +59,8 @@ specific_orbital_energy = FormulaSpec(
             "13-3-gravitational-potential-energy-and-total-energy",
             "sec. 13.3, eq. (13.5)",
         ),
+        # The report writes the energy per unit mass at departure as v0^2 / 2 - mu / r0.
+        nasa_cr_2005_213034("eq. (12), p. 19"),
     ),
     verification_cases=(
         VerificationCase(

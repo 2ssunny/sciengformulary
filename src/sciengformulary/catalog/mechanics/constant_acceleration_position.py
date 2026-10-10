@@ -1,6 +1,10 @@
 """Position Under Constant Acceleration: x = x0 + v0 * t + a * t^2 / 2."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    ACCESSED_AUDIT,
+    nasa_glenn,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -57,6 +61,22 @@ constant_acceleration_position = FormulaSpec(
             "3-4-motion-with-constant-acceleration",
             "sec. 3.4, eq. (3.13)",
         ),
+        # The NASA pages print the a = -g case and the definitions v = dx/dt, a = dv/dt; the general
+        # form follows by integrating a constant a twice.
+        nasa_glenn(
+            "Ballistic Flight Equations",
+            "ballistic-flight-equations",
+            2024,
+            "Motion section",
+            accessed=ACCESSED_AUDIT,
+        ),
+        nasa_glenn(
+            "Rocket Translation",
+            "rocket-translation",
+            2023,
+            "Velocity and Acceleration sections",
+            accessed=ACCESSED_AUDIT,
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -71,6 +91,8 @@ constant_acceleration_position = FormulaSpec(
         "acceleration integrate a(t) instead.",
         "For projectiles use it separately for each axis (a = -g vertically, a = 0 "
         "horizontally) when air resistance is negligible.",
+        "Derived result: obtained by integrating constant acceleration twice; the cited NASA pages"
+        " print the a = -g case and the definitions of velocity and acceleration.",
     ),
     tags=("kinematics", "constant acceleration", "SUVAT", "displacement", "projectile"),
 )

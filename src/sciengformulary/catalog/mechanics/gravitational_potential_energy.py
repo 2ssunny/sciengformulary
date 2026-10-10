@@ -1,6 +1,9 @@
 """Gravitational Potential Energy Near a Surface: U = m * g * h."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -13,8 +16,8 @@ gravitational_potential_energy = FormulaSpec(
     name="Gravitational Potential Energy Near a Surface",
     equation="U = m * g * h",
     description=(
-        "Change in gravitational potential energy of a mass raised a height h above a chosen datum "
-        "in uniform gravity."
+        "Gravitational potential energy of a mass at height h above a chosen datum in uniform "
+        "gravity (zero at the datum)."
     ),
     inputs=(
         VariableSpec(
@@ -50,6 +53,11 @@ gravitational_potential_energy = FormulaSpec(
     references=(
         # The source gives U = m g y + const; the constant is zero at the datum.
         openstax_university_physics(1, "8-1-potential-energy-of-a-system", "sec. 8.1, eq. (8.5)"),
+        # The handbook writes PE = m g z / g_c with g_c = 1 in SI, and allows any reference point.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1010-92",
+            "Module 5 'Energy, Work, and Power', Potential Energy, eq. (5-1), p. 2 (CP-05)",
+        ),
     ),
     verification_cases=(
         VerificationCase(

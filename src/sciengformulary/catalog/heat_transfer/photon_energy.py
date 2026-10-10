@@ -4,7 +4,10 @@ from sciengformulary.catalog._constants import (
     PLANCK_CONSTANT,
     PLANCK_CONSTANT_REFERENCE,
 )
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -37,6 +40,8 @@ photon_energy = FormulaSpec(
     references=(
         openstax_university_physics(3, "6-2-photoelectric-effect", "sec. 6.2, eq. (6.13)"),
         PLANCK_CONSTANT_REFERENCE,
+        # The book prints a photon energy of h c0 / lambda; with lambda = c0 / nu this is h nu.
+        lienhard_heat_transfer("sec. 10.5, p. 582"),
     ),
     verification_cases=(
         VerificationCase(
@@ -48,6 +53,8 @@ photon_energy = FormulaSpec(
     ),
     assumptions=(
         "nu is a frequency in hertz, not a wavelength or an angular frequency.",
+        "Derived result: obtained from the cited photon energy h c0 / lambda with lambda = c0 / "
+        "nu; the source prints the wavelength form.",
     ),
     tags=("photon", "Planck", "quantum", "radiation", "frequency"),
 )

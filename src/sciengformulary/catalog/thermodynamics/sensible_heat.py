@@ -1,6 +1,10 @@
 """Sensible Heat: Q = m * c * delta_T."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -54,6 +58,13 @@ sensible_heat = FormulaSpec(
             "1-4-heat-transfer-specific-heat-and-calorimetry",
             "sec. 1.4, eq. (1.5)",
         ),
+        # Both sources give the constant-specific-heat relation in rate or c_p = Q / (m delta T)
+        # form; Q = m c delta T is its rearrangement.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1012/1-92",
+            "Module 1, 'Heat', eq. (1-17), p. 21",
+        ),
+        lienhard_heat_transfer("sec. 1.2, eqs. (1.2b), (1.2c), (1.3), p. 7"),
     ),
     verification_cases=(
         VerificationCase(

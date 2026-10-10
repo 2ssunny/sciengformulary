@@ -6,7 +6,11 @@ from sciengformulary.catalog._constants import (
     BOLTZMANN_CONSTANT,
     BOLTZMANN_CONSTANT_REFERENCE,
 )
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+    us_standard_atmosphere_1976,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -50,6 +54,10 @@ mean_molecular_speed = FormulaSpec(
             "sec. 2.4, eq. (2.16)",
         ),
         BOLTZMANN_CONSTANT_REFERENCE,
+        # Both sources print the per-mole form sqrt(8 R* T / (pi M)); R* = N_A k_B and M = N_A m
+        # give the per-molecule form.
+        us_standard_atmosphere_1976("sec. 1.3.7, eq. (46), p. 17"),
+        lienhard_heat_transfer("sec. 11.10, eq. (11.101), p. 686"),
     ),
     verification_cases=(
         VerificationCase(

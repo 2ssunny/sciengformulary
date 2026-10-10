@@ -4,7 +4,10 @@ from sciengformulary.catalog._constants import (
     WIEN_CONSTANT_REFERENCE,
     WIEN_WAVELENGTH_DISPLACEMENT_CONSTANT,
 )
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -38,6 +41,8 @@ wien_peak_wavelength = FormulaSpec(
         # The source writes lambda_max T = 2.898e-3 m K; the constant here is the CODATA value.
         openstax_university_physics(3, "6-1-blackbody-radiation", "sec. 6.1, eq. (6.1)"),
         WIEN_CONSTANT_REFERENCE,
+        # The book prints the constant to six digits (2897.77 um K).
+        lienhard_heat_transfer("sec. 1.3, eq. (1.29), p. 30"),
     ),
     verification_cases=(
         VerificationCase(

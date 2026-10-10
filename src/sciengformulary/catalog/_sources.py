@@ -10,6 +10,12 @@ from sciengformulary.core import ReferenceSpec
 # Date on which the URLs below were opened to verify the cited relationships.
 ACCESSED = "2026-10-01"
 
+# Date on which the sources added in the OpenStax provenance audit were opened.
+ACCESSED_AUDIT = "2026-10-09"
+
+# Date on which the vibration sources added in the second OpenStax audit pass were opened.
+ACCESSED_AUDIT_2 = "2026-10-10"
+
 _OPENSTAX_UNIVERSITY_PHYSICS = {
     # volume: (authors in the order of the book's attribution block, year)
     1: (("W. Moebs", "S. J. Ling", "J. Sanny"), 2016),
@@ -54,7 +60,13 @@ def naca_report_1135(locator: str) -> ReferenceSpec:
     )
 
 
-def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> ReferenceSpec:
+def nasa_glenn(
+    title: str,
+    page: str,
+    year: int,
+    locator: str | None = None,
+    accessed: str = ACCESSED,
+) -> ReferenceSpec:
     """One page of NASA Glenn's Beginner's Guide to Aeronautics.
 
     Args:
@@ -62,6 +74,7 @@ def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> 
         page: URL slug under ``/beginners-guide-to-aeronautics/``.
         year: Year of the page's "Last Updated" date.
         locator: Optional section of the page.
+        accessed: Date the page was opened, ``"YYYY-MM-DD"``.
     """
     return ReferenceSpec(
         source_type="official_web",
@@ -70,14 +83,167 @@ def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> 
         year=year,
         locator=locator,
         url=f"https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/{page}/",
-        accessed=ACCESSED,
+        accessed=accessed,
+    )
+
+
+def nasa_technical_report(
+    title: str,
+    authors: tuple[str, ...],
+    report_number: str | None,
+    year: int,
+    url: str,
+    locator: str,
+    organization: str = "National Aeronautics and Space Administration",
+    accessed: str = ACCESSED_AUDIT,
+) -> ReferenceSpec:
+    """A NASA technical report on the NASA Technical Reports Server (NTRS).
+
+    Use it only for documents whose NTRS record gives the rights determination
+    ``GOV_PUBLIC_USE_PERMITTED``. Every field comes from the report's title page or its
+    NTRS record; pass ``authors=()`` when the report names no personal author.
+
+    Args:
+        title: Title as printed on the report.
+        authors: Personal authors in IEEE name form.
+        report_number: Report number, e.g. ``"NASA TM-87572"``; ``None`` when the document
+            prints none and its NTRS record lists none (e.g. a preprint).
+        year: Year of publication.
+        url: NTRS citation URL.
+        locator: Section, equation and page checked.
+        organization: Issuing body when it is not NASA alone.
+        accessed: Date the record was opened, ``"YYYY-MM-DD"``.
+    """
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        authors=authors,
+        organization=organization,
+        report_number=report_number,
+        year=year,
+        locator=locator,
+        url=url,
+        accessed=accessed,
+    )
+
+
+def us_standard_atmosphere_1976(locator: str) -> ReferenceSpec:
+    """*U.S. Standard Atmosphere, 1976* (NOAA, NASA and U.S. Air Force), as held on NTRS."""
+    return nasa_technical_report(
+        title="U.S. Standard Atmosphere, 1976",
+        authors=(),
+        report_number="NASA-TM-X-74335; NOAA-S/T-76-1562",
+        year=1976,
+        url="https://ntrs.nasa.gov/citations/19770009539",
+        locator=locator,
+        organization="NOAA, NASA and U.S. Air Force",
+    )
+
+
+def nasa_cr_2005_213034(locator: str) -> ReferenceSpec:
+    """Brunner's lunar-sample-return relay satellite study (NASA/CR-2005-213034)."""
+    return nasa_technical_report(
+        title="Conceptual Design of a Communications Relay Satellite for a Lunar Sample "
+        "Return Mission",
+        authors=("C. W. Brunner",),
+        report_number="NASA/CR-2005-213034",
+        year=2005,
+        url="https://ntrs.nasa.gov/citations/20050232849",
+        locator=locator,
+    )
+
+
+def nasa_cr_4424(locator: str) -> ReferenceSpec:
+    """Young's NASA Contractor Report 4424 on damped structural dynamics (ViGYAN, for Langley)."""
+    return nasa_technical_report(
+        title="Structural Dynamics and Vibrations of Damped, Aircraft-Type Structures",
+        authors=("M. I. Young",),
+        report_number="NASA CR-4424",
+        year=1992,
+        url="https://ntrs.nasa.gov/citations/19920010952",
+        locator=locator,
+        accessed=ACCESSED_AUDIT_2,
+    )
+
+
+def grodsinsky_whorton_vibration_isolation(locator: str) -> ReferenceSpec:
+    """Grodsinsky and Whorton's survey of active microgravity vibration isolation (NTRS preprint).
+
+    The preprint prints no report number and no page numbers; locators use section titles and
+    equation numbers.
+    """
+    return nasa_technical_report(
+        title="A Survey of Active Vibration Isolation Systems for Microgravity Applications",
+        authors=("C. M. Grodsinsky", "M. S. Whorton"),
+        report_number=None,
+        year=2000,
+        url="https://ntrs.nasa.gov/citations/20000067635",
+        locator=locator,
+        accessed=ACCESSED_AUDIT_2,
+    )
+
+
+_DOE_HANDBOOK_URL = "https://www.energy.gov/sites/default/files/2026-04"
+
+_DOE_FUNDAMENTALS_HANDBOOKS = {
+    # report number: (subject title, volume line or None, year, file name)
+    "DOE-HDBK-1010-92": ("Classical Physics", None, 1992, "DOE-HDBK-1010-92.pdf"),
+    "DOE-HDBK-1012/1-92": (
+        "Thermodynamics, Heat Transfer, and Fluid Flow",
+        "Volume 1 of 3",
+        1992,
+        "DOE-HDBK-1012-92_VOL1.pdf",
+    ),
+    "DOE-HDBK-1017/1-93": (
+        "Material Science",
+        "Volume 1 of 2",
+        1993,
+        "DOE-HDBK-1017-93_VOL1.pdf",
+    ),
+    "DOE-HDBK-1019/1-93": (
+        "Nuclear Physics and Reactor Theory",
+        "Volume 1 of 2",
+        1993,
+        "DOE-HDBK-1019-93_VOL1.pdf",
+    ),
+}
+
+
+def doe_fundamentals_handbook(report_number: str, locator: str) -> ReferenceSpec:
+    """One DOE Fundamentals Handbook (U.S. Department of Energy, training handbook series).
+
+    The handbooks carry a public-release distribution statement and no copyright notice,
+    but they were prepared for DOE with contractor help, so the maintainers should review
+    their reuse status (see ``docs/provenance/openstax-audit.md``).
+
+    Args:
+        report_number: Report number as printed on the title page, a key of the table above,
+            e.g. ``"DOE-HDBK-1010-92"``.
+        locator: Module, equation and page, e.g. ``"module 5, eq. (5-2), p. 2 (CP-05)"``.
+    """
+    subject, volume, year, file_name = _DOE_FUNDAMENTALS_HANDBOOKS[report_number]
+    title = f"DOE Fundamentals Handbook: {subject}"
+    if volume:
+        title = f"{title}, {volume}"
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        organization="U.S. Department of Energy",
+        place="Washington, DC, USA",
+        report_number=report_number,
+        year=year,
+        locator=locator,
+        url=f"{_DOE_HANDBOOK_URL}/{file_name}",
+        accessed=ACCESSED_AUDIT,
     )
 
 
 _ROYLANCE_COURSE_URL = "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999"
 
 
-def roylance(title: str, resource: str, year: int, locator: str) -> ReferenceSpec:
+def roylance(
+    title: str, resource: str, year: int, locator: str, accessed: str = ACCESSED
+) -> ReferenceSpec:
     """A module of D. Roylance's MIT 3.11 *Mechanics of Materials* notes on MIT OCW.
 
     Args:
@@ -85,6 +251,7 @@ def roylance(title: str, resource: str, year: int, locator: str) -> ReferenceSpe
         resource: OCW resource slug, e.g. ``"mit3_11f99_torsion"``.
         year: Year printed under the author's affiliation.
         locator: Equation, figure or page in the module.
+        accessed: Date the source was opened, if not ``ACCESSED``.
     """
     return ReferenceSpec(
         source_type="course_material",
@@ -94,11 +261,11 @@ def roylance(title: str, resource: str, year: int, locator: str) -> ReferenceSpe
         year=year,
         locator=locator,
         url=f"{_ROYLANCE_COURSE_URL}/resources/{resource}/",
-        accessed=ACCESSED,
+        accessed=accessed,
     )
 
 
-def lienhard_heat_transfer(locator: str) -> ReferenceSpec:
+def lienhard_heat_transfer(locator: str, accessed: str = ACCESSED) -> ReferenceSpec:
     """Lienhard and Lienhard, *A Heat Transfer Textbook*, 6th ed. (version 6.00)."""
     return ReferenceSpec(
         source_type="book",
@@ -110,7 +277,7 @@ def lienhard_heat_transfer(locator: str) -> ReferenceSpec:
         year=2024,
         locator=locator,
         url="https://ahtt.mit.edu",
-        accessed=ACCESSED,
+        accessed=accessed,
     )
 
 
@@ -144,13 +311,106 @@ def nist_dlmf(section: str, locator: str) -> ReferenceSpec:
     )
 
 
-def nist_statistics_handbook(path: str, locator: str) -> ReferenceSpec:
-    """A page of the NIST/SEMATECH e-Handbook of Statistical Methods."""
+def nist_statistics_handbook(path: str, locator: str, accessed: str = ACCESSED) -> ReferenceSpec:
+    """A page of the NIST/SEMATECH e-Handbook of Statistical Methods.
+
+    Args:
+        path: Page path under ``/div898/handbook/``, e.g. ``"eda/section3/eda3667.htm"``.
+        locator: Section number and topic shown on the page.
+        accessed: Date the page was opened, if not ``ACCESSED``.
+    """
     return ReferenceSpec(
         source_type="official_web",
         title="NIST/SEMATECH e-Handbook of Statistical Methods",
         organization="National Institute of Standards and Technology",
         locator=locator,
         url=f"https://www.itl.nist.gov/div898/handbook/{path}",
-        accessed=ACCESSED,
+        accessed=accessed,
+    )
+
+
+# Mathlib is cited at one pinned commit so every locator stays stable.
+MATHLIB_COMMIT = "4a3cff2c9216262b3e173547a543e524f5d6be6e"
+# Date on which the Mathlib, Selinger and newer NIST pages were opened.
+MATH_ACCESSED = "2026-10-08"
+
+
+def mathlib(path: str, locator: str) -> ReferenceSpec:
+    """A theorem or definition in the Lean mathematical library (mathlib4) at a pinned commit.
+
+    Mathlib states each relation formally; the catalog cites the statement only and does not
+    claim to have re-checked its proof.
+
+    Args:
+        path: File path in the repository, optionally with a ``#L<line>`` anchor, e.g.
+            ``"Mathlib/Data/Nat/Choose/Basic.lean"``.
+        locator: Declaration kind and name, e.g.
+            ``"theorem Nat.choose_eq_factorial_div_factorial"``.
+    """
+    return ReferenceSpec(
+        source_type="official_web",
+        title="mathlib4",
+        organization="The mathlib Community",
+        year=2026,  # commit date of MATHLIB_COMMIT: 2026-10-08
+        locator=locator,
+        url=f"https://github.com/leanprover-community/mathlib4/blob/{MATHLIB_COMMIT}/{path}",
+        accessed=MATH_ACCESSED,
+    )
+
+
+def selinger_linear_algebra(locator: str) -> ReferenceSpec:
+    """P. Selinger, *Matrix Theory and Linear Algebra* (CC BY 4.0), 1st ed., revision Dal 2018 A.
+
+    The text names no publisher, so it is cited as university teaching material. Section
+    numbers follow the book's chapter order; labels are given where printed numbers were not
+    derived.
+
+    Args:
+        locator: Section and item, e.g. ``"sec. 7.1, Def. 7.1"``.
+    """
+    return ReferenceSpec(
+        source_type="course_material",
+        title="Matrix Theory and Linear Algebra",
+        authors=("P. Selinger",),
+        year=2018,
+        locator=f"1st ed., rev. Dal 2018 A, {locator}",
+        url="https://www.mathstat.dal.ca/~selinger/linear-algebra/",
+        accessed=MATH_ACCESSED,
+    )
+
+
+# Date on which the engineering sources below, and newly cited pages of the builders above, were
+# opened to verify the cited relationships.
+ENGINEERING_ACCESSED = "2026-10-09"
+
+
+def usgs_report(
+    title: str,
+    authors: tuple[str, ...],
+    report_number: str,
+    year: int,
+    url: str,
+    locator: str,
+) -> ReferenceSpec:
+    """A numbered U.S. Geological Survey report (e.g. a Water-Supply Paper).
+
+    Args:
+        title: Title as printed on the report.
+        authors: Personal authors in IEEE name form.
+        report_number: Series and number as printed, e.g. ``"Water-Supply Paper 1898-B"``.
+        year: Year of publication.
+        url: Stable USGS publications URL.
+        locator: Page and equation, e.g. ``"p. B8, eq. (6)"``.
+    """
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        authors=authors,
+        organization="U.S. Geological Survey",
+        report_number=report_number,
+        place="Washington, DC, USA",
+        year=year,
+        locator=locator,
+        url=url,
+        accessed=ENGINEERING_ACCESSED,
     )
