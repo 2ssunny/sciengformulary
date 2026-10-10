@@ -70,22 +70,22 @@ from sciengformulary.catalog.aerodynamics import dynamic_pressure
 
 ## What is in the catalog
 
-The catalog contains 212 formulas, organised by knowledge domain:
+The catalog contains 262 formulas, organised by knowledge domain:
 
 | Domain | Formulas | Examples |
 |---|---|---|
 | `aerodynamics` | 14 | lift and drag, induced drag, isentropic flow ratios, normal-shock relations |
 | `electrical` | 2 | Ohm's law, conductor resistance |
-| `fluids` | 8 | hydrostatics, mass flow, Reynolds number, Pitot airspeed, Poiseuille flow |
-| `heat_transfer` | 24 | conduction, convection correlations, radiation, lumped capacity, LMTD |
+| `fluids` | 19 | hydrostatics, Reynolds number, Pitot airspeed, Poiseuille flow, Darcy-Weisbach and friction factors, Manning/Chezy open-channel flow, Weber/Strouhal/Bond numbers |
+| `heat_transfer` | 51 | conduction, convection correlations (Gnielinski, Churchill-Bernstein, Churchill-Chu), radiation exchange, effectiveness-NTU, dimensionless groups, LMTD |
 | `materials` | 15 | true stress and strain, elastic constants, von Mises, fracture, Weibull |
 | `mathematics` | 91 | combinatorics, series, triangle and solid geometry, vectors and determinants, 2x2 eigenvalues, probability distributions, gamma, beta and incomplete gamma/beta functions |
-| `mechanics` | 21 | kinematics, friction, energy, momentum, vibration |
+| `mechanics` | 23 | kinematics, friction, energy, momentum, vibration, springs and torque |
 | `nuclear` | 3 | radioactive decay, half-life, activity |
 | `orbital` | 5 | orbital energy, Kepler's third law, semi-major axis |
 | `propulsion` | 2 | rocket thrust, specific impulse |
-| `structures` | 8 | axial deformation, bending stress, torsion, beam deflections |
-| `thermodynamics` | 19 | ideal gas, kinetic theory, entropy, Carnot limits, specific heats |
+| `structures` | 17 | axial deformation, bending stress, torsion, beam deflections, fixed-end moments and reactions, beam and plate stiffness |
+| `thermodynamics` | 20 | ideal gas, kinetic theory, entropy, Carnot limits, specific heats, Antoine vapour pressure |
 
 Only formulas that have been checked against an authoritative source are included.
 Candidates that could not be verified, or whose sources disagree, are left out rather

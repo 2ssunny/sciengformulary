@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer, non_negative
+from sciengformulary.catalog._domain import integer, non_negative
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # math.gamma(d/2 + 1) stays finite up to d = 340 (Gamma(171) = 170!); beyond that, or when an

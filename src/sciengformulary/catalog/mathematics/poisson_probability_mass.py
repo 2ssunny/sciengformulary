@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import MATH_ACCESSED, mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import integer, non_negative
+from sciengformulary.catalog._domain import integer, non_negative
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

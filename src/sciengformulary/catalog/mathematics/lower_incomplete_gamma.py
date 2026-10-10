@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import MATH_ACCESSED, mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import finite_result, non_negative, positive
+from sciengformulary.catalog._domain import finite_result, non_negative, positive
 from sciengformulary.catalog.mathematics._incomplete_gamma import (
     exp_in_range,
     gamma_continued_fraction,

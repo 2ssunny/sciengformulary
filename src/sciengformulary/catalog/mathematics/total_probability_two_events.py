@@ -1,7 +1,7 @@
 """Law of Total Probability (Two Cases): P_A = P_A_given_B * P_B + P_A_given_notB * (1 - P_B)."""
 
 from sciengformulary.catalog._sources import MATH_ACCESSED, mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import probability
+from sciengformulary.catalog._domain import probability
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

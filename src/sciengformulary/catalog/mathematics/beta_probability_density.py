@@ -5,7 +5,7 @@ f = x^(alpha - 1) * (1 - x)^(beta - 1) / B(alpha, beta) for 0 <= x <= 1; f = 0 o
 import math
 
 from sciengformulary.catalog._sources import MATH_ACCESSED, mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import finite, finite_result, positive
+from sciengformulary.catalog._domain import finite, finite_result, positive
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

@@ -176,11 +176,13 @@ dates, citation numbering in titles, and identifiers used on the wrong type
 
 ## Input domains
 
-Evaluators in `mathematics` check their inputs with the helpers in
-[`catalog/mathematics/_domain.py`](src/sciengformulary/catalog/mathematics/_domain.py) and
-raise `ValueError` outside the formula's domain (for example `k > n` in a binomial
-coefficient, a zero determinant in Cramer's rule, or a probability outside [0, 1]), instead
-of returning a number that looks plausible. State the same domain in `assumptions`.
+New evaluators check their inputs with the helpers in
+[`catalog/_domain.py`](src/sciengformulary/catalog/_domain.py) and raise `ValueError` outside
+the formula's domain (for example `k > n` in a binomial coefficient, a zero determinant in
+Cramer's rule, a probability outside [0, 1], or a Reynolds number outside the range an
+empirical correlation was fitted for), instead of returning a number that looks plausible.
+Results that overflow raise `OverflowError` (`finite_result`). State the same domain in
+`assumptions`. Formulas added before this rule do not check their inputs yet.
 
 ## Units
 

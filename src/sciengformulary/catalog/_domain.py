@@ -1,4 +1,4 @@
-"""Input-domain checks shared by mathematics evaluators.
+"""Input-domain checks shared by catalog evaluators.
 
 A formula used outside its domain should fail loudly rather than return a number that looks
 plausible, so evaluators call these before computing. Each check raises ``ValueError`` naming

@@ -3,7 +3,7 @@
 from fractions import Fraction
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import finite
+from sciengformulary.catalog._domain import finite
 from sciengformulary.catalog.mathematics._exact_roots import (
     fraction_to_float,
     sqrt_as_fraction,

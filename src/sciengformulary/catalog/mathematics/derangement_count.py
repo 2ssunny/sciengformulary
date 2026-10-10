@@ -1,7 +1,7 @@
 """Number of Derangements: D = n! * sum_{k=0}^{n} (-1)^k / k!."""
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

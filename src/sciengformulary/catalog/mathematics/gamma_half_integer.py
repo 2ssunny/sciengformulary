@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import finite_result, integer
+from sciengformulary.catalog._domain import finite_result, integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # Gamma(172.5) is about 1.6e310, above the largest float; Gamma(171.5) is about 9.5e307.

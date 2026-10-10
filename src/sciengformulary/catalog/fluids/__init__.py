@@ -10,6 +10,25 @@ from sciengformulary.catalog.fluids.pitot_static_airspeed import pitot_static_ai
 from sciengformulary.catalog.fluids.poiseuille_volume_flow_rate import poiseuille_volume_flow_rate
 from sciengformulary.catalog.fluids.reynolds_number import reynolds_number
 from sciengformulary.catalog.fluids.stokes_drag_force import stokes_drag_force
+from sciengformulary.catalog.fluids.bond_number import bond_number
+from sciengformulary.catalog.fluids.chezy_coefficient_from_manning import (
+    chezy_coefficient_from_manning,
+)
+from sciengformulary.catalog.fluids.chezy_velocity import chezy_velocity
+from sciengformulary.catalog.fluids.darcy_weisbach_pressure_drop import darcy_weisbach_pressure_drop
+from sciengformulary.catalog.fluids.filonenko_smooth_pipe_friction_factor import (
+    filonenko_smooth_pipe_friction_factor,
+)
+from sciengformulary.catalog.fluids.haaland_friction_factor import haaland_friction_factor
+from sciengformulary.catalog.fluids.laminar_darcy_friction_factor import (
+    laminar_darcy_friction_factor,
+)
+from sciengformulary.catalog.fluids.manning_velocity import manning_velocity
+from sciengformulary.catalog.fluids.smooth_pipe_friction_factor_power_law import (
+    smooth_pipe_friction_factor_power_law,
+)
+from sciengformulary.catalog.fluids.strouhal_number import strouhal_number
+from sciengformulary.catalog.fluids.weber_number import weber_number
 from sciengformulary.core import FormulaSpec
 
 FORMULAS: tuple[FormulaSpec, ...] = (
@@ -21,4 +40,15 @@ FORMULAS: tuple[FormulaSpec, ...] = (
     pitot_static_airspeed,
     poiseuille_volume_flow_rate,
     stokes_drag_force,
+    bond_number,
+    chezy_coefficient_from_manning,
+    chezy_velocity,
+    darcy_weisbach_pressure_drop,
+    filonenko_smooth_pipe_friction_factor,
+    haaland_friction_factor,
+    laminar_darcy_friction_factor,
+    manning_velocity,
+    smooth_pipe_friction_factor_power_law,
+    strouhal_number,
+    weber_number,
 )

@@ -5,7 +5,7 @@ f = exp(-(ln(x) - mu)^2 / (2 * sigma^2)) / (x * sigma * sqrt(2 * pi)) for x > 0;
 import math
 
 from sciengformulary.catalog._sources import nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import finite, finite_result, positive
+from sciengformulary.catalog._domain import finite, finite_result, positive
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 _SQRT_2PI = math.sqrt(2.0 * math.pi)

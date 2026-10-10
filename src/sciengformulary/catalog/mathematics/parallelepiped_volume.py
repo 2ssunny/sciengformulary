@@ -1,7 +1,7 @@
 """Volume of a Parallelepiped: V = |(u x v) . w|."""
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 _NAMES = ("ux", "uy", "uz", "vx", "vy", "vz", "wx", "wy", "wz")

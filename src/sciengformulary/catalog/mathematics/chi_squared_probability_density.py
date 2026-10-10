@@ -5,7 +5,7 @@ f = x^(k/2 - 1) * exp(-x / 2) / (2^(k/2) * Gamma(k / 2)) for x >= 0; f = 0 for x
 import math
 
 from sciengformulary.catalog._sources import mathlib, nist_statistics_handbook
-from sciengformulary.catalog.mathematics._domain import finite, finite_result, positive
+from sciengformulary.catalog._domain import finite, finite_result, positive
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

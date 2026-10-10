@@ -54,7 +54,9 @@ def naca_report_1135(locator: str) -> ReferenceSpec:
     )
 
 
-def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> ReferenceSpec:
+def nasa_glenn(
+    title: str, page: str, year: int, locator: str | None = None, accessed: str = ACCESSED
+) -> ReferenceSpec:
     """One page of NASA Glenn's Beginner's Guide to Aeronautics.
 
     Args:
@@ -62,6 +64,7 @@ def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> 
         page: URL slug under ``/beginners-guide-to-aeronautics/``.
         year: Year of the page's "Last Updated" date.
         locator: Optional section of the page.
+        accessed: Date the source was opened, if not ``ACCESSED``.
     """
     return ReferenceSpec(
         source_type="official_web",
@@ -70,14 +73,16 @@ def nasa_glenn(title: str, page: str, year: int, locator: str | None = None) -> 
         year=year,
         locator=locator,
         url=f"https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/{page}/",
-        accessed=ACCESSED,
+        accessed=accessed,
     )
 
 
 _ROYLANCE_COURSE_URL = "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999"
 
 
-def roylance(title: str, resource: str, year: int, locator: str) -> ReferenceSpec:
+def roylance(
+    title: str, resource: str, year: int, locator: str, accessed: str = ACCESSED
+) -> ReferenceSpec:
     """A module of D. Roylance's MIT 3.11 *Mechanics of Materials* notes on MIT OCW.
 
     Args:
@@ -85,6 +90,7 @@ def roylance(title: str, resource: str, year: int, locator: str) -> ReferenceSpe
         resource: OCW resource slug, e.g. ``"mit3_11f99_torsion"``.
         year: Year printed under the author's affiliation.
         locator: Equation, figure or page in the module.
+        accessed: Date the source was opened, if not ``ACCESSED``.
     """
     return ReferenceSpec(
         source_type="course_material",
@@ -94,11 +100,11 @@ def roylance(title: str, resource: str, year: int, locator: str) -> ReferenceSpe
         year=year,
         locator=locator,
         url=f"{_ROYLANCE_COURSE_URL}/resources/{resource}/",
-        accessed=ACCESSED,
+        accessed=accessed,
     )
 
 
-def lienhard_heat_transfer(locator: str) -> ReferenceSpec:
+def lienhard_heat_transfer(locator: str, accessed: str = ACCESSED) -> ReferenceSpec:
     """Lienhard and Lienhard, *A Heat Transfer Textbook*, 6th ed. (version 6.00)."""
     return ReferenceSpec(
         source_type="book",
@@ -110,7 +116,7 @@ def lienhard_heat_transfer(locator: str) -> ReferenceSpec:
         year=2024,
         locator=locator,
         url="https://ahtt.mit.edu",
-        accessed=ACCESSED,
+        accessed=accessed,
     )
 
 
@@ -177,7 +183,8 @@ def mathlib(path: str, locator: str) -> ReferenceSpec:
     Args:
         path: File path in the repository, optionally with a ``#L<line>`` anchor, e.g.
             ``"Mathlib/Data/Nat/Choose/Basic.lean"``.
-        locator: Declaration kind and name, e.g. ``"theorem Nat.choose_eq_factorial_div_factorial"``.
+        locator: Declaration kind and name, e.g.
+            ``"theorem Nat.choose_eq_factorial_div_factorial"``.
     """
     return ReferenceSpec(
         source_type="official_web",
@@ -208,4 +215,41 @@ def selinger_linear_algebra(locator: str) -> ReferenceSpec:
         locator=f"1st ed., rev. Dal 2018 A, {locator}",
         url="https://www.mathstat.dal.ca/~selinger/linear-algebra/",
         accessed=MATH_ACCESSED,
+    )
+
+
+# Date on which the engineering sources below, and newly cited pages of the builders above, were
+# opened to verify the cited relationships.
+ENGINEERING_ACCESSED = "2026-10-09"
+
+
+def usgs_report(
+    title: str,
+    authors: tuple[str, ...],
+    report_number: str,
+    year: int,
+    url: str,
+    locator: str,
+) -> ReferenceSpec:
+    """A numbered U.S. Geological Survey report (e.g. a Water-Supply Paper).
+
+    Args:
+        title: Title as printed on the report.
+        authors: Personal authors in IEEE name form.
+        report_number: Series and number as printed, e.g. ``"Water-Supply Paper 1898-B"``.
+        year: Year of publication.
+        url: Stable USGS publications URL.
+        locator: Page and equation, e.g. ``"p. B8, eq. (6)"``.
+    """
+    return ReferenceSpec(
+        source_type="technical_report",
+        title=title,
+        authors=authors,
+        organization="U.S. Geological Survey",
+        report_number=report_number,
+        place="Washington, DC, USA",
+        year=year,
+        locator=locator,
+        url=url,
+        accessed=ENGINEERING_ACCESSED,
     )

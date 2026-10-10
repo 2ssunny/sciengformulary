@@ -1,7 +1,7 @@
 """Cramer's Rule for a 2x2 System (x): x = (b1 * a22 - a12 * b2) / (a11 * a22 - a12 * a21)."""
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

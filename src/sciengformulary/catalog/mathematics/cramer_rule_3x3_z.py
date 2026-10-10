@@ -1,7 +1,7 @@
 """Cramer's Rule for a 3x3 System (z): z = det(A_3) / det(A), A_3 = A with column 3 -> b."""
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 _NAMES = ("a11", "a12", "a13", "a21", "a22", "a23", "a31", "a32", "a33", "b1", "b2", "b3")

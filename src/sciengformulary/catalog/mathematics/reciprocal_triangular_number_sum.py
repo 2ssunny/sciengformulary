@@ -1,7 +1,7 @@
 """Sum of Reciprocals of Triangular Numbers: S = 2*n / (n + 1)."""
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

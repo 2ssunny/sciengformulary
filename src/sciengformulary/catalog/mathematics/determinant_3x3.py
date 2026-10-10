@@ -4,7 +4,7 @@ det = a11*a22*a33 + a12*a23*a31 + a13*a21*a32 - a31*a22*a13 - a32*a23*a11 - a33*
 """
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 _NAMES = ("a11", "a12", "a13", "a21", "a22", "a23", "a31", "a32", "a33")

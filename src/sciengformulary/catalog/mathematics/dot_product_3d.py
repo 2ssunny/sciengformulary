@@ -1,7 +1,7 @@
 """Dot Product of Two 3-D Vectors: s = ux*vx + uy*vy + uz*vz."""
 
 from sciengformulary.catalog._sources import mathlib, selinger_linear_algebra
-from sciengformulary.catalog.mathematics._domain import finite, finite_result
+from sciengformulary.catalog._domain import finite, finite_result
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 

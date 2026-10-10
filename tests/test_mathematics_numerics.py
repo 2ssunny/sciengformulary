@@ -7,7 +7,7 @@ evaluators under test.
 import math
 import unittest
 
-from sciengformulary.catalog.mathematics._domain import finite, integer
+from sciengformulary.catalog._domain import finite, integer
 from sciengformulary.catalog.mathematics.angle_between_vectors_3d import (
     angle_between_vectors_3d,
 )

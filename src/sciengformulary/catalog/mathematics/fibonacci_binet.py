@@ -3,7 +3,7 @@
 import math
 
 from sciengformulary.catalog._sources import mathlib
-from sciengformulary.catalog.mathematics._domain import integer
+from sciengformulary.catalog._domain import integer
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 # phi**n overflows a double from n = 1475 on.
