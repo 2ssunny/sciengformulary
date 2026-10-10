@@ -51,6 +51,22 @@ forums, AI-generated pages, search-result snippets, and unsourced summaries.
 These can help you find a source, but you must then open the real source and
 verify the formula there.
 
+**Formal libraries and software.** A formally established result in mathlib may be
+cited for mathematics when you identify the exact theorem or definition, cite it at a
+pinned commit (the `mathlib` builder does this), honour its hypotheses in the
+evaluator's domain checks, and state the relevant statement. A software library's
+implementation of a formula (SymPy, SciPy, an engineering package) is never a
+reference on its own: use it to discover formulas, then cite the authoritative
+statement it implements.
+
+**Stated and derived formulas.** A formula is *stated* when the cited source prints it,
+up to renaming symbols. It is *derived* when it needs a further step: a special case,
+an index shift, a substitution, or a closed form worked out from a procedure. Derived
+formulas are allowed only when the step is mathematically checked and independently
+tested. Describe the step in a comment next to the reference and in an assumption that
+begins with "Derived result:", and add a test that checks the derived form by an
+independent route.
+
 ### Supported `source_type` values and required fields
 
 | `source_type` | Required | Notes |
@@ -147,14 +163,24 @@ dates, citation numbering in titles, and identifiers used on the wrong type
 
 6. **Reuse shared records.** Sources cited by several formulas have builders in
    [`catalog/_sources.py`](src/sciengformulary/catalog/_sources.py) (OpenStax, NASA
-   Glenn, NACA Report 1135, Lienhard, MIT course notes, NIST): pass only the locator
-   you checked. Add a new builder only with fields read from the source itself.
+   Glenn, NACA Report 1135, Lienhard, MIT course notes, NIST, mathlib at a pinned commit,
+   Selinger's linear algebra text): pass only the locator you checked. Add a new builder
+   only with fields read from the source itself. A software library's implementation of a
+   formula is not a reference by itself: cite the authoritative statement it implements.
    Physical constants live in
    [`catalog/_constants.py`](src/sciengformulary/catalog/_constants.py) with their NIST
    references; cite that reference too when an evaluator uses one.
 7. **Follow the example** in
    [`catalog/aerodynamics/dynamic_pressure.py`](src/sciengformulary/catalog/aerodynamics/dynamic_pressure.py).
 8. **Run** `python -m sciengformulary.validation` before opening a pull request.
+
+## Input domains
+
+Evaluators in `mathematics` check their inputs with the helpers in
+[`catalog/mathematics/_domain.py`](src/sciengformulary/catalog/mathematics/_domain.py) and
+raise `ValueError` outside the formula's domain (for example `k > n` in a binomial
+coefficient, a zero determinant in Cramer's rule, or a probability outside [0, 1]), instead
+of returning a number that looks plausible. State the same domain in `assumptions`.
 
 ## Units
 
