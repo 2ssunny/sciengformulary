@@ -46,9 +46,12 @@ blackbody_emissive_power = FormulaSpec(
     verification_cases=(
         VerificationCase(
             inputs={"T": 300.0},
-            expected=459.300327939,
+            expected=459.3003279539388,
             rel_tol=1e-12,
-            note="Exact arithmetic: 5.670374419e-8 * 300^4.",
+            note=(
+                "60-digit evaluation of sigma * 300^4 with sigma = 2 pi^5 k^4 / (15 h^3 c^2) "
+                "from the exact SI constants."
+            ),
         ),
     ),
     assumptions=(

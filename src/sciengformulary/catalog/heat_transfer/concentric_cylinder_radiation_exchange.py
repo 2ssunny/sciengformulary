@@ -134,7 +134,7 @@ concentric_cylinder_radiation_exchange = FormulaSpec(
                 "eps1": 0.5,
                 "eps2": 0.5,
             },
-            expected=865.7607216267271,
+            expected=865.7607216548861,
             rel_tol=1e-12,
             note="Enclosure formula with A1/A2 = 1/2 evaluated with 50-digit arithmetic.",
         ),
@@ -148,7 +148,7 @@ concentric_cylinder_radiation_exchange = FormulaSpec(
                 "eps1": 0.3,
                 "eps2": 1.0,
             },
-            expected=4291.394194236184,
+            expected=4291.394194375763,
             rel_tol=1e-12,
             note=(
                 "Black outer cylinder: the result reduces to eps1 * A1 * sigma * (T1^4 - T2^4), "

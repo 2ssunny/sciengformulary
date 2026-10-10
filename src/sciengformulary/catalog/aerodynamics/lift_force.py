@@ -62,7 +62,7 @@ lift_force = FormulaSpec(
     evaluator=_evaluate,
     references=(
         # The source names the area A; it is the wing area used to define C_L.
-        nasa_glenn("Lift Equation", "lift-equation", 2023),
+        nasa_glenn("Lift Equation", "lift-equation", 2024),
     ),
     verification_cases=(
         VerificationCase(

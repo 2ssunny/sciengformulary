@@ -52,7 +52,7 @@ linearized_radiation_heat_transfer_coefficient = FormulaSpec(
     verification_cases=(
         VerificationCase(
             inputs={"eps": 0.8, "T_m": 325.0},
-            expected=6.2289062992715,
+            expected=6.228906299474096,
             rel_tol=1e-12,
             note="Independent 40-digit decimal evaluation of 4 * 0.8 * sigma * 325^3.",
         ),

@@ -104,13 +104,13 @@ parallel_plate_radiation_exchange = FormulaSpec(
     verification_cases=(
         VerificationCase(
             inputs={"A": 1.0, "T1": 500.0, "T2": 300.0, "eps1": 0.8, "eps2": 0.6},
-            expected=1609.4001829231304,
+            expected=1609.4001829754764,
             rel_tol=1e-12,
             note="sigma * 5.44e10 / (1/0.8 + 1/0.6 - 1) evaluated with 50-digit arithmetic.",
         ),
         VerificationCase(
             inputs={"A": 2.0, "T1": 400.0, "T2": 300.0, "eps1": 1.0, "eps2": 1.0},
-            expected=1984.63104665,
+            expected=1984.6310467145504,
             rel_tol=1e-12,
             note="Black plates: sigma * 2 * (400^4 - 300^4) = sigma * 2 * 1.75e10, by hand.",
         ),

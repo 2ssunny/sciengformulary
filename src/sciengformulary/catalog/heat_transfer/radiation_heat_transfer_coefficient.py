@@ -64,7 +64,7 @@ radiation_heat_transfer_coefficient = FormulaSpec(
     verification_cases=(
         VerificationCase(
             inputs={"eps": 0.8, "T1": 350.0, "T2": 300.0},
-            expected=6.265763732995,
+            expected=6.265763733198795,
             rel_tol=1e-12,
             note="Independent 40-digit decimal evaluation.",
         ),

@@ -47,11 +47,11 @@ wien_peak_wavelength = FormulaSpec(
     verification_cases=(
         VerificationCase(
             inputs={"T": 5778.0},
-            expected=5.015181645898235e-07,
+            expected=5.015181646218714e-07,
             rel_tol=1e-12,
             note=(
-                "Independent 40-digit decimal evaluation of 2.897771955e-3 / 5778 (about 0.5 "
-                "micrometre for the Sun's surface temperature)."
+                "Independent 60-digit evaluation of b / 5778, with b = h c / (k x) exact from the "
+                "SI constants (about 0.5 micrometre for the Sun's surface temperature)."
             ),
         ),
     ),

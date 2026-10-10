@@ -51,7 +51,9 @@ from sciengformulary.catalog.heat_transfer.sieder_tate_turbulent_nusselt import 
 REL = 1e-12
 NAN = math.nan
 INF = math.inf
-SIGMA = 5.670374419e-8  # W/(m^2 K^4), CODATA 2022, typed here for the independent routes
+# W/(m^2 K^4), CODATA 2022: exact, derived from the SI's exact h, k and c (2 pi^5 k^4 /
+# (15 h^3 c^2)), typed here for the independent routes.
+SIGMA = 5.6703744191844294e-8
 
 
 class FormulaTestCase(unittest.TestCase):
@@ -262,8 +264,11 @@ class ParallelPlateRadiationExchangeTest(FormulaTestCase):
     def test_oracle_values(self):
         self.check_oracle(
             [
-                (self.base, 1609.4001829231304),
-                ({"A": 2.0, "T1": 400.0, "T2": 300.0, "eps1": 1.0, "eps2": 1.0}, 1984.63104665),
+                (self.base, 1609.4001829754764),
+                (
+                    {"A": 2.0, "T1": 400.0, "T2": 300.0, "eps1": 1.0, "eps2": 1.0},
+                    1984.6310467145504,
+                ),
                 ({"A": 1.0, "T1": 350.0, "T2": 350.0, "eps1": 0.5, "eps2": 0.5}, 0.0),
             ],
             abs_tol=1e-15,
@@ -277,15 +282,15 @@ class ParallelPlateRadiationExchangeTest(FormulaTestCase):
             [
                 (
                     {"A": 1.0, "T1": 300.01, "T2": 300.0, "eps1": 0.8, "eps2": 0.5},
-                    0.02721915813127805,
+                    0.027219158132163357,
                 ),
                 (
                     {"A": 2.0, "T1": 400.0 + 1e-6, "T2": 400.0, "eps1": 0.9, "eps2": 0.9},
-                    2.375371395887861e-05,
+                    2.37537139596512e-05,
                 ),
                 (
                     {"A": 1.5, "T1": 300.0, "T2": 300.0 - 1e-9, "eps1": 0.7, "eps2": 0.4},
-                    3.136651994694604e-09,
+                    3.136651994796624e-09,
                 ),
             ]
         )
@@ -341,7 +346,7 @@ class ConcentricCylinderRadiationExchangeTest(FormulaTestCase):
     def test_oracle_values(self):
         self.check_oracle(
             [
-                (self.base, 865.7607216267271),
+                (self.base, 865.7607216548861),
                 (
                     {
                         "r1": 0.05,
@@ -352,7 +357,7 @@ class ConcentricCylinderRadiationExchangeTest(FormulaTestCase):
                         "eps1": 0.3,
                         "eps2": 1.0,
                     },
-                    4291.394194236184,
+                    4291.394194375762,
                 ),
             ]
         )
@@ -371,7 +376,7 @@ class ConcentricCylinderRadiationExchangeTest(FormulaTestCase):
                         "eps1": 0.8,
                         "eps2": 0.5,
                     },
-                    0.043977346571377036,
+                    0.043977346572807406,
                 ),
                 (
                     {
@@ -383,7 +388,7 @@ class ConcentricCylinderRadiationExchangeTest(FormulaTestCase):
                         "eps1": 0.9,
                         "eps2": 0.6,
                     },
-                    6.16638687210548e-06,
+                    6.166386872306042e-06,
                 ),
             ]
         )

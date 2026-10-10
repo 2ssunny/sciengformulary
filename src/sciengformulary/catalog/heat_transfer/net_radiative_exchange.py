@@ -78,9 +78,9 @@ net_radiative_exchange = FormulaSpec(
     verification_cases=(
         VerificationCase(
             inputs={"eps": 0.9, "A": 2.0, "T_b": 310.0, "T_e": 290.0},
-            expected=220.7091175856208,
+            expected=220.70911759279937,
             rel_tol=1e-12,
-            note="Exact arithmetic: 0.9 * sigma * 2 * (310^4 - 290^4).",
+            note="60-digit evaluation of 0.9 * sigma * 2 * (310^4 - 290^4), sigma exact (derived).",
         ),
     ),
     assumptions=(
