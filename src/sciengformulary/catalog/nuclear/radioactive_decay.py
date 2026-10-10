@@ -70,7 +70,8 @@ radioactive_decay = FormulaSpec(
     ),
     assumptions=(
         "Single radionuclide with no production (no parent feeding it).",
-        "Statistical law: accurate for large N; individual decays are random.",
+        "Describes the expected count for a large population; the moment at which any single "
+        "nucleus decays is random.",
         "decay_constant and t in reciprocal units (1/s with s, 1/yr with yr).",
     ),
     tags=("radioactive decay", "exponential decay", "half-life", "nuclear"),

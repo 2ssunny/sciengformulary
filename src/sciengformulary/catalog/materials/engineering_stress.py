@@ -64,7 +64,8 @@ engineering_stress = FormulaSpec(
     ),
     assumptions=(
         "Force uniformly distributed over the section, away from load points and notches.",
-        "Uses the original area; after necking it underestimates the true stress.",
+        "A0 is the area measured before loading, so once necking reduces the section the value "
+        "falls below the true stress.",
     ),
     tags=("stress", "nominal stress", "engineering stress", "tensile test"),
 )

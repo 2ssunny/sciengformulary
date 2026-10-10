@@ -72,8 +72,9 @@ stokes_drag_force = FormulaSpec(
         ),
     ),
     assumptions=(
-        "Very small or slow-moving spheres, or a viscous medium, where drag is proportional to "
-        "speed; for larger, faster bodies drag grows with speed squared instead.",
+        "Holds for small spheres, low relative speeds or highly viscous fluids, where drag "
+        "scales linearly with speed. Larger or faster bodies instead see drag that scales with "
+        "the square of the speed.",
         "Rigid sphere far from walls and other particles, in a continuum fluid.",
     ),
     tags=("Stokes drag", "creeping flow", "particle", "sphere", "viscous drag"),

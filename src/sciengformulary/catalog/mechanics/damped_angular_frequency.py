@@ -2,7 +2,11 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    grodsinsky_whorton_vibration_isolation,
+    nasa_cr_4424,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -54,6 +58,12 @@ damped_angular_frequency = FormulaSpec(
         # The source writes omega = sqrt(omega_0^2 - (b/2m)^2). With damping ratio zeta = b / (2 m
         # omega_0) this equals the sheet's omega_n sqrt(1 - zeta^2).
         openstax_university_physics(1, "15-5-damped-oscillations", "sec. 15.5, eq. (15.26)"),
+        # Both reports print omega_d = omega sqrt(1 - zeta^2) with omega = sqrt(k / m) and
+        # zeta = c / (2 sqrt(m k)). Substituting gives sqrt(k / m - (c / (2 m))^2) with c = b.
+        nasa_cr_4424("sec. 4.1, p. 8 (transient solution)"),
+        grodsinsky_whorton_vibration_isolation(
+            "section 'Micro-gravity Vibration Isolation Fundamentals', text below eq. (2)"
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -66,6 +76,9 @@ damped_angular_frequency = FormulaSpec(
     assumptions=(
         "Single-degree-of-freedom mass-spring-damper with linear spring and viscous damping; "
         "the damping force is proportional to velocity.",
+        "Derived result: the cited NASA reports print omega_d = omega sqrt(1 - zeta^2) with "
+        "omega = sqrt(k / m) and zeta = b / (2 sqrt(m k)); substituting gives "
+        "sqrt(k / m - (b / (2 m))^2).",
         "Underdamped only: b must be below the critical value 2 sqrt(k m); at or above it "
         "there is no oscillation and the square root is invalid.",
     ),

@@ -16,9 +16,9 @@ specific_orbital_energy = FormulaSpec(
     name="Specific Orbital Energy",
     equation="epsilon = v^2 / 2 - mu / r",
     description=(
-        "Total mechanical energy per unit satellite mass: kinetic plus gravitational potential "
-        "energy. It is constant along a two-body orbit; negative values mean a bound (elliptical) "
-        "orbit."
+        "Sum of kinetic and gravitational potential energy divided by the satellite's mass. The "
+        "value does not change as the satellite moves along a two-body orbit, and a negative "
+        "value indicates a bound, elliptical orbit."
     ),
     inputs=(
         VariableSpec(

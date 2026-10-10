@@ -119,10 +119,38 @@ numbers).
 | thermodynamics.carnot_refrigerator_cop | yes (no other reference) | NASA-CR-188300, p. 57; DOE-HDBK-1012/1-92, Module 1, eq. (1-23), p. 73 plus reversal argument | Correct | - |
 | thermodynamics.sensible_heat | yes (no other reference) | DOE-HDBK-1012/1-92, Module 1, 'Heat', eq. (1-17), p. 21; Lienhard, sec. 1.2, eqs. (1.2b), (1.2c), (1.3), p. 7 | Correct | - |
 
-Summary: 39 formulas gained references (10 mechanics, 29 in other domains). Formulas gaining
+Summary (first round): 39 formulas gained references (10 mechanics, 29 in other domains). Formulas gaining
 each source: DOE handbooks 19, Lienhard 12, NASA Glenn pages 7 (6 distinct pages), U.S. Standard
 Atmosphere 1976 4, NASA/CR-2005-213034 4, NASA TM-87572 1, NASA-CR-188300 1 (some formulas gained
 more than one source).
+
+## Count reconciliation
+
+57 formulas cite OpenStax. They split as follows (39 + 15 + 3 = 57):
+
+| Group | Formulas | Meaning |
+|---|---|---|
+| Gained an independent reference | 39 | 33 that previously cited nothing but OpenStax, plus 6 that already had another reference (`mechanics.gravitational_force`, and five radiation or kinetic-theory formulas whose only other references were constants pages: `heat_transfer.photon_energy`, `blackbody_emissive_power`, `net_radiative_exchange`, `wien_peak_wavelength`, `thermodynamics.mean_molecular_speed`) |
+| Relation still supported only by OpenStax | 15 | 11 mechanics formulas, plus 4 kinetic-theory formulas whose only other reference is a CODATA constant page (which supports the constant, not the relation) |
+| Already independently supported before the audit | 3 | `fluids.mass_flow_rate`, `heat_transfer.plane_wall_conduction_rate`, `thermodynamics.isentropic_temperature_ratio` |
+
+Cross-check: 44 formulas cited only OpenStax and 9 cited OpenStax plus a constants page (53 in
+all); 4 more already had another source. Of the 44, 33 gained a reference and 11 did not; of the
+9, 5 gained one and 4 did not. The 15 are therefore 11 + 4.
+
+Follow-up search (second round): the 4 single-degree-of-freedom vibration formulas gained
+independent NASA support (NASA CR-4424, sec. 4.1, pp. 8-9; NTRS 20000067635), so 43 formulas now
+have an independent reference and 11 still rest on OpenStax alone (57 = 43 + 11 + 3):
+
+| Domain | Formulas still supported only by OpenStax |
+|---|---|
+| mechanics (7) | angular_momentum_rigid_body, centripetal_acceleration, circular_motion_period, linear_drag_falling_speed, parallel_axis_moment_of_inertia, rotational_kinetic_energy, tangential_speed |
+| thermodynamics (4) | maxwell_speed_distribution, mean_molecular_translational_kinetic_energy, monatomic_ideal_gas_internal_energy, rms_molecular_speed |
+
+Searched without success for these 11: DOE Fundamentals Handbooks (Classical Physics, Mechanical
+Science, Thermodynamics, Nuclear Physics, Electrical Science), Lienhard's *A Heat Transfer
+Textbook*, NASA Glenn Beginner's Guide pages and NTRS reports on flywheels, kinetic theory and
+free-molecule flow. They keep their OpenStax citation (historical attribution) and remain flagged.
 
 ## Corrections made
 
@@ -136,6 +164,50 @@ more than one source).
   the potential energy relative to the datum.
 - `mechanics.damped_angular_frequency`: "slightly below" is true only for light damping; the
   description now says the frequency falls to zero as damping approaches its critical value.
+
+## Prose review
+
+Seven prose fields were flagged as possibly copied textbook wording. Because OpenStax could not
+be opened, they were treated conservatively and each was rewritten from scratch in plain
+technical English. The rewrites keep the same conditions, numbers and limits and add no claim
+that the module's references do not support. No source text is quoted in the new wording.
+
+- `mechanics.static_friction_limit`, assumptions[1]
+- `fluids.hydrostatic_pressure_difference`, description
+- `fluids.poiseuille_volume_flow_rate`, assumptions[1] (the phrase attributing the Reynolds
+  number thresholds to "the cited section" was dropped, since the formula now has two references)
+- `fluids.stokes_drag_force`, assumptions[0]
+- `materials.engineering_stress`, assumptions[1]
+- `nuclear.radioactive_decay`, assumptions[1]
+- `orbital.specific_orbital_energy`, description
+
+Equations, evaluators, variables, references and verification cases were not touched. The
+remaining prose (all other descriptions, variable descriptions and assumptions) still has not
+been compared with the book, see section 2 of "Needs human review".
+
+## DOE handbook rights
+
+Checked 2026-10-10 for the four handbooks cited in this catalog (DOE-HDBK-1010-92, 1012/1-92,
+1017/1-93, 1019/1-93) and for DOE-HDBK-1011/3-92 (Electrical Science, volume 3), which is planned
+for a later engineering batch. The cover, foreword, overview, concluding material and reference
+lists were read, and the full text was searched for copyright, permission, courtesy, reprint,
+trademark and license notices. Figures were not inspected as images.
+
+| Item | Finding (same for all five) |
+|---|---|
+| Issuing body | U.S. Department of Energy, Washington, D.C. |
+| Preparation | For the Assistant Secretary for Nuclear Energy, Office of Nuclear Safety Policy and Standards, by the DOE Training Coordination Program, managed by EG&G Idaho, Inc. (a DOE contractor); no individual authors named |
+| Distribution statement | "Distribution Statement A. Approved for public release; distribution is unlimited." |
+| Copyright notice | None found |
+| Third-party material notice | None found; each module lists commercial textbooks and manuals as references |
+
+Conclusion for citation use: citing a handbook for an equation or a fact is not reuse of its
+expression, and the catalog restates only equations and numbers in its own words. Whether the
+text is a U.S. Government work cannot be settled from the documents, because the program was
+contractor-managed and the text is a training compilation of commercial sources, so the
+catalog does not claim public-domain status and quotes no handbook sentences. Status stays
+CONDITIONAL for maintainer sign-off (see "Open rights questions"). Using DOE-HDBK-1011/3-92
+raises no new issue.
 
 ## Needs human review
 
@@ -211,8 +283,9 @@ specific gas constant), and the code comments in `mechanics.damped_angular_frequ
 
 ### 2. Possibly copied prose
 
-Compare these repository fields with the OpenStax text. All are low confidence: generic
-textbook-style sentences, not distinctive phrasing.
+These seven fields were rewritten in original wording (see "Prose review"); the table records
+what was flagged and why. All were low confidence: generic textbook-style sentences, not
+distinctive phrasing.
 
 | Field | Reason |
 |---|---|
@@ -224,8 +297,8 @@ textbook-style sentences, not distinctive phrasing.
 | `nuclear.radioactive_decay` assumptions[1] | Generic "statistical law, large N" phrasing |
 | `orbital.specific_orbital_energy` description | Textbook-style sentence on mechanical energy per unit mass and bound orbits |
 
-For all 57 formulas, also compare the descriptions, variable descriptions and assumptions with
-the book for wording overlap.
+For all 57 formulas, the remaining descriptions, variable descriptions and assumptions should
+still be compared with the book for wording overlap.
 
 ### 3. Verification-case numbers that may come from OpenStax worked examples
 
@@ -236,15 +309,21 @@ section. Numbers are facts, but a human should confirm that only the numbers (no
 explanation) were reused. For the 36 formulas outside mechanics the notes do not claim a worked
 example, but this could not be excluded without opening the book.
 
-### 4. Formulas still supported only by OpenStax (15)
+### 4. Formulas still supported only by OpenStax (11)
 
 | Formula | Kind of source needed |
 |---|---|
-| `mechanics.angular_momentum_rigid_body`, `centripetal_acceleration`, `circular_motion_period`, `parallel_axis_moment_of_inertia`, `rotational_kinetic_energy`, `tangential_speed` | NASA, DOE or NIST primer on rotational kinematics and rigid-body dynamics. DOE-HDBK-1010 states only that circular motion needs a centripetal force, and the NASA Glenn rotation page does not print the equations. NTRS flywheel reports with `GOV_PUBLIC_USE_PERMITTED` exist but were not read |
-| `mechanics.critical_damping_coefficient`, `damped_angular_frequency`, `forced_vibration_amplitude`, `natural_angular_frequency` | Mechanical-vibration or engineering-dynamics primer for the single-degree-of-freedom mass-spring-damper. Neither DOE-HDBK-1010 nor the NASA Glenn Guide has it |
-| `mechanics.linear_drag_falling_speed` | Source solving m dv/dt = m g - c v. The NASA Glenn drag page covers drag proportional to v^2 only. Alternatively, document the separable-ODE derivation in the description |
+| `mechanics.angular_momentum_rigid_body`, `centripetal_acceleration`, `circular_motion_period`, `parallel_axis_moment_of_inertia`, `rotational_kinetic_energy`, `tangential_speed` | NASA, DOE or NIST primer on rotational kinematics and rigid-body dynamics |
+| `mechanics.linear_drag_falling_speed` | Source solving m dv/dt = m g - c v (the NASA Glenn drag page covers drag proportional to v^2 only) |
 | `thermodynamics.mean_molecular_translational_kinetic_energy`, `monatomic_ideal_gas_internal_energy`, `rms_molecular_speed` | Kinetic-theory source printing (3/2) k T, U = (3/2) N k T, or v_rms |
-| `thermodynamics.maxwell_speed_distribution` | Source printing the speed density f(v). DOE-HDBK-1019/1 eq. (2-13) gives only the most probable speed and Lienhard eq. (11.101) only the mean speed; these partial sources were not added |
+| `thermodynamics.maxwell_speed_distribution` | Source printing the speed density f(v); DOE-HDBK-1019/1 and Lienhard give only the most probable and mean speeds |
+
+Resolved in the second round: `mechanics.natural_angular_frequency` (stated), and
+`critical_damping_coefficient`, `damped_angular_frequency`, `forced_vibration_amplitude`
+(derived from the printed damping ratio, damped frequency and complex amplitude; independent-route
+tests in `tests/test_mechanics_vibration_sources.py`). NASA CR-4424 is a contractor report and
+NTRS 20000067635 has a non-NASA co-author; both carry the NTRS rights determination
+GOV_PUBLIC_USE_PERMITTED.
 
 Weakly supported (reference added, but the support is thin): `materials.thermal_strain` (one
 sentence defining the expansion coefficient as d(strain)/dT), `thermodynamics.isothermal_work`
@@ -255,15 +334,10 @@ CR-188300 gives it in a design worksheet, DOE only by a reversal argument), and
 `materials.engineering_stress` (the DOE text does not say the original area is used, so that
 qualifier rests on OpenStax).
 
-### 5. Truncated constants (flagged, not changed)
+### 5. Truncated constants
 
-- Stefan-Boltzmann constant in `heat_transfer.blackbody_emissive_power` and
-  `net_radiative_exchange`: the catalog value 5.670374419e-8 is truncated; the full-precision
-  CODATA 2022 value differs by 3.3e-11 relative, so the cases are about 3.2e-11 relative below
-  the full-precision result. The case note's "exact arithmetic" is exact for the truncated
-  value.
-- Wien constant in `heat_transfer.wien_peak_wavelength`: 2.897771955e-3 m K differs from the
-  full-precision value by 6.4e-11 relative. The Lienhard book prints it to six digits only.
+The truncated Stefan-Boltzmann and Wien constants are corrected in a separate change (see
+`docs/provenance/corrections-1.1.0.md`).
 
 ### 6. Other points noted
 
@@ -280,9 +354,10 @@ qualifier rests on OpenStax).
 ## Open rights questions
 
 1. DOE Fundamentals Handbooks (19 formulas): the handbooks carry Distribution Statement A
-   (approved for public release) and no copyright notice, but were prepared for DOE with help
-   from a contractor. Status CONDITIONAL: usable for citation, but the maintainers should
-   decide whether that is enough. Only equations and numbers are restated.
+   (approved for public release) and no copyright notice, but were prepared for DOE by a
+   contractor-managed program (see "DOE handbook rights"). Status CONDITIONAL: usable for
+   citation, but the maintainers should decide whether that is enough. Only equations and
+   numbers are restated.
 2. Lienhard and Lienhard: a free PDF of a copyrighted book. Citing it and restating equations
    is the same practice as the existing references; confirm the maintainers accept it for the
    12 formulas that now use it.
