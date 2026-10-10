@@ -4,16 +4,19 @@ Sanitized record of how this engineering batch was found, checked and licensed. 
 discovered in open-source engineering libraries; a library never counted as support. Each
 implemented formula cites an authoritative source opened during verification. No source text.
 
-## Supporting sources used by verified formulas
+## Sources cited by the implemented formulas
 
-| Source id | Verified formulas citing it |
+| Source | Implemented formulas citing it |
 |---|---|
-| `LIENHARD_AHTT` | 42 |
-| `ROYLANCE_MIT_3_11` | 10 |
-| `USGS_WSP_1898B` | 3 |
-| `NIST_SP_330` | 1 |
-| `NASA_GLENN_BEGINNERS_GUIDE` | 1 |
-| `NIST_CHEMISTRY_WEBBOOK_SRD69` | 1 |
+| J. H. Lienhard V, J. H. Lienhard IV: A Heat Transfer Textbook | 42 |
+| Massachusetts Institute of Technology: Beam Displacements | 6 |
+| U.S. Geological Survey: Water-Supply Paper 1898-B | 3 |
+| National Institute of Standards and Technology: CODATA Value: Stefan-Boltzmann constant | 2 |
+| Massachusetts Institute of Technology: Trusses | 2 |
+| Massachusetts Institute of Technology: Introduction to Elasticity | 1 |
+| NASA Glenn Research Center: Torque (Moment) | 1 |
+| Massachusetts Institute of Technology: Laminated Composite Plates | 1 |
+| National Institute of Standards and Technology: NIST Chemistry WebBook, NIST Standard Reference Database Number 69 | 1 |
 
 Rights notes: textbooks and reports are cited, never copied. OpenStax is excluded (its pages
 forbid ingestion into AI systems). MIT OCW notes (Roylance) are CC BY-NC-SA and only cited.

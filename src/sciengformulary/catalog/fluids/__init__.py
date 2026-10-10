@@ -29,6 +29,11 @@ from sciengformulary.catalog.fluids.smooth_pipe_friction_factor_power_law import
 )
 from sciengformulary.catalog.fluids.strouhal_number import strouhal_number
 from sciengformulary.catalog.fluids.weber_number import weber_number
+from sciengformulary.catalog.fluids.laminar_flat_plate_mean_skin_friction import (
+    laminar_flat_plate_mean_skin_friction,
+)
+from sciengformulary.catalog.fluids.sutherland_viscosity_air import sutherland_viscosity_air
+from sciengformulary.catalog.fluids.wind_shear_power_law import wind_shear_power_law
 from sciengformulary.core import FormulaSpec
 
 FORMULAS: tuple[FormulaSpec, ...] = (
@@ -51,4 +56,7 @@ FORMULAS: tuple[FormulaSpec, ...] = (
     smooth_pipe_friction_factor_power_law,
     strouhal_number,
     weber_number,
+    laminar_flat_plate_mean_skin_friction,
+    sutherland_viscosity_air,
+    wind_shear_power_law,
 )

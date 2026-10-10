@@ -1,6 +1,9 @@
 """Limiting Static Friction: f_s_max = mu_s * N."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -39,6 +42,12 @@ static_friction_limit = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(1, "6-2-friction", "sec. 6.2, eq. (6.1)"),
+        # The handbook numbers two equations (4-5); this is the friction law in 'Types of Force'.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1010-92",
+            "Module 4 'Application of Newton's Laws', Types of Force: Friction, eq. (4-5), p. 19 "
+            "(CP-04)",
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -50,8 +59,8 @@ static_friction_limit = FormulaSpec(
     ),
     assumptions=(
         "Dry (Coulomb) friction; lubricated or viscous contacts do not follow it.",
-        "This is an upper bound: below impending motion the actual static friction equals "
-        "whatever balances the applied force.",
+        "A ceiling, not a fixed value: while the contact holds, static friction is only as large "
+        "as needed to cancel the applied tangential load, up to this limit.",
         "mu_s is an empirical property of the particular surface pair and condition.",
     ),
     tags=("friction", "static friction", "Coulomb friction", "impending motion"),

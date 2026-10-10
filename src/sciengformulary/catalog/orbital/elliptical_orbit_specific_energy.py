@@ -1,6 +1,9 @@
 """Specific Energy of an Elliptical Orbit: epsilon = -mu / (2 * a)."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    nasa_cr_2005_213034,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -42,6 +45,9 @@ elliptical_orbit_specific_energy = FormulaSpec(
         # M.
         openstax_university_physics(1, "13-5-keplers-laws-of-planetary-motion", "sec. 13.5"),
         openstax_university_physics(1, "13-4-satellite-orbits-and-energy", "sec. 13.4, eq. (13.9)"),
+        # The report prints a = -mu / (2 xi) for the energy xi per unit mass; the catalog form is
+        # its rearrangement.
+        nasa_cr_2005_213034("eq. (19), p. 20"),
     ),
     verification_cases=(
         VerificationCase(

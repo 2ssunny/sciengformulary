@@ -1,6 +1,9 @@
 """Semi-Major Axis from Apsis Radii: a = (r_p + r_a) / 2."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    nasa_cr_2005_213034,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -44,6 +47,9 @@ semi_major_axis_from_apsides = FormulaSpec(
         # Stated in the section text: the semi-major axis is one-half the sum of the perihelion and
         # aphelion.
         openstax_university_physics(1, "13-5-keplers-laws-of-planetary-motion", "sec. 13.5"),
+        # The report prints a_trans = (r_initial + r_final) / 2 for a transfer ellipse whose perigee
+        # and apogee are those two radii.
+        nasa_cr_2005_213034("eq. (6), p. 16"),
     ),
     verification_cases=(
         VerificationCase(

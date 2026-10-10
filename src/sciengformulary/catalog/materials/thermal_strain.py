@@ -1,6 +1,9 @@
 """Free Thermal Strain: epsilon_th = alpha * delta_T."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    nasa_technical_report,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -43,6 +46,17 @@ thermal_strain = FormulaSpec(
     references=(
         # The source writes delta_L = alpha L delta_T; strain is delta_L / L.
         openstax_university_physics(2, "1-3-thermal-expansion", "sec. 1.3, eq. (1.2)"),
+        # Weak support: the report defines the coefficient of thermal expansion as the first
+        # derivative of thermal strain with respect to temperature (one sentence).
+        nasa_technical_report(
+            title="Thermal Expansion of Selected Graphite Reinforced Polyimide-, Epoxy-, and "
+                  "Glass-Matrix Composite",
+            authors=("S. S. Tompkins",),
+            report_number="NASA TM-87572",
+            year=1985,
+            url="https://ntrs.nasa.gov/citations/19850023836",
+            locator="sec. 5 'Results and Discussion', p. 5",
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -55,6 +69,8 @@ thermal_strain = FormulaSpec(
     assumptions=(
         "Free expansion: if the body is restrained, stresses develop instead.",
         "alpha treated as constant over the temperature range.",
+        "Derived result: strain = alpha * delta_T follows by integrating the cited definition "
+        "alpha = d(strain)/dT for constant alpha; the source does not print the integrated form.",
     ),
     tags=("thermal expansion", "thermal strain", "coefficient of expansion"),
 )

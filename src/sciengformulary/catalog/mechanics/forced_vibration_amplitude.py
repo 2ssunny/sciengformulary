@@ -2,7 +2,7 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import nasa_cr_4424, openstax_university_physics
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -73,6 +73,10 @@ forced_vibration_amplitude = FormulaSpec(
         # The source writes omega_0^2 for k/m. The sheet's form F0 / sqrt((k - m nu^2)^2 + (c
         # nu)^2) is the same with nu = omega and c = b.
         openstax_university_physics(1, "15-6-forced-oscillations", "sec. 15.6, eq. (15.29)"),
+        # CR-4424 prints the complex steady-state amplitude f / ((k - m Omega^2) + j c Omega)
+        # for m x'' + c x' + k x = f exp(j Omega t); A is its modulus, with Omega = omega,
+        # f = F0 and c = b, and (k - m omega^2)^2 = m^2 (omega^2 - k / m)^2.
+        nasa_cr_4424("sec. 4.1, pp. 8-9 (steady-state response)"),
     ),
     verification_cases=(
         VerificationCase(
@@ -88,6 +92,9 @@ forced_vibration_amplitude = FormulaSpec(
     assumptions=(
         "Single-degree-of-freedom mass-spring-damper with linear spring and viscous damping; "
         "the damping force is proportional to velocity.",
+        "Derived result: the cited NASA report prints the complex steady-state amplitude "
+        "F0 / ((k - m omega^2) + j b omega); A is its modulus, "
+        "F0 / sqrt((k - m omega^2)^2 + (b omega)^2).",
         "Steady state only, after the transient has decayed.",
         "With b = 0 the amplitude is unbounded at omega^2 = k/m (resonance).",
     ),

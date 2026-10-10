@@ -4,7 +4,10 @@ from sciengformulary.catalog._constants import (
     GRAVITATIONAL_CONSTANT_REFERENCE,
     NEWTONIAN_CONSTANT_OF_GRAVITATION,
 )
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    doe_fundamentals_handbook,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -55,6 +58,11 @@ gravitational_force = FormulaSpec(
             "sec. 13.1, eq. (13.1)",
         ),
         GRAVITATIONAL_CONSTANT_REFERENCE,
+        # The handbook's G is an older value; the evaluator uses the CODATA constant cited above.
+        doe_fundamentals_handbook(
+            "DOE-HDBK-1010-92",
+            "Module 3 'Force and Motion', Newton's Laws of Motion, eq. (3-2), p. 2 (CP-03)",
+        ),
     ),
     verification_cases=(
         VerificationCase(

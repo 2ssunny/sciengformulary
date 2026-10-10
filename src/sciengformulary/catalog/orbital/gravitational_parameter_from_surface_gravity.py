@@ -1,6 +1,9 @@
 """Gravitational Parameter from Surface Gravity: mu = g * R^2."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    openstax_university_physics,
+    us_standard_atmosphere_1976,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -47,6 +50,9 @@ gravitational_parameter_from_surface_gravity = FormulaSpec(
             "13-2-gravitation-near-earths-surface",
             "sec. 13.2, eq. (13.2)",
         ),
+        # The source prints g = g0 [r0 / (r0 + Z)]^2, so g r^2 is the same at every radius; at r = R
+        # this gives mu = g R^2.
+        us_standard_atmosphere_1976("sec. 1.2.3, eq. (17), p. 8"),
     ),
     verification_cases=(
         VerificationCase(
@@ -59,6 +65,8 @@ gravitational_parameter_from_surface_gravity = FormulaSpec(
     assumptions=(
         "Spherically symmetric, non-rotating body: measured surface gravity on a rotating "
         "planet includes a small centrifugal reduction and varies with latitude.",
+        "Derived result: obtained from the cited inverse-square form g = g0 [r0 / (r0 + Z)]^2, in "
+        "which g r^2 is constant, evaluated at the surface radius.",
     ),
     tags=("gravitational parameter", "GM", "surface gravity", "planet"),
 )

@@ -1,6 +1,10 @@
 """Speed Squared Under Constant Acceleration: v^2 = v0^2 + 2 * a * (x - x0)."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    ACCESSED_AUDIT,
+    nasa_glenn,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -53,6 +57,15 @@ constant_acceleration_speed_squared = FormulaSpec(
             "3-4-motion-with-constant-acceleration",
             "sec. 3.4, eq. (3.14)",
         ),
+        # The NASA page prints V = V0 - g t, y = V0 t - g t^2 / 2 and y_max = V0^2 / (2 g);
+        # eliminating t gives the general form.
+        nasa_glenn(
+            "Ballistic Flight Equations",
+            "ballistic-flight-equations",
+            2024,
+            "Motion section",
+            accessed=ACCESSED_AUDIT,
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -70,6 +83,8 @@ constant_acceleration_speed_squared = FormulaSpec(
         "acceleration integrate a(t) instead.",
         "Returns v^2; the sign of v must come from the physical situation. A negative result "
         "means the displacement is not reachable.",
+        "Derived result: obtained by eliminating t between the constant-acceleration velocity and "
+        "position relations; the cited NASA page prints the case v = 0, a = -g.",
     ),
     tags=("kinematics", "constant acceleration", "SUVAT", "speed"),
 )

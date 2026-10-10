@@ -1,6 +1,9 @@
 """Resistance of a Uniform Conductor: R = rho_e * L / A."""
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -50,6 +53,9 @@ conductor_resistance = FormulaSpec(
     evaluator=_evaluate,
     references=(
         openstax_university_physics(2, "9-3-resistivity-and-resistance", "sec. 9.3, eq. (9.9)"),
+        # The book prints R = L / (gamma A) with electrical conductivity gamma; the resistivity is
+        # rho = 1 / gamma.
+        lienhard_heat_transfer("sec. 2.3, eqs. (2.17b)-(2.18), p. 63"),
     ),
     verification_cases=(
         VerificationCase(

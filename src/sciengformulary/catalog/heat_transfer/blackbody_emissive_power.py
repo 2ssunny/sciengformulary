@@ -4,7 +4,10 @@ from sciengformulary.catalog._constants import (
     STEFAN_BOLTZMANN_CONSTANT,
     STEFAN_BOLTZMANN_CONSTANT_REFERENCE,
 )
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    lienhard_heat_transfer,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -38,6 +41,7 @@ blackbody_emissive_power = FormulaSpec(
         # The source gives the total power P = sigma A T^4; this is per unit area.
         openstax_university_physics(3, "6-1-blackbody-radiation", "sec. 6.1, eq. (6.4)"),
         STEFAN_BOLTZMANN_CONSTANT_REFERENCE,
+        lienhard_heat_transfer("sec. 1.3, eq. (1.28), p. 30"),
     ),
     verification_cases=(
         VerificationCase(
