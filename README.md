@@ -70,22 +70,22 @@ from sciengformulary.catalog.aerodynamics import dynamic_pressure
 
 ## What is in the catalog
 
-Version 0.1.0 contains 123 formulas, organised by knowledge domain:
+The catalog contains 320 formulas, organised by knowledge domain:
 
 | Domain | Formulas | Examples |
 |---|---|---|
-| `aerodynamics` | 14 | lift and drag, induced drag, isentropic flow ratios, normal-shock relations |
+| `aerodynamics` | 35 | lift and drag, induced drag, isentropic and normal-shock relations, 1976 standard atmosphere layers, Barrowman rocket stability, stall and climb, Sears-Haack wave drag |
 | `electrical` | 2 | Ohm's law, conductor resistance |
-| `fluids` | 8 | hydrostatics, mass flow, Reynolds number, Pitot airspeed, Poiseuille flow |
-| `heat_transfer` | 24 | conduction, convection correlations, radiation, lumped capacity, LMTD |
+| `fluids` | 22 | hydrostatics, Reynolds number, Pitot airspeed, Poiseuille flow, Darcy-Weisbach and friction factors, Manning/Chezy, Sutherland viscosity, wind-shear power law |
+| `heat_transfer` | 51 | conduction, convection correlations (Gnielinski, Churchill-Bernstein, Churchill-Chu), radiation exchange, effectiveness-NTU, dimensionless groups, LMTD |
 | `materials` | 15 | true stress and strain, elastic constants, von Mises, fracture, Weibull |
-| `mathematics` | 2 | normal probability density, Stirling's approximation |
-| `mechanics` | 21 | kinematics, friction, energy, momentum, vibration |
+| `mathematics` | 91 | combinatorics, series, triangle and solid geometry, vectors and determinants, 2x2 eigenvalues, probability distributions, gamma, beta and incomplete gamma/beta functions |
+| `mechanics` | 23 | kinematics, friction, energy, momentum, vibration, springs and torque |
 | `nuclear` | 3 | radioactive decay, half-life, activity |
-| `orbital` | 5 | orbital energy, Kepler's third law, semi-major axis |
-| `propulsion` | 2 | rocket thrust, specific impulse |
-| `structures` | 8 | axial deformation, bending stress, torsion, beam deflections |
-| `thermodynamics` | 19 | ideal gas, kinetic theory, entropy, Carnot limits, specific heats |
+| `orbital` | 29 | Kepler's third law, vis-viva, conic orbits and anomalies, Hohmann and bi-elliptic transfers, hyperbolic and parabolic orbits, J2 nodal precession, sphere of influence |
+| `propulsion` | 12 | rocket thrust, specific impulse, Tsiolkovsky rocket equation, thrust coefficient, nozzle expansion ratio, solid-motor relations |
+| `structures` | 17 | axial deformation, bending stress, torsion, beam deflections, fixed-end moments and reactions, beam and plate stiffness |
+| `thermodynamics` | 20 | ideal gas, kinetic theory, entropy, Carnot limits, specific heats, Antoine vapour pressure |
 
 Only formulas that have been checked against an authoritative source are included.
 Candidates that could not be verified, or whose sources disagree, are left out rather

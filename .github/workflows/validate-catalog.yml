@@ -30,3 +30,8 @@ jobs:
         # case. No network access: source websites being down must not fail a valid PR.
         working-directory: ${{ runner.temp }}
         run: python -m sciengformulary.validation
+
+      - name: Run unit tests
+        # Input-domain and extra numerical checks (standard library unittest). src/ is not on
+        # the path, so the tests import the installed package.
+        run: python -m unittest discover -s tests -v
