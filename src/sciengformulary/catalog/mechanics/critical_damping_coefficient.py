@@ -2,7 +2,11 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    grodsinsky_whorton_vibration_isolation,
+    nasa_cr_4424,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -45,6 +49,13 @@ critical_damping_coefficient = FormulaSpec(
     references=(
         # The section text gives critical damping at b = sqrt(4 m k) = 2 sqrt(k m).
         openstax_university_physics(1, "15-5-damped-oscillations", "sec. 15.5"),
+        # Both reports define the damping ratio zeta = c / (2 sqrt(m k)), and CR-4424 calls it
+        # the fraction of critical damping. Critical damping (zeta = 1) is therefore
+        # c_c = 2 sqrt(m k): one rearrangement of the printed definition.
+        nasa_cr_4424("sec. 4.1, p. 8"),
+        grodsinsky_whorton_vibration_isolation(
+            "section 'Micro-gravity Vibration Isolation Fundamentals', text below eq. (2)"
+        ),
     ),
     verification_cases=(
         VerificationCase(
@@ -57,6 +68,9 @@ critical_damping_coefficient = FormulaSpec(
     assumptions=(
         "Single-degree-of-freedom mass-spring-damper with linear spring and viscous damping; "
         "the damping force is proportional to velocity.",
+        "Derived result: the cited NASA reports print the damping ratio zeta = c / (2 sqrt(m k)) "
+        "of the mass-spring-damper m x'' + c x' + k x = f; critical damping is zeta = 1, so "
+        "c_c = 2 sqrt(m k).",
         "Damping below c_c gives decaying oscillation (underdamped); above it, slow "
         "non-oscillatory return (overdamped).",
     ),

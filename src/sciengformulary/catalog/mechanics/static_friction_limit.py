@@ -59,8 +59,8 @@ static_friction_limit = FormulaSpec(
     ),
     assumptions=(
         "Dry (Coulomb) friction; lubricated or viscous contacts do not follow it.",
-        "This is an upper bound: below impending motion the actual static friction equals "
-        "whatever balances the applied force.",
+        "A ceiling, not a fixed value: while the contact holds, static friction is only as large "
+        "as needed to cancel the applied tangential load, up to this limit.",
         "mu_s is an empirical property of the particular surface pair and condition.",
     ),
     tags=("friction", "static friction", "Coulomb friction", "impending motion"),

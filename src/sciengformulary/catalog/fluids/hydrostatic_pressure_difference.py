@@ -16,8 +16,8 @@ hydrostatic_pressure_difference = FormulaSpec(
     name="Hydrostatic Pressure Difference",
     equation="delta_p = rho * g * h",
     description=(
-        "Increase in pressure with depth in a fluid at rest of uniform density: the weight of the "
-        "fluid column above, per unit area."
+        "Pressure rise over a vertical depth h in a motionless fluid of uniform density. It "
+        "equals the weight of the overlying fluid column divided by the column's cross-section."
     ),
     inputs=(
         VariableSpec(

@@ -2,7 +2,11 @@
 
 import math
 
-from sciengformulary.catalog._sources import openstax_university_physics
+from sciengformulary.catalog._sources import (
+    grodsinsky_whorton_vibration_isolation,
+    nasa_cr_4424,
+    openstax_university_physics,
+)
 from sciengformulary.core import FormulaSpec, VariableSpec, VerificationCase
 
 
@@ -42,6 +46,12 @@ natural_angular_frequency = FormulaSpec(
     references=(
         # The source writes omega_0.
         openstax_university_physics(1, "15-1-simple-harmonic-motion", "sec. 15.1, eq. (15.9)"),
+        # Both reports print omega^2 = k / m (omega_n here) for m x'' + c x' + k x = f.
+        nasa_cr_4424("sec. 4.1, p. 8"),
+        grodsinsky_whorton_vibration_isolation(
+            "section 'Micro-gravity Vibration Isolation Fundamentals', eq. (1) and the text "
+            "below eq. (2)"
+        ),
     ),
     verification_cases=(
         VerificationCase(

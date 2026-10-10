@@ -13,6 +13,9 @@ ACCESSED = "2026-10-01"
 # Date on which the sources added in the OpenStax provenance audit were opened.
 ACCESSED_AUDIT = "2026-10-09"
 
+# Date on which the vibration sources added in the second OpenStax audit pass were opened.
+ACCESSED_AUDIT_2 = "2026-10-10"
+
 _OPENSTAX_UNIVERSITY_PHYSICS = {
     # volume: (authors in the order of the book's attribution block, year)
     1: (("W. Moebs", "S. J. Ling", "J. Sanny"), 2016),
@@ -87,11 +90,12 @@ def nasa_glenn(
 def nasa_technical_report(
     title: str,
     authors: tuple[str, ...],
-    report_number: str,
+    report_number: str | None,
     year: int,
     url: str,
     locator: str,
     organization: str = "National Aeronautics and Space Administration",
+    accessed: str = ACCESSED_AUDIT,
 ) -> ReferenceSpec:
     """A NASA technical report on the NASA Technical Reports Server (NTRS).
 
@@ -102,11 +106,13 @@ def nasa_technical_report(
     Args:
         title: Title as printed on the report.
         authors: Personal authors in IEEE name form.
-        report_number: Report number, e.g. ``"NASA TM-87572"``.
+        report_number: Report number, e.g. ``"NASA TM-87572"``; ``None`` when the document
+            prints none and its NTRS record lists none (e.g. a preprint).
         year: Year of publication.
         url: NTRS citation URL.
         locator: Section, equation and page checked.
         organization: Issuing body when it is not NASA alone.
+        accessed: Date the record was opened, ``"YYYY-MM-DD"``.
     """
     return ReferenceSpec(
         source_type="technical_report",
@@ -117,7 +123,7 @@ def nasa_technical_report(
         year=year,
         locator=locator,
         url=url,
-        accessed=ACCESSED_AUDIT,
+        accessed=accessed,
     )
 
 
@@ -144,6 +150,36 @@ def nasa_cr_2005_213034(locator: str) -> ReferenceSpec:
         year=2005,
         url="https://ntrs.nasa.gov/citations/20050232849",
         locator=locator,
+    )
+
+
+def nasa_cr_4424(locator: str) -> ReferenceSpec:
+    """Young's NASA Contractor Report 4424 on damped structural dynamics (ViGYAN, for Langley)."""
+    return nasa_technical_report(
+        title="Structural Dynamics and Vibrations of Damped, Aircraft-Type Structures",
+        authors=("M. I. Young",),
+        report_number="NASA CR-4424",
+        year=1992,
+        url="https://ntrs.nasa.gov/citations/19920010952",
+        locator=locator,
+        accessed=ACCESSED_AUDIT_2,
+    )
+
+
+def grodsinsky_whorton_vibration_isolation(locator: str) -> ReferenceSpec:
+    """Grodsinsky and Whorton's survey of active microgravity vibration isolation (NTRS preprint).
+
+    The preprint prints no report number and no page numbers; locators use section titles and
+    equation numbers.
+    """
+    return nasa_technical_report(
+        title="A Survey of Active Vibration Isolation Systems for Microgravity Applications",
+        authors=("C. M. Grodsinsky", "M. S. Whorton"),
+        report_number=None,
+        year=2000,
+        url="https://ntrs.nasa.gov/citations/20000067635",
+        locator=locator,
+        accessed=ACCESSED_AUDIT_2,
     )
 
 

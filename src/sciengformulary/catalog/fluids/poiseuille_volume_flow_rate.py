@@ -83,8 +83,8 @@ poiseuille_volume_flow_rate = FormulaSpec(
     assumptions=(
         "Steady, incompressible, fully developed laminar flow of a Newtonian fluid in a "
         "straight rigid circular pipe; not valid in the entrance region.",
-        "Laminar only: the cited section gives laminar flow for Reynolds number (diameter "
-        "based) below about 2000 and turbulence above about 3000.",
+        "Valid for laminar flow only. Based on pipe diameter, a Reynolds number under about "
+        "2000 is laminar and one over about 3000 is turbulent.",
         "Derived result: obtained by integrating the cited parabolic velocity profile over the "
         "pipe cross-section; the source prints the profile, not the flow-rate formula.",
     ),
