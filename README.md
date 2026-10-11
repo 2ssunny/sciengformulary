@@ -70,12 +70,19 @@ from sciengformulary.catalog.aerodynamics import dynamic_pressure
 
 ## What is in the catalog
 
-The catalog contains 320 formulas, organised by knowledge domain:
+The catalog contains 415 formulas in 18 knowledge domains, including 84 formulas
+contributed by [@jwchin06](https://github.com/jwchin06) and 11 chemistry-related E3
+formulas. See the [contribution inventory and provenance review](docs/provenance/community-chemistry.md).
 
 | Domain | Formulas | Examples |
 |---|---|---|
 | `aerodynamics` | 35 | lift and drag, induced drag, isentropic and normal-shock relations, 1976 standard atmosphere layers, Barrowman rocket stability, stall and climb, Sears-Haack wave drag |
+| `chemical_equilibrium` | 12 | activities, pH, buffers, solubility, van t Hoff equation |
+| `chemical_kinetics` | 8 | Arrhenius law, reaction rates, zero- and second-order consumption |
+| `chemistry` | 24 | amounts, concentrations, stoichiometry, colligative properties, extraction, combustion ratios |
+| `chromatography` | 9 | retention, resolution, theoretical plates, van Deemter model, TLC |
 | `electrical` | 2 | Ohm's law, conductor resistance |
+| `electrochemistry` | 7 | cell and Nernst potentials, electrolysis, Tafel current, thermal voltage |
 | `fluids` | 22 | hydrostatics, Reynolds number, Pitot airspeed, Poiseuille flow, Darcy-Weisbach and friction factors, Manning/Chezy, Sutherland viscosity, wind-shear power law |
 | `heat_transfer` | 51 | conduction, convection correlations (Gnielinski, Churchill-Bernstein, Churchill-Chu), radiation exchange, effectiveness-NTU, dimensionless groups, LMTD |
 | `materials` | 15 | true stress and strain, elastic constants, von Mises, fracture, Weibull |
@@ -84,8 +91,9 @@ The catalog contains 320 formulas, organised by knowledge domain:
 | `nuclear` | 3 | radioactive decay, half-life, activity |
 | `orbital` | 29 | Kepler's third law, vis-viva, conic orbits and anomalies, Hohmann and bi-elliptic transfers, hyperbolic and parabolic orbits, J2 nodal precession, sphere of influence |
 | `propulsion` | 12 | rocket thrust, specific impulse, Tsiolkovsky rocket equation, thrust coefficient, nozzle expansion ratio, solid-motor relations |
+| `spectroscopy` | 16 | Beer-Lambert law, molecular energies, NMR shift, mass resolution |
 | `structures` | 17 | axial deformation, bending stress, torsion, beam deflections, fixed-end moments and reactions, beam and plate stiffness |
-| `thermodynamics` | 20 | ideal gas, kinetic theory, entropy, Carnot limits, specific heats, Antoine vapour pressure |
+| `thermodynamics` | 39 | ideal gas, kinetic theory, entropy, Carnot limits, specific heats, Antoine vapour pressure, reaction energies, NASA polynomials |
 
 Only formulas that have been checked against an authoritative source are included.
 Candidates that could not be verified, or whose sources disagree, are left out rather
