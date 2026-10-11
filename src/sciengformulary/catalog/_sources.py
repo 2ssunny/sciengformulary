@@ -188,6 +188,18 @@ _DOE_HANDBOOK_URL = "https://www.energy.gov/sites/default/files/2026-04"
 _DOE_FUNDAMENTALS_HANDBOOKS = {
     # report number: (subject title, volume line or None, year, file name)
     "DOE-HDBK-1010-92": ("Classical Physics", None, 1992, "DOE-HDBK-1010-92.pdf"),
+    "DOE-HDBK-1011/1-92": (
+        "Electrical Science",
+        "Volume 1 of 4",
+        1992,
+        "DOE-HDBK-1011-92_VOL1.pdf",
+    ),
+    "DOE-HDBK-1011/3-92": (
+        "Electrical Science",
+        "Volume 3 of 4",
+        1992,
+        "DOE-HDBK-1011-92_VOL3.pdf",
+    ),
     "DOE-HDBK-1012/1-92": (
         "Thermodynamics, Heat Transfer, and Fluid Flow",
         "Volume 1 of 3",
@@ -209,7 +221,11 @@ _DOE_FUNDAMENTALS_HANDBOOKS = {
 }
 
 
-def doe_fundamentals_handbook(report_number: str, locator: str) -> ReferenceSpec:
+def doe_fundamentals_handbook(
+    report_number: str,
+    locator: str,
+    accessed: str | None = None,
+) -> ReferenceSpec:
     """One DOE Fundamentals Handbook (U.S. Department of Energy, training handbook series).
 
     The handbooks carry a public-release distribution statement and no copyright notice,
@@ -220,6 +236,7 @@ def doe_fundamentals_handbook(report_number: str, locator: str) -> ReferenceSpec
         report_number: Report number as printed on the title page, a key of the table above,
             e.g. ``"DOE-HDBK-1010-92"``.
         locator: Module, equation and page, e.g. ``"module 5, eq. (5-2), p. 2 (CP-05)"``.
+        accessed: Override the recorded access date when a source is checked again.
     """
     subject, volume, year, file_name = _DOE_FUNDAMENTALS_HANDBOOKS[report_number]
     title = f"DOE Fundamentals Handbook: {subject}"
@@ -234,7 +251,8 @@ def doe_fundamentals_handbook(report_number: str, locator: str) -> ReferenceSpec
         year=year,
         locator=locator,
         url=f"{_DOE_HANDBOOK_URL}/{file_name}",
-        accessed=ACCESSED_AUDIT,
+        accessed=accessed
+        or ("2026-10-11" if report_number.startswith("DOE-HDBK-1011/") else ACCESSED_AUDIT),
     )
 
 
@@ -413,4 +431,128 @@ def usgs_report(
         locator=locator,
         url=url,
         accessed=ENGINEERING_ACCESSED,
+    )
+
+
+def bipm_si_defining_constants() -> ReferenceSpec:
+    """BIPM fixed SI values, supporting constants rather than formula relationships."""
+    return ReferenceSpec(
+        source_type="official_web",
+        title="The International System of Units (SI): Defining constants",
+        organization="Bureau International des Poids et Mesures",
+        locator="Numerical values of the seven defining constants",
+        url="https://www.bipm.org/en/measurement-units/si-defining-constants",
+        accessed="2026-10-11",
+    )
+
+
+def nasa_rp_1311(locator: str) -> ReferenceSpec:
+    """Shared bibliographic record for NASA RP-1311, with a formula-specific locator."""
+    return ReferenceSpec(
+        source_type="technical_report",
+        title="Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+        organization="National Aeronautics and Space Administration",
+        report_number="NASA RP-1311",
+        year=1994,
+        locator=locator,
+        url="https://ntrs.nasa.gov/citations/19950013764",
+        accessed="2026-10-11",
+    )
+
+
+def nist_si_brochure(locator: str) -> ReferenceSpec:
+    """Shared bibliographic record for NIST SP 330-2019, with a formula-specific locator."""
+    return ReferenceSpec(
+        source_type="technical_report",
+        title="The International System of Units (SI), 2019 Edition",
+        organization="National Institute of Standards and Technology",
+        report_number="NIST SP 330-2019",
+        year=2019,
+        locator=locator,
+        url="https://doi.org/10.6028/NIST.SP.330-2019",
+        accessed="2026-10-11",
+    )
+
+
+def doe_fuel_cell_handbook(locator: str) -> ReferenceSpec:
+    """Shared bibliographic record for DOE/NETL-2004/1206, with a formula-specific locator."""
+    return ReferenceSpec(
+        source_type="technical_report",
+        title="Fuel Cell Handbook (Seventh Edition)",
+        organization="U.S. Department of Energy, National Energy Technology Laboratory",
+        report_number="DOE/NETL-2004/1206",
+        year=2004,
+        locator=locator,
+        url="https://netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf",
+        accessed="2026-10-11",
+    )
+
+
+def openstax_section(
+    book: str,
+    page: str,
+    title: str,
+    accessed: str,
+    locator: str | None = None,
+) -> ReferenceSpec:
+    """An OpenStax section page, retaining its recorded title and access date.
+
+    Args:
+        book: Book URL slug.
+        page: Section URL slug.
+        title: Verified section title, including its section number.
+        accessed: Original access date, in YYYY-MM-DD format.
+        locator: Formula-specific equation or subsection, when recorded.
+    """
+    return ReferenceSpec(
+        source_type="official_web",
+        title=title,
+        organization="OpenStax",
+        url=f"https://openstax.org/books/{book}/pages/{page}",
+        accessed=accessed,
+        locator=locator,
+    )
+
+
+def harvey_analytical_chemistry(
+    page: str,
+    title: str,
+    accessed: str,
+    locator: str | None = None,
+) -> ReferenceSpec:
+    """A section of David Harvey's Analytical Chemistry 2.1 on LibreTexts.
+
+    Args:
+        page: Chapter and section URL path, preserving its original encoding.
+        title: Verified section title.
+        accessed: Original access date, in YYYY-MM-DD format.
+        locator: Formula-specific equation or subsection, when recorded.
+    """
+    return ReferenceSpec(
+        source_type="course_material",
+        title=title,
+        authors=("D. Harvey",),
+        organization="DePauw University",
+        url=(
+            "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/"
+            "Analytical_Chemistry_2.1_by_David_Harvey/"
+            f"Analytical_Chemistry_2.1_(Harvey)/{page}"
+        ),
+        accessed=accessed,
+        locator=locator,
+    )
+
+
+def macmillan_reduced_mass(accessed: str, locator: str | None = None) -> ReferenceSpec:
+    """Publisher's Classical Concept Review 29, preserving the recorded access date."""
+    return ReferenceSpec(
+        source_type="official_web",
+        title="Classical Concept Review 29: Reduced Mass",
+        organization="Macmillan Learning",
+        url=(
+            "https://www.macmillanlearning.com/studentresources/college/physics/"
+            "tiplermodernphysics6e/classial_concept_review/chapter_4_ccr_29_reduced_mass.pdf"
+        ),
+        accessed=accessed,
+        locator=locator,
     )
