@@ -10,7 +10,12 @@ from types import ModuleType
 
 from sciengformulary.catalog import (
     aerodynamics,
+    chemical_equilibrium,
+    chemical_kinetics,
+    chemistry,
+    chromatography,
     electrical,
+    electrochemistry,
     fluids,
     heat_transfer,
     materials,
@@ -19,6 +24,7 @@ from sciengformulary.catalog import (
     nuclear,
     orbital,
     propulsion,
+    spectroscopy,
     structures,
     thermodynamics,
 )
@@ -26,7 +32,12 @@ from sciengformulary.core import FormulaSpec
 
 DOMAINS: tuple[ModuleType, ...] = (
     aerodynamics,
+    chemical_equilibrium,
+    chemical_kinetics,
+    chemistry,
+    chromatography,
     electrical,
+    electrochemistry,
     fluids,
     heat_transfer,
     materials,
@@ -35,6 +46,7 @@ DOMAINS: tuple[ModuleType, ...] = (
     nuclear,
     orbital,
     propulsion,
+    spectroscopy,
     structures,
     thermodynamics,
 )

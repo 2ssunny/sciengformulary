@@ -1,0 +1,1724 @@
+{
+  "review_date": "2026-10-11",
+  "baseline": "v1.1.0",
+  "baseline_formula_count": 320,
+  "contributor": "https://github.com/jwchin06",
+  "distribution_authorization": "Maintainer confirmed Apache-2.0 distribution consent in the finalization chat on 2026-10-11.",
+  "formulas": [
+    {
+      "id": "chemical_equilibrium.acid_dissociation_pka",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "2fd53373d836399c81beb7363b8217a93e0c0dcb1466b02187e93d5765df24fa",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "14.6 Buffers",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/14-6-buffers",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.conjugate_base_constant",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "a6d7a5783e89933619012e8f3bf99f178953b94c6e0a3f8f3ba02bf546d4de4a",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "14.3 Relative Strengths of Acids and Bases",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.extended_debye_huckel_log_gamma",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "e1ebfd351ff400e3d3e0d1406caab4449c1bd257d58a98f559677e4cba29d452",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.henderson_hasselbalch_ph",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "00651e10b6014ef031952303f0d37632f7196eb6b58a63b603857ed7b2da64b4",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "14.6 Buffers",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/14-6-buffers",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.ionic_strength_two_species",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "19cfa45686f81c1071fbf61186fe9a0ec49d944b7933fb75540dc5be90792ade",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.monoprotic_neutral_acid_fraction",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "7c26a1d91f520213f5232725d5268242433c805eb0e6b520b95c6acc5eee6870",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "7.7: Liquid-Liquid Extractions",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/07%3A_Obtaining_and_Preparing_Samples_for_Analysis/7.07%3A_Liquid-Liquid_Extractions",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.ph_from_activity",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "47958268db43baf2c8d91fcb03114ff05c5152f6e0df6c2028c064311682eedd",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.reaction_quotient",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "905705c78a9a86785c15e8cffe9fdeb996a576aaea686a2734540d19e22011f8",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "13.2 Equilibrium Constants",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/13-2-equilibrium-constants",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.salt_molar_solubility",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "b265b410cff81ca0b007f12696a9fab1e44e8e562efe198b886c62b15b09c34c",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "15.1 Precipitation and Dissolution",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/15-1-precipitation-and-dissolution",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.van_t_hoff_equilibrium_constant",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "586e4f84d0b919b6730abcce1d79be3918b8b28fe82ebd74af214ea1cb74700f",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "9.6: Temperature Dependence of Equilibrium Constants - the van \u2019t Hoff Equation",
+          "organization": "Millersville University",
+          "url": "https://chem.libretexts.org/Courses/Millersville_University/CHEM_341-_Physical_Chemistry_I/09%3A_Chemical_Equilibria/9.06%3A_Temperature_Dependence_of_Equilibrium_Constants_-_the_van_t_Hoff_Equation",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.water_ion_product",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "9044fbec73d26c5483684d2a919e15f82e925dbdd654c5c228ffaaf61fcc322f",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "14.3 Relative Strengths of Acids and Bases",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_equilibrium.weak_electrolyte_ion_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "048b2d709d8e98776da861b7d8f2b8dbfa7116b516ca25706a45d0cd9b35abf0",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "14.3 Relative Strengths of Acids and Bases",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "course_material",
+          "title": "6.9: Activity Effects",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/06%3A_Equilibrium_Chemistry/6.09%3A_Activity_Effects",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.arrhenius_first_order_constant",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "edcb390c563e5376712ffae11334b1234ebed82ebb53c87e4688614962ec6cf3",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.5 Collision Theory",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.arrhenius_rate_ratio",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "1bee1bb16797751ea857c521be62ebd1202a00d035f2217dbcc31d60c8804f5a",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.5 Collision Theory",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.average_reaction_rate",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "2d0112fbec4ea8403aa09350886730df595f7f01c741d73730bcbbeddf31edef",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.1 Chemical Reaction Rates",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-1-chemical-reaction-rates",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.bimolecular_rate",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "7500bb128981427ecb56b57ab5eb1664fb566c69d052951d6a69d2d280371d0d",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.3 Rate Laws",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-3-rate-laws",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.second_order_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "ced21547a05a3cd47c84dc9589a05e8126d63f0176dcf127c80a728204de3a88",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.4 Integrated Rate Laws",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.second_order_half_life",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "de92a134a717d7596cda562b01c4168302650430fbebe84d8a861a3df0b14e4f",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.4 Integrated Rate Laws",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.zero_order_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "83eae8520575511dd5ee97b6f081393301af7f3a76c3b355434aaf16d8507b52",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.4 Integrated Rate Laws",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemical_kinetics.zero_order_half_life",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "83cadccd7d207e6691bed3c30d48a822ebb83c9f16e48e75dc63b1848e5cb166",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "12.4 Integrated Rate Laws",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.air_fuel_ratio_from_equivalence_ratio",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (9.19), p. 43 (PDF p. 49)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.amount_from_mass",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "823c3ac76a0e1b3094dc9e6195f7853fc3e5271d02c2e8b3513c4d48873b5442",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.1 Formula Mass and the Mole Concept",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.boiling_point_elevation",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "84db6d91943c33e02941660bd67ce5767f493b7d5571f63ec87b517357e9526a",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.4 Colligative Properties",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.dalton_partial_pressure",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "4195e6b741bcbba09d69f0846e1ec087cfa3d2adc1d84873d2bca24a4f590742",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.degree_of_unsaturation",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "74e59367438a22622f99028b37e52e46005cf8ec7f0337f35aa6a9ec3b73f3e2",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "7.2 Calculating the Degree of Unsaturation",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/organic-chemistry/pages/7-2-calculating-the-degree-of-unsaturation",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.dilution_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "8aa39ce3fae63078b326311a8f1a84cf6ddc644181f290e147f35f8063eb02c9",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.3 Molarity",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.distribution_ratio",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "ff14f757fd52b1a7fab588c88e853dad2ae42f116f4e5be13bef759927ba04ee",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "7.7: Liquid-Liquid Extractions",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/07%3A_Obtaining_and_Preparing_Samples_for_Analysis/7.07%3A_Liquid-Liquid_Extractions",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.entities_from_amount",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "45895ed77a4cca55135be331e29f914556f19e31059e4676d5cabffca66bbac8",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.1 Formula Mass and the Mole Concept",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.equivalence_ratio_from_mixture_fraction",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (9.19), p. 43 (PDF p. 49)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.freezing_point_depression",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "ac7aee49e63c179b5df27da97e2363ab563ef9022304e6e1fc42a11bf41bc60c",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.4 Colligative Properties",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.henry_law_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "f3476d785b18008fe7998d0f0a3099e33d3146489c8cfff1dc648cce90f0f79c",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.3 Solubility",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-3-solubility",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.mass_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "ef02d1381c51a1e27042d27fd84e7b4c0029fcd92fb215e40dcf63e708d0aa8e",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.4 Other Units for Solution Concentrations",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-4-other-units-for-solution-concentrations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.mass_fraction",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "a4095e8f3f82748307d3f72761b0c9b21db0919e900f164163bdda8a2f087bc2",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.4 Other Units for Solution Concentrations",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-4-other-units-for-solution-concentrations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.molality",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "a7fce4fa341eb3aa0c64cf11550d5a14d584bb4ea39e68d3c6b618621851c4f6",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.4 Colligative Properties",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.molar_concentration",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "1218ebff3e69cc3466ceabdbf4da8249bc8539da12b9911573a7df2da08e1145",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.3 Molarity",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.mole_fraction",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "acdd28b71690031dff192d296f7537d5160a56ed0c07e898c1967f7ad3827b42",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.4 Colligative Properties",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.osmotic_pressure",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "8895c8d0dfe6e7c8013bfd54d0d338a96e390705caf3b17ae58aefc82bc03d1e",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.4 Colligative Properties",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.percent_yield",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "8ab6aaabdbdaccc2babe0f22f1c60893c3cad9e77ca7d2198f4b6e1adfe82952",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "4.4 Reaction Yields",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.raoult_partial_pressure",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "836bd753f82bde2f2e2c3a19f610e0a7e2662ae1944536eee532d501fd3f6ecb",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "11.4 Colligative Properties",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.repeated_extraction_remaining_fraction",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "4b504709346e0530015ed0d70e6e313bc0dd524fa89017e70222e7c488445128",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "7.7: Liquid-Liquid Extractions",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/07%3A_Obtaining_and_Preparing_Samples_for_Analysis/7.07%3A_Liquid-Liquid_Extractions",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.stoichiometric_product_amount",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "2ddd54ecaefe0c876c72167ec6696fbc65636f08f99b7e96510d62599b3447ff",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "4.3 Reaction Stoichiometry",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.titration_equivalence_volume",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "5b3302078093a341924f5ef65068f1b9f6b4f9240900b1c953973b68e08d8e7b",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "14.7 Acid-Base Titrations",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/14-7-acid-base-titrations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.volume_fraction",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "393f8197f4bdbf21aa7081f427c81e3f13e8db22a88f0256012e0d432bd6af96",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "3.4 Other Units for Solution Concentrations",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-4-other-units-for-solution-concentrations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chemistry.weak_acid_distribution_ratio",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "cef538185f4f7361b20ac6aaefef270540a607302412b4271b7a8fce2d325d40",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "7.7: Liquid-Liquid Extractions",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/07%3A_Obtaining_and_Preparing_Samples_for_Analysis/7.07%3A_Liquid-Liquid_Extractions",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.baseline_peak_resolution",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "1af7ebba5cc810f8a68252600ef84e663641c863398641c2ecd7243d44c12853",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.2: General Theory of Column Chromatography",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.02%3A_General_Theory_of_Column_Chromatography",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.baseline_plate_number",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "22436fe6fd84abb0791faeda8f13c0d94014557c4f36255713cea7be737f7015",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.2: General Theory of Column Chromatography",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.02%3A_General_Theory_of_Column_Chromatography",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.fundamental_resolution_estimate",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "795352d2652f6b4a66732c80706614234645610d0ee5b26591025aa79ea3cbc4",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.3: Optimizing Chromatographic Separations",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.03%3A_Optimizing_Chromatographic_Separations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.plate_height",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "c7cfe9eb920d1d246c95f2f27869ae16e5a87dcffc8dd2c56b25af86cfe0e839",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.2: General Theory of Column Chromatography",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.02%3A_General_Theory_of_Column_Chromatography",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.retention_factor",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "b1da8efd9a0b9d8d37d0a87912d61c4f6ee0442ef274c3f62b75e7f70f858178",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.2: General Theory of Column Chromatography",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.02%3A_General_Theory_of_Column_Chromatography",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.separation_factor",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "51dfb4de36d9217fda6a3cf76742ed4d2829cb8d65abd2fe712cc073b06dd057",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.2: General Theory of Column Chromatography",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.02%3A_General_Theory_of_Column_Chromatography",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.tlc_retardation_factor",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "234409f725f9f2c13cbe86611bfee5755d2933bfccc39381944edf72c560c6b6",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "2.3C: The Retention Factor",
+          "authors": [
+            "L. Nichols"
+          ],
+          "organization": "Butte College",
+          "url": "https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_(Nichols)/02%3A_Chromatography/2.03%3A_Thin_Layer_Chromatography_(TLC)/2.3C%3A_The_Retention_Factor",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.van_deemter_optimum_velocity",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "79109f357ead298a36622affd3d8c6ec961c816f682d03031498f268730c831d",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.3: Optimizing Chromatographic Separations",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.03%3A_Optimizing_Chromatographic_Separations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "chromatography.van_deemter_plate_height",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "67ae91f126d4a2920c53da29d34fd15a53fd970019e2118ba5006fb586fe8400",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "12.3: Optimizing Chromatographic Separations",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12%3A_Chromatographic_and_Electrophoretic_Methods/12.03%3A_Optimizing_Chromatographic_Separations",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.cell_potential",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "2fff51e2b271acd48c46b63dd2364b22912af1744ee9de59be098940816bb273",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "17.3 Electrode and Cell Potentials",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/17-3-electrode-and-cell-potentials",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.constant_current_charge",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "868f42b6c01211e221128fe7a475c343ef6cbf990bfcae1ee68fc77d0ae1f796",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "17.7 Electrolysis",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/17-7-electrolysis",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.electrolysis_product_mass",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "b7995c99980445110c1cf30cdc5cc6512244d587c4f5f71c46f53c66b8702a44",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "17.7 Electrolysis",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/17-7-electrolysis",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.nernst_cell_potential",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "653acfd262a368e5b2c7a44e6f52123443a21cfd5ba3297840ea432176df76fa",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "17.4 Potential, Free Energy, and Equilibrium",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.reaction_gibbs_from_potential",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "c67c521c7152039f6353091d20c1a052fbb5f3426a58f19352797f477bf9bce7",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "16.4 Free Energy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.tafel_current_density",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Fuel Cell Handbook (Seventh Edition)",
+          "organization": "U.S. Department of Energy, National Energy Technology Laboratory",
+          "year": 2004,
+          "report_number": "DOE/NETL-2004/1206",
+          "locator": "eqs. (2-20) and (2-21), p. 2-12 (PDF p. 65)",
+          "url": "https://netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf",
+          "accessed": "2026-10-11"
+        },
+        {
+          "source_type": "technical_report",
+          "title": "The International System of Units (SI), 2019 Edition",
+          "organization": "National Institute of Standards and Technology",
+          "year": 2019,
+          "report_number": "NIST SP 330-2019",
+          "locator": "sec. 2.2, Table 1 (the seven defining constants), p. 4 (PDF p. 20)",
+          "url": "https://doi.org/10.6028/NIST.SP.330-2019",
+          "accessed": "2026-10-11"
+        },
+        {
+          "source_type": "official_web",
+          "title": "CODATA Value: molar gas constant",
+          "organization": "National Institute of Standards and Technology",
+          "locator": "2022 CODATA recommended value",
+          "url": "https://physics.nist.gov/cgi-bin/cuu/Value?r",
+          "accessed": "2026-10-01"
+        },
+        {
+          "source_type": "official_web",
+          "title": "CODATA Value: Faraday constant",
+          "organization": "National Institute of Standards and Technology",
+          "locator": "2022 CODATA recommended value",
+          "url": "https://physics.nist.gov/cgi-bin/cuu/Value?f",
+          "accessed": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": "electrochemistry.thermal_voltage",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Fuel Cell Handbook (Seventh Edition)",
+          "organization": "U.S. Department of Energy, National Energy Technology Laboratory",
+          "year": 2004,
+          "report_number": "DOE/NETL-2004/1206",
+          "locator": "Table 2-2 (Nernst equations), p. 2-5 (PDF p. 58); eq. (2-20), p. 2-12 (PDF p. 65)",
+          "url": "https://netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf",
+          "accessed": "2026-10-11"
+        },
+        {
+          "source_type": "technical_report",
+          "title": "The International System of Units (SI), 2019 Edition",
+          "organization": "National Institute of Standards and Technology",
+          "year": 2019,
+          "report_number": "NIST SP 330-2019",
+          "locator": "sec. 2.2, Table 1 (the seven defining constants), p. 4 (PDF p. 20)",
+          "url": "https://doi.org/10.6028/NIST.SP.330-2019",
+          "accessed": "2026-10-11"
+        },
+        {
+          "source_type": "official_web",
+          "title": "CODATA Value: Boltzmann constant",
+          "organization": "National Institute of Standards and Technology",
+          "locator": "2022 CODATA recommended value",
+          "url": "https://physics.nist.gov/cgi-bin/cuu/Value?k",
+          "accessed": "2026-10-01"
+        },
+        {
+          "source_type": "official_web",
+          "title": "CODATA Value: molar gas constant",
+          "organization": "National Institute of Standards and Technology",
+          "locator": "2022 CODATA recommended value",
+          "url": "https://physics.nist.gov/cgi-bin/cuu/Value?r",
+          "accessed": "2026-10-01"
+        },
+        {
+          "source_type": "official_web",
+          "title": "CODATA Value: Faraday constant",
+          "organization": "National Institute of Standards and Technology",
+          "locator": "2022 CODATA recommended value",
+          "url": "https://physics.nist.gov/cgi-bin/cuu/Value?f",
+          "accessed": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.absorbance_from_transmittance",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "66e0cdc42e6c376e7de1ccc76f8d8ed6f6745e90b52d0ea34941c53e81db760f",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "10.2: Spectroscopy Based on Absorption",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/10%3A_Spectroscopic_Methods/10.02%3A_Spectroscopy_Based_on_Absorption",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.beer_lambert_absorbance",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "aba50def95c2a92d0f76ca7fcd5697d287d6d4c03a6b47bebcd84520500b76d7",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "10.2: Spectroscopy Based on Absorption",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/10%3A_Spectroscopic_Methods/10.02%3A_Spectroscopy_Based_on_Absorption",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.de_broglie_wavelength",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "d3e23936fd6a44988608cf930a58e3d918c7322c2f4abb3ef76673ebcaf7d2a7",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "6.5 De Broglie\u2019s Matter Waves",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/6-5-de-broglies-matter-waves",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.diatomic_moment_of_inertia",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "17b82f66c8bef9aab45fab5feb4f7ce44dce2ddf2e39e0a4de9218419de05955",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "9.2 Molecular Spectra",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/9-2-molecular-spectra",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.diatomic_vibrational_wavenumber",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "3d8d7586e9c353bdd1e651aed50474e81a11fd128724be1b7c33f8b73cc488cb",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "7.5 The Quantum Harmonic Oscillator",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/7-5-the-quantum-harmonic-oscillator",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "Classical Concept Review 29: Reduced Mass",
+          "organization": "Macmillan Learning",
+          "url": "https://www.macmillanlearning.com/studentresources/college/physics/tiplermodernphysics6e/classial_concept_review/chapter_4_ccr_29_reduced_mass.pdf",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.harmonic_oscillator_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "45b203de4b42930a8bbdf825ef4ee155fd6c35a6330b582e7bc4a5a9ec05a26a",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "7.5 The Quantum Harmonic Oscillator",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/7-5-the-quantum-harmonic-oscillator",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.hydrogenic_bohr_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "12a26f4d945a9531bffd06643cbf02ac77962cb4f4204982f0b210d08e1959ce",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "6.2 The Bohr Model",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/6-2-the-bohr-model",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.mass_error_ppm",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "3ea879f5aba834f806ad1ba77d778b6ef31e7675acb4439698b3d05356fc4559",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "A Framework for Utilizing High Resolution Mass Spectrometry and Non-Targeted Analysis (NTA) in Rapid Response and Emergency Situations",
+          "organization": "U.S. Environmental Protection Agency",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9280853/",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.mass_resolving_power",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "cf3f0d358466c861726729ec3ca026b3d5bd21d194c08b297dab8edf9a723ab1",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Molecular Mass Distribution Measurement by Mass Spectrometry",
+          "authors": [
+            "W. E. Wallace",
+            "C. M. Guttman"
+          ],
+          "organization": "National Institute of Standards and Technology",
+          "year": 2010,
+          "report_number": "NIST SP 960-21",
+          "locator": "sec. 2.2",
+          "url": "https://www.govinfo.gov/content/pkg/GOVPUB-C13-82e3bd6da4b35d4156deae064324462c/pdf/GOVPUB-C13-82e3bd6da4b35d4156deae064324462c.pdf",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.nmr_chemical_shift",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "4270d5b0d605fc6f48711f135583d0628007a26e4e4e98e60e8ec777307beb9d",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "13.3 Chemical Shifts",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/organic-chemistry/pages/13-3-chemical-shifts",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.particle_in_box_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "626e6a55e637d62550cffb82ce67cbe8d25dcb4385ef8226e7cc2673aa806610",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "7.4 The Quantum Particle in a Box",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/7-4-the-quantum-particle-in-a-box",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.reduced_mass",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "d7523244b0f0dbb3a44489c33bda432dc331a5310a6863a73b8e7531aa76731a",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "Classical Concept Review 29: Reduced Mass",
+          "organization": "Macmillan Learning",
+          "url": "https://www.macmillanlearning.com/studentresources/college/physics/tiplermodernphysics6e/classial_concept_review/chapter_4_ccr_29_reduced_mass.pdf",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.rigid_rotor_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "e36a8f6bc07e941c7f5202e4408520bfcb92366506800e7f05c4c8566d41e8ce",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "9.2 Molecular Spectra",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-3/pages/9-2-molecular-spectra",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.two_component_absorbance",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "c41664c103fe228e6a6361e9a380722f0e422604123029fbefc37e60baf856fe",
+      "references": [
+        {
+          "source_type": "course_material",
+          "title": "10.2: Spectroscopy Based on Absorption",
+          "authors": [
+            "D. Harvey"
+          ],
+          "organization": "DePauw University",
+          "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/10%3A_Spectroscopic_Methods/10.02%3A_Spectroscopy_Based_on_Absorption",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.vacuum_wavelength",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "4b48189ac43539920492c4f9739f18916550f27890e32159da0de347092e1ed6",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "6.1 Electromagnetic Energy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/6-1-electromagnetic-energy",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy.vacuum_wavenumber",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "0470f2e45703e972afa4afa51f61e507a5e4cd8c44e0feb2806b04d78d2f0ebb",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "6.1 Electromagnetic Energy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/6-1-electromagnetic-energy",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.boltzmann_entropy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "8e42244ea272f5a1185dde24cc428aa7cf994850da28f01e1539955fb8eb7435",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "16.2 Entropy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/16-2-entropy",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.bond_enthalpy_reaction_estimate",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "45d00277a6e92fe2aa1681fb38bc7f2aff447f2c9be894b3800eb5780cba971e",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "7.5 Strengths of Ionic and Covalent Bonds",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/7-5-strengths-of-ionic-and-covalent-bonds",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.clausius_clapeyron_pressure",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "586cc5b22e216374432a71d85b7816ece7feb9bee73659ebed4a7c2b402c92d0",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "10.3 Phase Transitions",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.constant_external_pressure_work",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "4acb1aaa7e2e0c799cf85ef5e7906124e755596af93a26b4caea2729dca8c11b",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "5.3 Enthalpy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/5-3-enthalpy",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.enthalpy_change",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "c0eda9d28979e2e3ec5a937e1f15192a20f470a781b219e0ae53bc8cf653a417",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "5.3 Enthalpy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/5-3-enthalpy",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.first_law_internal_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "944d79a9291b57ba8d27f024195de73de964f57af71e46d7de9e7241f834f0aa",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "5.3 Enthalpy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/5-3-enthalpy",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.gibbs_energy_change",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "d176becb3935b7d6275c505e00bf1a6cf2a77b824aa5405785ca22ced79c0318",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "16.4 Free Energy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.ideal_binary_gas_mixing_entropy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "a35bb3160844a69651972957e4f1b9ededaf7539099119353ef2e871faa3b385",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "4.6 Entropy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/4-6-entropy",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.ideal_gas_mixture_chemical_potential",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (2.11), p. 5 (PDF p. 11)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.kp_kc_conversion",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (2.1a)-(2.1b), p. 3 (PDF p. 9)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.nasa7_enthalpy",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (4.6)-(4.8), p. 20 (PDF p. 26)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.nasa7_entropy",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (4.6)-(4.8), p. 20 (PDF p. 26)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.nasa7_heat_capacity",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (4.6)-(4.8), p. 20 (PDF p. 26)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.nasa9_heat_capacity",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (4.9), p. 20 (PDF p. 26)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.pressure_equilibrium_constant",
+      "origin": "existing E3 integration",
+      "references": [
+        {
+          "source_type": "technical_report",
+          "title": "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications. Part I: Analysis",
+          "organization": "National Aeronautics and Space Administration",
+          "year": 1994,
+          "report_number": "NASA RP-1311",
+          "locator": "eq. (2.10) and eq. (2.11), p. 5 (PDF p. 11); eq. (2.1a), p. 3 (PDF p. 9)",
+          "url": "https://ntrs.nasa.gov/citations/19950013764",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.reaction_enthalpy_from_formation",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "4da4b6cf3dde859dd1ef7f5fe7f92be0b45b18c89126f42a56e9c4d0484826e9",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "5.3 Enthalpy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/5-3-enthalpy",
+          "accessed": "2026-10-10"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.reaction_gibbs_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "5c21a9c871acb2fe3c068266a5eb6a3f1c698cd66cd9ef5dc0aa4c4b30e4049d",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "16.4 Free Energy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.standard_reaction_gibbs_energy",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "5463675dff1b283608668ef885a11ece1e34b64a6814ea142392e60253a1df8c",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "16.4 Free Energy",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+          "accessed": "2026-10-10"
+        },
+        {
+          "source_type": "official_web",
+          "title": "The International System of Units (SI): Defining constants",
+          "organization": "Bureau International des Poids et Mesures",
+          "locator": "Numerical values of the seven defining constants",
+          "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+          "accessed": "2026-10-11"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamics.total_entropy_change",
+      "origin": "jwchin06 chemistry contribution",
+      "original_source_sha256": "efd1141d22615844107ebb7facea30568ba6983678ef79b45c1a2d6bd31f50a4",
+      "references": [
+        {
+          "source_type": "official_web",
+          "title": "16.3 The Second and Third Laws of Thermodynamics",
+          "organization": "OpenStax",
+          "url": "https://openstax.org/books/chemistry-2e/pages/16-3-the-second-and-third-laws-of-thermodynamics",
+          "accessed": "2026-10-10"
+        }
+      ]
+    }
+  ]
+}
